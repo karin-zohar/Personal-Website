@@ -1,0 +1,21 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    min-height: 100%;
+
+    .theme {
+
+        background-color: light-dark(var(--test-light), var(--test-dark));
+        color: light-dark(var(--test-dark), var(--test-light));
+
+        &.light {
+            color-scheme: light;
+        }
+
+        &.dark {
+            color-scheme: dark;
+        }
+    }
+}

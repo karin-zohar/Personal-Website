@@ -1,7 +1,50 @@
 {
-  "files": [],
-  "references": [
-    { "path": "./tsconfig.app.json" },
-    { "path": "./tsconfig.node.json" }
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "target": "ESNext",
+    "outDir": "./dist",
+    "noEmitOnError": false,
+    "noEmitHelpers": false,
+    "useDefineForClassFields": true,
+    "lib": [
+      "DOM",
+      "DOM.Iterable",
+      "ESNext"
+    ],
+    "allowJs": false,
+    "skipLibCheck": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "module": "esnext",
+    "moduleResolution": "Node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "strict": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": true,
+    "declaration": false,
+    "noFallthroughCasesInSwitch": true,
+    "types": [
+      "react",
+      "react-dom"
+    ],
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ],
+      "@/libs/*": [
+        "./libs/*"
+      ]
+    }
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "./libs/ui/**/*.tsx",
+    "./libs/ui/**/*.ts",
+    "src/custom.d.ts",
+    "public/costum.d.ts"
   ]
 }
