@@ -1,17 +1,15 @@
-import React, { FC, ReactNode, useState } from 'react';
+import React, { FC, ReactNode } from 'react';
 import { Button } from 'antd'
 import clsx from 'clsx';
+import useStore from '@/store/store'
 
 type ToggleThemeProps = {
     children: ReactNode;
 };
 
 const ToggleTheme: FC<ToggleThemeProps> = ({ children }) => {
-    const [isLightTheme, setIsLightTheme] = useState<boolean>(true)
-    const toggleTheme = () => {
-        console.log('isLightTheme: ', isLightTheme)
-        setIsLightTheme((prev) => !prev)
-    }
+
+    const { isLightTheme, toggleTheme } = useStore()
     return (
         <div className={clsx('theme', { 'light': isLightTheme, 'dark': !isLightTheme })}>
             <Button onClick={toggleTheme}>{isLightTheme ? 'light' : 'dark'}</Button>
