@@ -1,0 +1,17 @@
+.main-layout {
+    border: 4px solid #008000;
+    overflow-y: auto;
+    min-height: 100vh;
+
+    header {
+        background-color: lightseagreen;
+        color: white;
+        height: 500px;
+    }
+
+    main {
+        padding-inline: 40px;
+        padding-top: 10px;
+    }
+
+}
