@@ -1,0 +1,14 @@
+.main-layout {
+  min-height: 100vh;
+
+  header {
+    height: 500px;
+    background-color: lightseagreen;
+    color: white;
+  }
+
+  main {
+    padding-inline: 40px;
+    padding-top: 10px;
+  }
+}
