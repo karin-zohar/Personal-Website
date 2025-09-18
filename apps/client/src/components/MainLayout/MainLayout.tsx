@@ -12,7 +12,6 @@ const MainLayout: FC<MainLayoutProps> = ({ children }) => {
     const { isLightTheme } = useStore()
     return (
         <div className={clsx('main-layout', 'theme', isLightTheme ? 'light' : 'dark')}>
-
             <header>
                 <ToggleThemeButton />
             </header>
