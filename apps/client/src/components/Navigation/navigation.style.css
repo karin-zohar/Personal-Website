@@ -1,0 +1,15 @@
+.navigation {
+  background-color: black;
+  font-size: 40px;
+  width: 100%;
+  z-index: 1000;
+  > * {
+    position: fixed;
+    top: 0;
+  }
+
+  .top {
+    background-color: #6f00ff;
+    width: 100%;
+  }
+}
