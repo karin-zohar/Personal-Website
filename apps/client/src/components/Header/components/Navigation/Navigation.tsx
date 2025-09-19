@@ -1,19 +1,24 @@
 import React, { FC, RefObject, useEffect, useState } from "react";
 import "./navigation.style.css";
+import { useWindowSize } from "react-use";
 
 type NavigationProps = {
   heroRef: RefObject<HTMLElement | null>;
 };
 
 const Navigation: FC<NavigationProps> = ({ heroRef }) => {
-  const [isTop, setIsTop] = useState(true);
+  const { width } = useWindowSize();
+  const [isTopNav, setIsTopNav] = useState(width > 600);
 
   useEffect(() => {
-    if (!heroRef.current) return;
+    if (width < 600 || !heroRef.current) {
+      setIsTopNav(false);
+      return;
+    }
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        setIsTop(entry.isIntersecting);
+        setIsTopNav(entry.isIntersecting);
       },
       { threshold: 0 }
     );
@@ -23,11 +28,11 @@ const Navigation: FC<NavigationProps> = ({ heroRef }) => {
     return () => {
       observer.disconnect();
     };
-  }, []);
+  }, [width]);
 
   return (
     <div className="navigation">
-      {isTop ? <span className="top gutter">hi</span> : <span>bye</span>}
+      {isTopNav ? <span className="top gutter">hi</span> : <span>bye</span>}
     </div>
   );
 };
