@@ -1,6 +1,5 @@
 import React, { useRef } from "react";
-import Hero from "../Hero/Hero";
-import Navigation from "../Navigation/Navigation";
+import { Hero, Navigation } from "./components/Header.components.index";
 
 const Header = () => {
   const heroRef = useRef<HTMLDivElement>(null);
