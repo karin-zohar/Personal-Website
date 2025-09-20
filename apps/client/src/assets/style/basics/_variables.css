@@ -1,5 +1,7 @@
 :root {
-    color-scheme: light dark;
-    --test-light: #F5EFE6;
-    --test-dark: #6D94C5;
+  color-scheme: light dark;
+  --cream-100: #e7dfd5;
+  --teal-200: #84a9ac;
+  --teal-500: #3b6978;
+  --teal-800: #204051;
 }
