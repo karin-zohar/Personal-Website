@@ -2,6 +2,7 @@ import React, { FC, RefObject, useEffect, useState } from "react";
 import "./navigation.style.css";
 import { useWindowSize } from "react-use";
 import ToggleThemeButton from "./components/ToggleThemeButton";
+import { Flex } from "antd";
 
 type NavigationProps = {
   heroRef: RefObject<HTMLElement | null>;
@@ -34,10 +35,11 @@ const Navigation: FC<NavigationProps> = ({ heroRef }) => {
   return (
     <div className="navigation">
       {isTopNav ? (
-        <div className="top gutter">
+        <Flex gap={6} className="top gutter">
           <span>top nav</span>
+          <span>פרוייקטים</span>
           <ToggleThemeButton />
-        </div>
+        </Flex>
       ) : (
         <span>&#9776;</span>
       )}
