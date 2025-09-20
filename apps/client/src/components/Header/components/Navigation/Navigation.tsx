@@ -7,18 +7,18 @@ type NavigationProps = {
 };
 
 const Navigation: FC<NavigationProps> = ({ heroRef }) => {
-  const { width } = useWindowSize();
+  const { width: windowWidth } = useWindowSize();
   const [isTopNav, setIsTopNav] = useState(width > 600);
 
   useEffect(() => {
-    if (width < 600 || !heroRef.current) {
+    if (windowWidth < 600 || !heroRef.current) {
       setIsTopNav(false);
       return;
     }
 
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        setIsTopNav(entry.isIntersecting);
+      ([hero]) => {
+        setIsTopNav(hero.isIntersecting);
       },
       { threshold: 0 }
     );
