@@ -1,25 +1,24 @@
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 html {
-    min-height: 100%;
+  min-height: 100%;
 
-    .theme {
+  .theme {
+    background-color: light-dark(var(--cream-100), var(--teal-800));
+    color: light-dark(var(--teal-800), var(--cream-100));
 
-        background-color: light-dark(var(--test-light), var(--test-dark));
-        color: light-dark(var(--test-dark), var(--test-light));
-
-        &.light {
-            color-scheme: light;
-        }
-
-        &.dark {
-            color-scheme: dark;
-        }
+    &.light {
+      color-scheme: light;
     }
+
+    &.dark {
+      color-scheme: dark;
+    }
+  }
 }
 
 body {
-    margin: 0;
+  margin: 0;
 }

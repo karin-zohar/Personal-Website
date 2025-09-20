@@ -1,6 +1,7 @@
 import React, { FC, RefObject, useEffect, useState } from "react";
 import "./navigation.style.css";
 import { useWindowSize } from "react-use";
+import ToggleThemeButton from "./components/ToggleThemeButton";
 
 type NavigationProps = {
   heroRef: RefObject<HTMLElement | null>;
@@ -33,7 +34,10 @@ const Navigation: FC<NavigationProps> = ({ heroRef }) => {
   return (
     <div className="navigation">
       {isTopNav ? (
-        <span className="top gutter">top nav</span>
+        <div className="top gutter">
+          <span>top nav</span>
+          <ToggleThemeButton />
+        </div>
       ) : (
         <span>&#9776;</span>
       )}

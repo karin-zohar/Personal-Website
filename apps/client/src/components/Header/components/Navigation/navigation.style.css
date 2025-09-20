@@ -9,7 +9,7 @@
   }
 
   .top {
-    background-color: #6f00ff;
+    background-color: var(--teal-200);
     width: 100%;
     height: 80px;
     display: flex;
