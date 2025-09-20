@@ -8,7 +8,7 @@ type NavigationProps = {
 
 const Navigation: FC<NavigationProps> = ({ heroRef }) => {
   const { width: windowWidth } = useWindowSize();
-  const [isTopNav, setIsTopNav] = useState(width > 600);
+  const [isTopNav, setIsTopNav] = useState(windowWidth > 600);
 
   useEffect(() => {
     if (windowWidth < 600 || !heroRef.current) {
@@ -28,7 +28,7 @@ const Navigation: FC<NavigationProps> = ({ heroRef }) => {
     return () => {
       observer.disconnect();
     };
-  }, [width]);
+  }, [windowWidth]);
 
   return (
     <div className="navigation">
