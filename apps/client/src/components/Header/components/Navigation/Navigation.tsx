@@ -32,7 +32,11 @@ const Navigation: FC<NavigationProps> = ({ heroRef }) => {
 
   return (
     <div className="navigation">
-      {isTopNav ? <span className="top gutter">hi</span> : <span>bye</span>}
+      {isTopNav ? (
+        <span className="top gutter">top nav</span>
+      ) : (
+        <span>&#9776;</span>
+      )}
     </div>
   );
 };
