@@ -3,6 +3,7 @@ import "./navigation.style.css";
 import { useWindowSize } from "react-use";
 import ToggleThemeButton from "./components/ToggleThemeButton";
 import { Flex } from "antd";
+import SetLanguageButton from "./components/SetLanguageButton";
 
 type NavigationProps = {
   heroRef: RefObject<HTMLElement | null>;
@@ -39,6 +40,7 @@ const Navigation: FC<NavigationProps> = ({ heroRef }) => {
           <span>top nav</span>
           <span>פרוייקטים</span>
           <ToggleThemeButton />
+          <SetLanguageButton />
         </Flex>
       ) : (
         <span>&#9776;</span>
