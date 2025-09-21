@@ -11,14 +11,11 @@ const SetLanguageButton = () => {
   ];
 
   return (
-    <>
-      <Select
-        options={languageOptions}
-        value={language}
-        onChange={(value) => setLanguage(value)}
-      />
-      <span>{language}</span>
-    </>
+    <Select
+      options={languageOptions}
+      value={language}
+      onChange={(value) => setLanguage(value)}
+    />
   );
 };
 

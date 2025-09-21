@@ -1,14 +1,21 @@
 import { StateCreator } from "zustand";
 
 type Language = "english" | "hebrew";
+type Dictionary = Record<Language, string>;
+
 export type I18nSlice = {
   language: Language;
   setLanguage: (language: Language) => void;
+  getLocalizedText: (dictionary: Dictionary) => string;
 };
 
-export const i18nSlice: StateCreator<I18nSlice> = (set) => ({
+export const i18nSlice: StateCreator<I18nSlice> = (set, get) => ({
   language: "english",
   setLanguage: (language: Language) => {
     set({ language });
+  },
+  getLocalizedText: (dictionary: Dictionary) => {
+    const selectedLanguage = get().language;
+    return dictionary[selectedLanguage];
   },
 });
