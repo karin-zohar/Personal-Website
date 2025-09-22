@@ -48,7 +48,7 @@ const NavMenu: FC<NavMenuProps> = ({ layout }) => {
   }));
 
   return (
-    <Menu items={localizedNavItems} mode={layout} style={{ width: "100%" }} />
+    <Menu items={localizedNavItems} mode={layout} className={"nav-menu"} />
   );
 };
 

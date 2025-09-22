@@ -4,7 +4,7 @@ import { useWindowSize } from "react-use";
 import ToggleThemeButton from "./components/ToggleThemeButton";
 import { Flex } from "antd";
 import SetLanguageButton from "./components/SetLanguageButton";
-import NavMenu from "./components/NavMenu/NavMenu";
+import NavMenu from "./components/NavMenu";
 
 type NavigationProps = {
   heroRef: RefObject<HTMLElement | null>;
@@ -37,9 +37,11 @@ const Navigation: FC<NavigationProps> = ({ heroRef }) => {
   return (
     <div className="navigation">
       {isTopNav ? (
-        <Flex gap={6} className="top gutter">
-          <ToggleThemeButton />
-          <SetLanguageButton />
+        <Flex gap={10} className="top gutter">
+          <Flex className="preferences" gap={6}>
+            <ToggleThemeButton />
+            <SetLanguageButton />
+          </Flex>
           <NavMenu layout={"horizontal"} />
         </Flex>
       ) : (

@@ -14,5 +14,30 @@
     height: 80px;
     display: flex;
     align-items: center;
+    justify-content: start;
+    .nav-menu {
+      display: flex;
+      gap: 20px;
+      background: none;
+      border-bottom: none;
+      font-family: inherit;
+      &::before,
+      &::after {
+        display: none;
+      }
+
+      li {
+        font-size: 24px;
+        &::before,
+        &::after {
+          display: none;
+        }
+
+        :hover,
+        &.ant-menu-item-selected {
+          color: var(--teal-500);
+        }
+      }
+    }
   }
 }
