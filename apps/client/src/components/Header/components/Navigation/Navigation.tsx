@@ -1,10 +1,12 @@
 import React, { FC, RefObject, useEffect, useState } from "react";
-import "./navigation.style.css";
 import { useWindowSize } from "react-use";
 import ToggleThemeButton from "./components/ToggleThemeButton";
-import { Flex } from "antd";
+import { Button, Drawer, Flex } from "antd";
 import SetLanguageButton from "./components/SetLanguageButton";
 import NavMenu from "./components/NavMenu";
+import "./navigation.style.css";
+import NavContent from "./components/NavContent";
+import NavDrawer from "./components/NavDrawer";
 
 type NavigationProps = {
   heroRef: RefObject<HTMLElement | null>;
@@ -12,7 +14,8 @@ type NavigationProps = {
 
 const Navigation: FC<NavigationProps> = ({ heroRef }) => {
   const { width: windowWidth } = useWindowSize();
-  const [isTopNav, setIsTopNav] = useState(windowWidth > 600);
+  const [isTopNav, setIsTopNav] = useState<boolean>(windowWidth > 600);
+  const [isNavDrawerOpen, setIsNavDrawerOpen] = useState<boolean>(false);
 
   useEffect(() => {
     if (windowWidth < 600 || !heroRef.current) {
@@ -34,18 +37,22 @@ const Navigation: FC<NavigationProps> = ({ heroRef }) => {
     };
   }, [windowWidth]);
 
+  const navDrawerApi = {
+    open: isNavDrawerOpen,
+    onOpen: () => {
+      setIsNavDrawerOpen(true);
+    },
+    onClose: () => {
+      setIsNavDrawerOpen(false);
+    },
+  };
+
   return (
     <div className="navigation">
       {isTopNav ? (
-        <Flex gap={10} className="top gutter">
-          <Flex className="preferences" gap={6}>
-            <ToggleThemeButton />
-            <SetLanguageButton />
-          </Flex>
-          <NavMenu layout={"horizontal"} />
-        </Flex>
+        <NavContent layout={"horizontal"} />
       ) : (
-        <span>&#9776;</span>
+        <NavDrawer api={navDrawerApi} />
       )}
     </div>
   );
