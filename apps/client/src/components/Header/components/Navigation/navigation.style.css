@@ -16,11 +16,9 @@
     align-items: center;
     justify-content: start;
     .nav-menu {
-      display: flex;
       gap: 20px;
       background: none;
       border-bottom: none;
-      font-family: inherit;
       &::before,
       &::after {
         display: none;
@@ -40,4 +38,20 @@
       }
     }
   }
+}
+
+.nav-menu {
+  li {
+    font-size: 24px;
+    font-family: inherit;
+
+    :hover,
+    &.ant-menu-item-selected {
+      color: var(--teal-500);
+      background-color: none;
+    }
+  }
+}
+
+.nav-drawer {
 }

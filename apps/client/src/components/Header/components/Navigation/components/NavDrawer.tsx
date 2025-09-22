@@ -17,7 +17,7 @@ const NavDrawer: FC<NavDrawerProps> = ({ api }) => {
       <Button type="text" onClick={onOpen}>
         &#9776;
       </Button>
-      <Drawer onClose={onClose} open={open}>
+      <Drawer className="nav-drawer" onClose={onClose} open={open}>
         <NavContent layout={"vertical"} />
       </Drawer>
     </>
