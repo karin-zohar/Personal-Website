@@ -1,5 +1,5 @@
-import { Button, Drawer } from "antd";
 import React, { FC } from "react";
+import { Button, Drawer } from "antd";
 import NavContent from "./NavContent";
 
 type NavDrawerProps = {

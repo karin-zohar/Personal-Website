@@ -1,12 +1,8 @@
 import React, { FC, RefObject, useEffect, useState } from "react";
 import { useWindowSize } from "react-use";
-import ToggleThemeButton from "./components/ToggleThemeButton";
-import { Button, Drawer, Flex } from "antd";
-import SetLanguageButton from "./components/SetLanguageButton";
-import NavMenu from "./components/NavMenu";
-import "./navigation.style.css";
 import NavContent from "./components/NavContent";
 import NavDrawer from "./components/NavDrawer";
+import "./navigation.style.css";
 
 type NavigationProps = {
   heroRef: RefObject<HTMLElement | null>;
