@@ -8,13 +8,17 @@ type NavigationProps = {
   heroRef: RefObject<HTMLElement | null>;
 };
 
+const NARROW_SCREEN_WIDTH = 800;
+
 const Navigation: FC<NavigationProps> = ({ heroRef }) => {
   const { width: windowWidth } = useWindowSize();
-  const [isTopNav, setIsTopNav] = useState<boolean>(windowWidth > 600);
+  const [isTopNav, setIsTopNav] = useState<boolean>(
+    windowWidth > NARROW_SCREEN_WIDTH
+  );
   const [isNavDrawerOpen, setIsNavDrawerOpen] = useState<boolean>(false);
 
   useEffect(() => {
-    if (windowWidth < 600 || !heroRef.current) {
+    if (windowWidth < NARROW_SCREEN_WIDTH || !heroRef.current) {
       setIsTopNav(false);
       return;
     }
