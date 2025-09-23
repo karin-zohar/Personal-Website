@@ -11,11 +11,11 @@ type NavContentProps = {
 const NavContent: FC<NavContentProps> = ({ layout }) => {
   return (
     <Flex gap={10} className="top gutter" vertical={layout === "vertical"}>
+      <NavMenu layout={layout} />
       <Flex className="preferences" gap={6}>
         <ToggleTheme />
         <SetLanguage />
       </Flex>
-      <NavMenu layout={layout} />
     </Flex>
   );
 };

@@ -14,7 +14,7 @@ const NavDrawer: FC<NavDrawerProps> = ({ api }) => {
   const { open, onOpen, onClose } = api;
   return (
     <>
-      <Button type="text" onClick={onOpen}>
+      <Button className="open-nav-drawer-button" type="text" onClick={onOpen}>
         &#9776;
       </Button>
       <Drawer className="nav-drawer" open={open} onClose={onClose}>
