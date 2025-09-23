@@ -5,6 +5,10 @@
 html {
   min-height: 100%;
   font-family: "Outfit", "Assistant", Arial, sans-serif;
+
+  .rtl {
+    direction: rtl;
+  }
   .theme {
     background-color: light-dark(var(--cream-100), var(--teal-800));
     color: light-dark(var(--teal-800), var(--cream-100));

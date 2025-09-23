@@ -3,20 +3,22 @@ import useStore from "@/store/store";
 import clsx from "clsx";
 import "./main-layout.style.css";
 import Header from "../Header/Header";
+import { ConfigProvider } from "antd";
 
 type MainLayoutProps = {
   children: ReactNode;
 };
 
 const MainLayout: FC<MainLayoutProps> = ({ children }) => {
-  const { isLightTheme } = useStore();
+  const { theme, language } = useStore();
+  const direction = language === "hebrew" ? "rtl" : "ltr";
   return (
-    <div
-      className={clsx("main-layout", "theme", isLightTheme ? "light" : "dark")}
-    >
-      <Header />
-      <main className="gutter">{children}</main>
-    </div>
+    <ConfigProvider direction={direction}>
+      <div className={clsx("main-layout", "theme", theme, direction)}>
+        <Header />
+        <main className="gutter">{children}</main>
+      </div>
+    </ConfigProvider>
   );
 };
 

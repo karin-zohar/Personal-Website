@@ -1,14 +1,14 @@
 import { StateCreator } from "zustand";
 
+type Theme = "light" | "dark";
 export type ThemeSlice = {
-    isLightTheme: boolean;
-    toggleTheme: () => void;
-}
+  theme: Theme;
+  setTheme: (theme: Theme) => void;
+};
 
-export const themeSlice: StateCreator<ThemeSlice> = (set, get) => ({
-    isLightTheme: true,
-    toggleTheme: () => {
-        const currentTheme = get().isLightTheme
-        set({ isLightTheme: !currentTheme })
-    }
-})
+export const themeSlice: StateCreator<ThemeSlice> = (set) => ({
+  theme: "light",
+  setTheme: (theme: Theme) => {
+    set({ theme });
+  },
+});
