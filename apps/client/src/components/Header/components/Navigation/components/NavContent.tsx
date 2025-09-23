@@ -3,6 +3,7 @@ import { Flex } from "antd";
 import ToggleTheme from "./ToggleTheme";
 import SetLanguage from "./SetLanguage";
 import NavMenu from "./NavMenu";
+import clsx from "clsx";
 
 type NavContentProps = {
   layout: "horizontal" | "vertical";
@@ -10,7 +11,13 @@ type NavContentProps = {
 
 const NavContent: FC<NavContentProps> = ({ layout }) => {
   return (
-    <Flex gap={10} className="top gutter" vertical={layout === "vertical"}>
+    <Flex
+      gap={10}
+      className={clsx({
+        "top gutter": layout === "horizontal",
+      })}
+      vertical={layout === "vertical"}
+    >
       <NavMenu layout={layout} />
       <Flex className="preferences" gap={6}>
         <ToggleTheme />
