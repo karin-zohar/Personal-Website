@@ -70,3 +70,21 @@
     }
   }
 }
+
+.nav-drawer.ant-drawer-content {
+  background-color: light-dark(var(--cream-100), var(--teal-800));
+  .nav-menu {
+    border: none;
+    li {
+      height: 48px;
+      margin-block: 24px;
+      span {
+        font-size: 42px;
+        color: light-dark(var(--teal-800), var(--cream-100));
+      }
+    }
+  }
+  .preferences {
+    padding-inline: 16px;
+  }
+}

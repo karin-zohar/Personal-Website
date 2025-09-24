@@ -27,7 +27,7 @@ const Navigation: FC<NavigationProps> = ({ heroRef }) => {
       ([hero]) => {
         setIsTopNav(hero.isIntersecting);
       },
-      { threshold: 0 }
+      { threshold: 0.2 }
     );
 
     observer.observe(heroRef.current);
