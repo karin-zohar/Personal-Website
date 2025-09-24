@@ -82,6 +82,12 @@
         font-size: 42px;
         color: light-dark(var(--teal-800), var(--cream-100));
       }
+      &.ant-menu-item-selected {
+        background: none;
+        span {
+          color: var(--accent);
+        }
+      }
     }
   }
   .preferences {
