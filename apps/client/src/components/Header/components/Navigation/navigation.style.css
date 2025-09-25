@@ -77,13 +77,9 @@
       margin-block: 18px;
       span {
         font-size: 42px;
-        color: inherit;
       }
       &.ant-menu-item-selected {
         background: none;
-        span {
-          color: var(--accent);
-        }
       }
     }
   }

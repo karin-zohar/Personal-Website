@@ -2,19 +2,14 @@ import React, { FC } from "react";
 import { Button, Drawer } from "antd";
 import NavContent from "./NavContent";
 import clsx from "clsx";
-import useStore from "@/store/store";
 
 type NavDrawerProps = {
-  api: {
-    open: boolean;
-    onOpen: () => void;
-    onClose: () => void;
-  };
+  open: boolean;
+  onOpen: () => void;
+  onClose: () => void;
 };
 
-const NavDrawer: FC<NavDrawerProps> = ({ api }) => {
-  const { theme } = useStore();
-  const { open, onOpen, onClose } = api;
+const NavDrawer: FC<NavDrawerProps> = ({ open, onOpen, onClose }) => {
   return (
     <>
       <Button
@@ -24,11 +19,7 @@ const NavDrawer: FC<NavDrawerProps> = ({ api }) => {
       >
         &#9776;
       </Button>
-      <Drawer
-        className={clsx("nav-drawer", "theme", theme)}
-        open={open}
-        onClose={onClose}
-      >
+      <Drawer className={clsx("nav-drawer")} open={open} onClose={onClose}>
         <NavContent layout={"vertical"} />
       </Drawer>
     </>

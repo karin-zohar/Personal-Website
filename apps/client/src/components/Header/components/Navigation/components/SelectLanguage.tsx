@@ -2,7 +2,7 @@ import React from "react";
 import useStore from "@/store/store";
 import { Select } from "antd";
 
-const SetLanguage = () => {
+const SelectLanguage = () => {
   const { language, setLanguage } = useStore();
 
   const languageOptions = [
@@ -19,4 +19,4 @@ const SetLanguage = () => {
   );
 };
 
-export default SetLanguage;
+export default SelectLanguage;

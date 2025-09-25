@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import { Flex } from "antd";
-import ToggleTheme from "./ToggleTheme";
-import SetLanguage from "./SetLanguage";
+import SelectTheme from "./SelectTheme";
+import SelectLanguage from "./SelectLanguage";
 import NavMenu from "./NavMenu";
 import clsx from "clsx";
 
@@ -20,8 +20,8 @@ const NavContent: FC<NavContentProps> = ({ layout }) => {
     >
       <NavMenu layout={layout} />
       <Flex className="preferences" gap={6}>
-        <ToggleTheme />
-        <SetLanguage />
+        <SelectTheme />
+        <SelectLanguage />
       </Flex>
     </Flex>
   );

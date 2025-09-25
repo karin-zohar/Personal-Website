@@ -1,8 +1,8 @@
 import React from "react";
-import { Button, Select } from "antd";
+import { Select } from "antd";
 import useStore from "@/store/store";
 
-const ToggleTheme = () => {
+const SelectTheme = () => {
   const { theme, setTheme, getLocalizedText } = useStore();
   const themeOptions = [
     {
@@ -35,4 +35,4 @@ const ToggleTheme = () => {
   );
 };
 
-export default ToggleTheme;
+export default SelectTheme;

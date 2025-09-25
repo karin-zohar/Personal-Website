@@ -52,7 +52,7 @@ const Navigation: FC<NavigationProps> = ({ heroRef }) => {
       {isTopNav ? (
         <NavContent layout={"horizontal"} />
       ) : (
-        <NavDrawer api={navDrawerApi} />
+        <NavDrawer {...navDrawerApi} />
       )}
     </div>
   );
