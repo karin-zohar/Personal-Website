@@ -1,20 +1,24 @@
 import React, { FC, RefObject, useEffect, useState } from "react";
-import "./navigation.style.css";
 import { useWindowSize } from "react-use";
-import ToggleThemeButton from "./components/ToggleThemeButton";
-import { Flex } from "antd";
-import SetLanguageButton from "./components/SetLanguageButton";
+import NavContent from "./components/NavContent";
+import NavDrawer from "./components/NavDrawer";
+import "./navigation.style.css";
 
 type NavigationProps = {
   heroRef: RefObject<HTMLElement | null>;
 };
 
+const NARROW_SCREEN_WIDTH = 800;
+
 const Navigation: FC<NavigationProps> = ({ heroRef }) => {
   const { width: windowWidth } = useWindowSize();
-  const [isTopNav, setIsTopNav] = useState(windowWidth > 600);
+  const [isTopNav, setIsTopNav] = useState<boolean>(
+    windowWidth > NARROW_SCREEN_WIDTH
+  );
+  const [isNavDrawerOpen, setIsNavDrawerOpen] = useState<boolean>(false);
 
   useEffect(() => {
-    if (windowWidth < 600 || !heroRef.current) {
+    if (windowWidth < NARROW_SCREEN_WIDTH || !heroRef.current) {
       setIsTopNav(false);
       return;
     }
@@ -23,7 +27,7 @@ const Navigation: FC<NavigationProps> = ({ heroRef }) => {
       ([hero]) => {
         setIsTopNav(hero.isIntersecting);
       },
-      { threshold: 0 }
+      { threshold: 0.2 }
     );
 
     observer.observe(heroRef.current);
@@ -33,17 +37,22 @@ const Navigation: FC<NavigationProps> = ({ heroRef }) => {
     };
   }, [windowWidth]);
 
+  const navDrawerApi = {
+    open: isNavDrawerOpen,
+    onOpen: () => {
+      setIsNavDrawerOpen(true);
+    },
+    onClose: () => {
+      setIsNavDrawerOpen(false);
+    },
+  };
+
   return (
     <div className="navigation">
       {isTopNav ? (
-        <Flex gap={6} className="top gutter">
-          <span>top nav</span>
-          <span>פרוייקטים</span>
-          <ToggleThemeButton />
-          <SetLanguageButton />
-        </Flex>
+        <NavContent layout={"horizontal"} />
       ) : (
-        <span>&#9776;</span>
+        <NavDrawer {...navDrawerApi} />
       )}
     </div>
   );
