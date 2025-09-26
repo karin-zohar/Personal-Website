@@ -55,7 +55,7 @@
     }
 
     :hover {
-      color: var(--accent);
+      color: var(--teal-500);
     }
 
     &.ant-menu-item-selected {
