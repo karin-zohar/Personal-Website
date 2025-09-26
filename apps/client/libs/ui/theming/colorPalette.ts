@@ -1,7 +1,9 @@
 export const colorPalette = {
   "cream-100": "#e7dfd5",
+  "gray-100": "#c9d3db4d",
+  "teal-100": "#a5d5d9",
   "teal-200": "#84a9ac",
   "teal-500": "#3b6978",
   "teal-800": "#204051",
-  accent: "#50e3c2",
+  accent: "#3ab599",
 };

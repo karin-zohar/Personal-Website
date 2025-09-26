@@ -10,9 +10,13 @@
   min-width: fit-content;
   background: none;
   .ant-select-item.ant-select-item-option {
-    background: none;
     &.ant-select-item-option-selected {
+      background: none;
       color: var(--accent);
+    }
+
+    &:hover {
+      background-color: var(--gray-100);
     }
   }
 }
