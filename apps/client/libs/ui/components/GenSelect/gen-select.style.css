@@ -1,0 +1,18 @@
+.gen-select {
+  .ant-select-selection-item {
+    padding-inline-end: 12px;
+    color: var(--accent);
+  }
+}
+
+.ant-select-dropdown {
+  box-shadow: none;
+  min-width: fit-content;
+  background: none;
+  .ant-select-item.ant-select-item-option {
+    background: none;
+    &.ant-select-item-option-selected {
+      color: var(--accent);
+    }
+  }
+}

@@ -1,6 +1,6 @@
 import React from "react";
 import useStore from "@/store/store";
-import GenSelect from "@/libs/ui/components/GenSelect";
+import GenSelect from "@/libs/ui/components/GenSelect/GenSelect";
 
 const SelectLanguage = () => {
   const { language, setLanguage } = useStore();
