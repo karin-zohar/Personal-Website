@@ -1,12 +1,13 @@
+import { ReactNode } from "react";
 import { StateCreator } from "zustand";
 
 type Language = "english" | "hebrew";
-type Dictionary = Record<Language, string>;
+type Dictionary = Record<Language, ReactNode>;
 
 export type I18nSlice = {
   language: Language;
   setLanguage: (language: Language) => void;
-  getLocalizedText: (dictionary: Dictionary) => string;
+  getLocalizedText: (dictionary: Dictionary) => ReactNode;
 };
 
 export const i18nSlice: StateCreator<I18nSlice> = (set, get) => ({
