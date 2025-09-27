@@ -32,7 +32,7 @@
   font-size: 40px;
   align-self: center;
   color: inherit;
-  margin-inline: 40px;
+  margin-inline: 14px;
   &:hover {
     background: none;
     color: var(--teal-500);
