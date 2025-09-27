@@ -1,19 +1,16 @@
 import React, { FC } from "react";
 import { Select, SelectProps } from "antd";
-import { ArrowDownIcon, GlobeIcon } from "../../icons";
+import { ArrowDownIcon } from "@/libs/ui/icons";
 import "./gen-select.style.css";
 import clsx from "clsx";
 
-interface IGenSelectProps extends SelectProps {}
-
-const GenSelect: FC<IGenSelectProps> = ({ ...restProps }) => {
+const GenSelect: FC<SelectProps> = ({ ...props }) => {
   return (
     <Select
-      {...restProps}
-      className={clsx("gen-select", restProps.classNames)}
+      className={clsx("gen-select", props.className)}
       variant="borderless"
-      placeholder={<GlobeIcon />}
-      suffixIcon={<ArrowDownIcon style={{ fontSize: "10px" }} />}
+      suffixIcon={<ArrowDownIcon />}
+      {...props}
     />
   );
 };

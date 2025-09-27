@@ -5,5 +5,6 @@ export const colorPalette = {
   "teal-200": "#84a9ac",
   "teal-500": "#3b6978",
   "teal-800": "#204051",
+  "purple-400": " #6d3ab5",
   accent: "#3ab599",
 };
