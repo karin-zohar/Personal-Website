@@ -1,9 +1,9 @@
-import React, { forwardRef } from "react";
+import React from "react";
 import "./hero.style.css";
 import { Flex, Typography } from "antd";
 import useStore from "@/store/store";
 
-const Hero = forwardRef<HTMLDivElement>((_props, ref) => {
+const Hero = () => {
   const { getLocalizedText } = useStore();
   const { Title, Text } = Typography;
 
@@ -20,7 +20,7 @@ const Hero = forwardRef<HTMLDivElement>((_props, ref) => {
     },
   };
   return (
-    <div className={"hero"} ref={ref}>
+    <div className={"hero"}>
       <Flex className="hero-content">
         <div className="hero-img-container">
           <img
@@ -36,6 +36,6 @@ const Hero = forwardRef<HTMLDivElement>((_props, ref) => {
       </Flex>
     </div>
   );
-});
+};
 
 export default Hero;

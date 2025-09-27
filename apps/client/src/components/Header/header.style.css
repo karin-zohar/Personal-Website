@@ -1,0 +1,13 @@
+.rtl header {
+  background: linear-gradient(190deg, var(--purple-400) 0%, transparent 50%);
+}
+
+header {
+  height: 100vh;
+  @media (min-width: 1000px) {
+    height: 600px;
+  }
+  background: linear-gradient(170deg, var(--purple-400) 0%, transparent 50%);
+  display: flex;
+  flex-direction: column;
+}

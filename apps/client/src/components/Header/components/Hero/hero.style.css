@@ -1,17 +1,8 @@
-.rtl .hero {
-  background: linear-gradient(190deg, var(--purple-400) 0%, transparent 50%);
-}
-
 .hero {
-  height: 100vh;
-  @media (min-width: 1000px) {
-    height: 500px;
-  }
-  background: linear-gradient(170deg, var(--purple-400) 0%, transparent 50%);
+  flex-shrink: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-block-end: 40px;
 
   .hero-content {
     align-items: center;
@@ -28,10 +19,12 @@
     .hero-img-container {
       display: flex;
       align-items: center;
-      margin-top: 80px;
       img {
-        width: 400px;
         mask: url("../../../../assets/svg/blob1.svg");
+        max-height: 280px;
+        @media (min-width: 600px) {
+          max-height: 400px;
+        }
       }
     }
     .hero-content-text {

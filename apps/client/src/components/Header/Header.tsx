@@ -1,12 +1,12 @@
 import React, { useRef } from "react";
 import { Hero, Navigation } from "./components/Header.components.index";
+import "./header.style.css";
 
 const Header = () => {
-  const heroRef = useRef<HTMLDivElement>(null);
   return (
     <header>
-      <Hero ref={heroRef} />
-      <Navigation heroRef={heroRef} />
+      <Navigation />
+      <Hero />
     </header>
   );
 };
