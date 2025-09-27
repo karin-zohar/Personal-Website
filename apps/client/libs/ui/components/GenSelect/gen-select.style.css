@@ -2,6 +2,7 @@
   .ant-select-selection-item {
     padding-inline-end: 12px;
     color: var(--accent);
+    font-size: 14px;
   }
 }
 
