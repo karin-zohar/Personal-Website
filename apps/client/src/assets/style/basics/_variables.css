@@ -1,8 +1,11 @@
 :root {
   color-scheme: light dark;
   --cream-100: #e7dfd5;
+  --gray-100: #c9d3db4d;
+  --teal-100: #a5d5d9;
   --teal-200: #84a9ac;
   --teal-500: #3b6978;
   --teal-800: #204051;
-  --accent: #d44478;
+  --purple-400: #6d3ab5;
+  --accent: #3ab599;
 }

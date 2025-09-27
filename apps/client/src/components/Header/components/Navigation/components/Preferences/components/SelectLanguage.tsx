@@ -1,6 +1,6 @@
 import React from "react";
 import useStore from "@/store/store";
-import { Select } from "antd";
+import GenSelect from "@/libs/ui/components/GenSelect/GenSelect";
 
 const SelectLanguage = () => {
   const { language, setLanguage } = useStore();
@@ -11,7 +11,7 @@ const SelectLanguage = () => {
   ];
 
   return (
-    <Select
+    <GenSelect
       options={languageOptions}
       value={language}
       onChange={(value) => setLanguage(value)}

@@ -1,8 +1,9 @@
 import React, { forwardRef } from "react";
+import "./hero.style.css";
 
 const Hero = forwardRef<HTMLDivElement>((_props, ref) => {
   return (
-    <div ref={ref} style={{ backgroundColor: "var(--teal-500)", height: 500 }}>
+    <div className={"hero"} ref={ref}>
       {/* Hero content */}
     </div>
   );

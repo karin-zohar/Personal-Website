@@ -1,33 +1,36 @@
 import React from "react";
-import { Select } from "antd";
 import useStore from "@/store/store";
+import { MoonIcon, SunIcon } from "@/libs/ui/icons";
+import GenSelect from "@/libs/ui/components/GenSelect/GenSelect";
 
 const SelectTheme = () => {
   const { theme, setTheme, getLocalizedText } = useStore();
   const themeOptions = [
     {
-      label: {
-        english: "light",
-        hebrew: "בהיר",
-      },
+      label: <SunIcon />,
       value: "light",
+      title: {
+        english: "Light theme",
+        hebrew: "ערכת נושא בהירה",
+      },
     },
     {
-      label: {
-        english: "dark",
-        hebrew: "כהה",
-      },
+      label: <MoonIcon />,
       value: "dark",
+      title: {
+        english: "Dark theme",
+        hebrew: "ערכת נושא כהה",
+      },
     },
   ];
 
   const localizedThemeOptions = themeOptions.map((option) => ({
     ...option,
-    label: getLocalizedText(option.label),
+    title: getLocalizedText(option.title) as string,
   }));
 
   return (
-    <Select
+    <GenSelect
       options={localizedThemeOptions}
       value={theme}
       onChange={(value) => setTheme(value)}

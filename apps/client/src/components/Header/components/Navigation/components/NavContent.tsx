@@ -1,9 +1,8 @@
 import React, { FC } from "react";
 import { Flex } from "antd";
-import SelectTheme from "./SelectTheme";
-import SelectLanguage from "./SelectLanguage";
 import NavMenu from "./NavMenu";
 import clsx from "clsx";
+import Preferences from "./Preferences/Preferences";
 
 type NavContentProps = {
   layout: "horizontal" | "vertical";
@@ -19,10 +18,7 @@ const NavContent: FC<NavContentProps> = ({ layout }) => {
       vertical={layout === "vertical"}
     >
       <NavMenu layout={layout} />
-      <Flex className="preferences" gap={6}>
-        <SelectTheme />
-        <SelectLanguage />
-      </Flex>
+      <Preferences />
     </Flex>
   );
 };
