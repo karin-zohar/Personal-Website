@@ -7,6 +7,9 @@ const Hero = () => {
   const { getLocalizedText } = useStore();
   const { Title, Text } = Typography;
 
+  const heroImage =
+    "https://plus.unsplash.com/premium_photo-1678566154673-a728037f3f00?q=80&w=702&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
+
   const heroText = {
     title: {
       english: "Karin Zohar",
@@ -23,10 +26,7 @@ const Hero = () => {
     <div className={"hero"}>
       <Flex className="hero-content">
         <div className="hero-img-container">
-          <img
-            src="https://images.unsplash.com/photo-1758344953670-c15779f89ed4?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            alt=""
-          />
+          <img src={heroImage} alt="" />
         </div>
         <Flex className="hero-content-text" vertical>
           <Title level={1}>{getLocalizedText(heroText.title)}</Title>
