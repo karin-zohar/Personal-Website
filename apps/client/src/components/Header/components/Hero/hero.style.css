@@ -1,8 +1,8 @@
 .hero {
   height: 500px;
-  background: linear-gradient(160deg, var(--purple-400) 0%, transparent 50%);
+  background: linear-gradient(170deg, var(--purple-400) 0%, transparent 50%);
 }
 
 .rtl .hero {
-  background: linear-gradient(200deg, var(--purple-400) 0%, transparent 50%);
+  background: linear-gradient(190deg, var(--purple-400) 0%, transparent 50%);
 }
