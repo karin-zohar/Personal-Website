@@ -1,7 +1,9 @@
 import React from "react";
 import "./hero.style.css";
-import { Flex, Typography } from "antd";
+import { Flex, Popover, Typography } from "antd";
 import useStore from "@/store/store";
+import { EmailIcon, GithubIcon, LinkedinIcon } from "@/libs/ui/icons";
+import SocialLinks from "@/components/SocialLinks/SocialLinks";
 
 const Hero = () => {
   const { getLocalizedText } = useStore();
@@ -22,6 +24,7 @@ const Hero = () => {
         "אני מפתחת פרונטאנד סקרנית ויצירתית עם תשומת לב לפרטים ותשוקה ליצירת חוויות משתמש מדהימות עם קוד נקי וקל לתחזוקה.",
     },
   };
+
   return (
     <div className={"hero"}>
       <Flex className="hero-content">
@@ -31,7 +34,7 @@ const Hero = () => {
         <Flex className="hero-content-text" vertical>
           <Title level={1}>{getLocalizedText(heroText.title)}</Title>
           <Text className="bio">{getLocalizedText(heroText.bio)}</Text>
-          <div className="links">XXX</div>
+          <SocialLinks />
         </Flex>
       </Flex>
     </div>

@@ -1,0 +1,41 @@
+.social-links {
+  margin-block: 10px;
+  justify-content: center;
+  @media (min-width: 1000px) {
+    justify-content: start;
+  }
+  font-size: 24px;
+  gap: 1em;
+  .link-icon-wrapper {
+    cursor: pointer;
+    height: 42px;
+    aspect-ratio: 1;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    svg {
+      line-height: 0;
+    }
+
+    &:hover {
+      background: radial-gradient(var(--purple-400) 0%, transparent 70%);
+      font-size: 28px;
+      color: var(--cream-100);
+      transition: background 0.7s;
+      transition: font-size 1s;
+    }
+  }
+}
+
+.email-options-list {
+  a {
+    width: 100%;
+    text-align: center;
+  }
+
+  button {
+    :hover {
+      color: var(--accent);
+    }
+  }
+}
