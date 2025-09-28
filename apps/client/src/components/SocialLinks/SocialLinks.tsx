@@ -1,14 +1,16 @@
 import React from "react";
-import { useCopyToClipboard } from "react-use";
+
 import {
   ArrowOutwardIcon,
+  CheckmarkIcon,
   EmailIcon,
   GithubIcon,
   LinkedinIcon,
 } from "@/libs/ui/icons";
 import { Button, Flex, List, Popover } from "antd";
-import "./socialLinks.style.css";
 import useStore from "@/store/store";
+import useResettableCopyToClipboard from "@/libs/ui/hooks/useResettableCopyToClipboard";
+import "./socialLinks.style.css";
 
 const socialLinks = [
   {
@@ -28,7 +30,8 @@ const subject = "Cool website! Can I hire you?";
 const body = "Let's chat!";
 
 const SocialLinks = () => {
-  const [state, copyToClipboard] = useCopyToClipboard();
+  const [state, copyToClipboard, resetCopyState] =
+    useResettableCopyToClipboard();
   const { getLocalizedText } = useStore();
 
   const emailOptions = [
@@ -68,7 +71,12 @@ const SocialLinks = () => {
             </a>
           )}
           {onClick && (
-            <Button type="text" onClick={onClick}>
+            <Button
+              type="text"
+              onClick={onClick}
+              icon={state.error ? null : state.value && <CheckmarkIcon />}
+              iconPosition="end"
+            >
               {text}
             </Button>
           )}
@@ -91,7 +99,13 @@ const SocialLinks = () => {
         </a>
       ))}
 
-      <Popover content={emailOptionsList} placement="bottom" arrow={false}>
+      <Popover
+        content={emailOptionsList}
+        placement="bottom"
+        arrow={false}
+        destroyOnHidden
+        onOpenChange={resetCopyState}
+      >
         <Flex className="link-icon-wrapper">
           <EmailIcon />
         </Flex>
