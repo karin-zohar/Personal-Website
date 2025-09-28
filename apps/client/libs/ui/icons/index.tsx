@@ -6,6 +6,6 @@ export { CgMenuRightAlt as MenuIcon } from "react-icons/cg";
 export { IoCloseOutline as CloseIcon } from "react-icons/io5";
 export { FaLinkedinIn as LinkedinIcon } from "react-icons/fa";
 export { FaGithub as GithubIcon } from "react-icons/fa6";
-export { HiOutlineMail as EmailIcon } from "react-icons/hi";
+export { MdOutlineMail as EmailIcon } from "react-icons/md";
 export { MdArrowOutward as ArrowOutwardIcon } from "react-icons/md";
 export { IoCheckmarkOutline as CheckmarkIcon } from "react-icons/io5";
