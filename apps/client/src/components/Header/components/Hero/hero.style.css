@@ -1,8 +1,43 @@
 .hero {
-  height: 500px;
-  background: linear-gradient(170deg, var(--purple-400) 0%, transparent 50%);
-}
+  display: flex;
+  justify-content: center;
 
-.rtl .hero {
-  background: linear-gradient(190deg, var(--purple-400) 0%, transparent 50%);
+  .hero-content {
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    margin-inline: 40px;
+    @media (min-width: 1000px) {
+      margin-inline: 80px;
+      gap: 24px;
+      flex-direction: row-reverse;
+      text-align: start;
+    }
+
+    .hero-img-container {
+      display: flex;
+      img {
+        mask: url("../../../../assets/svg/blob1.svg");
+        max-height: 280px;
+        @media (min-width: 600px) {
+          max-height: 400px;
+        }
+      }
+    }
+    .hero-content-text {
+      max-width: 500px;
+      flex-wrap: wrap;
+      h1 {
+        text-transform: uppercase;
+        font-size: 48px;
+        @media (min-width: 1000px) {
+          font-size: 64px;
+        }
+      }
+
+      .bio {
+        font-size: 24px;
+      }
+    }
+  }
 }

@@ -2,7 +2,6 @@
   z-index: 1000;
   width: 100%;
   height: 80px;
-  position: fixed;
   top: 0;
   left: 0;
   display: flex;
@@ -29,10 +28,12 @@
 }
 
 .open-nav-drawer-button.ant-btn.ant-btn-text {
+  position: fixed;
   font-size: 40px;
   align-self: center;
   color: inherit;
-  margin-inline: 40px;
+  inset-inline-end: 12px;
+
   &:hover {
     background: none;
     color: var(--teal-500);

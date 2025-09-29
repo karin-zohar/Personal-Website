@@ -4,3 +4,8 @@ export { FaAngleDown as ArrowDownIcon } from "react-icons/fa6";
 export { CiGlobe as GlobeIcon } from "react-icons/ci";
 export { CgMenuRightAlt as MenuIcon } from "react-icons/cg";
 export { IoCloseOutline as CloseIcon } from "react-icons/io5";
+export { FaLinkedinIn as LinkedinIcon } from "react-icons/fa";
+export { FaGithub as GithubIcon } from "react-icons/fa6";
+export { MdOutlineMail as EmailIcon } from "react-icons/md";
+export { MdArrowOutward as ArrowOutwardIcon } from "react-icons/md";
+export { IoCheckmarkOutline as CheckmarkIcon } from "react-icons/io5";

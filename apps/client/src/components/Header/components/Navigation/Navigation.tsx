@@ -1,41 +1,17 @@
-import React, { FC, RefObject, useEffect, useState } from "react";
-import { useWindowSize } from "react-use";
+import React, { useState } from "react";
+import { useWindowSize, useWindowScroll } from "react-use";
 import NavContent from "./components/NavContent";
 import NavDrawer from "./components/NavDrawer";
 import "./navigation.style.css";
 
-type NavigationProps = {
-  heroRef: RefObject<HTMLElement | null>;
-};
-
 const NARROW_SCREEN_WIDTH = 800;
 
-const Navigation: FC<NavigationProps> = ({ heroRef }) => {
+const Navigation = () => {
   const { width: windowWidth } = useWindowSize();
-  const [isTopNav, setIsTopNav] = useState<boolean>(
-    windowWidth > NARROW_SCREEN_WIDTH
-  );
+  const { y: scrollY } = useWindowScroll();
+
+  const isTopNav = windowWidth > NARROW_SCREEN_WIDTH && scrollY === 0;
   const [isNavDrawerOpen, setIsNavDrawerOpen] = useState<boolean>(false);
-
-  useEffect(() => {
-    if (windowWidth < NARROW_SCREEN_WIDTH || !heroRef.current) {
-      setIsTopNav(false);
-      return;
-    }
-
-    const observer = new IntersectionObserver(
-      ([hero]) => {
-        setIsTopNav(hero.isIntersecting);
-      },
-      { threshold: 0.2 }
-    );
-
-    observer.observe(heroRef.current);
-
-    return () => {
-      observer.disconnect();
-    };
-  }, [windowWidth]);
 
   const navDrawerApi = {
     open: isNavDrawerOpen,
