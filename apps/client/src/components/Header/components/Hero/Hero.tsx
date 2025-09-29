@@ -1,9 +1,8 @@
 import React from "react";
-import "./hero.style.css";
-import { Flex, Popover, Typography } from "antd";
 import useStore from "@/store/store";
-import { EmailIcon, GithubIcon, LinkedinIcon } from "@/libs/ui/icons";
+import { Flex, Typography } from "antd";
 import SocialLinks from "@/components/SocialLinks/SocialLinks";
+import "./hero.style.css";
 
 const Hero = () => {
   const { getLocalizedText } = useStore();

@@ -74,9 +74,7 @@ const SocialLinks = () => {
             <Button
               type="text"
               onClick={onClick}
-              icon={
-                copyState.error ? null : copyState.value && <CheckmarkIcon />
-              }
+              icon={!copyState.error && copyState.value && <CheckmarkIcon />}
               iconPosition="end"
             >
               {text}
@@ -105,7 +103,6 @@ const SocialLinks = () => {
         content={emailOptionsList}
         placement="bottom"
         arrow={false}
-        destroyOnHidden
         onOpenChange={resetCopyState}
       >
         <Flex className="link-icon-wrapper">
