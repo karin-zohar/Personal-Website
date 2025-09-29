@@ -30,7 +30,7 @@ const subject = "Cool website! Can I hire you?";
 const body = "Let's chat!";
 
 const SocialLinks = () => {
-  const [state, copyToClipboard, resetCopyState] =
+  const [copyState, copyToClipboard, resetCopyState] =
     useResettableCopyToClipboard();
   const { getLocalizedText } = useStore();
 
@@ -74,7 +74,9 @@ const SocialLinks = () => {
             <Button
               type="text"
               onClick={onClick}
-              icon={state.error ? null : state.value && <CheckmarkIcon />}
+              icon={
+                copyState.error ? null : copyState.value && <CheckmarkIcon />
+              }
               iconPosition="end"
             >
               {text}
