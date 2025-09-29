@@ -7,5 +7,5 @@
   --teal-500: #3b6978;
   --teal-800: #204051;
   --purple-400: #6d3ab5;
-  --accent: #3ab599;
+  --accent: light-dark(#2a8570, #3ab599);
 }

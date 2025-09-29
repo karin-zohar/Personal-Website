@@ -13,6 +13,10 @@
     align-items: center;
     justify-content: space-between;
 
+    .nav-menu {
+      width: 100%;
+    }
+
     .nav-menu,
     .nav-menu > * {
       &::before,
