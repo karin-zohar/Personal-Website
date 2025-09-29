@@ -17,10 +17,9 @@
     .hero-img-container {
       display: flex;
       img {
-        /* mask: url("../../../../assets/svg/blob1.svg"); */
-        mask: url("../../../../assets/svg/test.svg");
-        /* animation: blob 0.8s ease-in-out infinite alternate-reverse; */
+        mask: url("../../../../assets/svg/blob2.svg");
         max-height: 280px;
+        filter: brightness(120%);
         @media (min-width: 600px) {
           max-height: 400px;
         }
@@ -41,23 +40,5 @@
         font-size: 24px;
       }
     }
-  }
-}
-
-@keyframes blob {
-  0% {
-    mask: url("../../../../assets/svg/blob1.svg");
-  }
-  25% {
-    mask: url("../../../../assets/svg/blob2.svg");
-  }
-  50% {
-    mask: url("../../../../assets/svg/blob3.svg");
-  }
-  75% {
-    mask: url("../../../../assets/svg/blob4.svg");
-  }
-  100% {
-    mask: url("../../../../assets/svg/blob5.svg");
   }
 }
