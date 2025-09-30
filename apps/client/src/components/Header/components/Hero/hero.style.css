@@ -2,7 +2,6 @@
   height: 100%;
   display: flex;
   justify-content: center;
-  flex-shrink: 1;
 
   .hero-content {
     align-items: center;
@@ -23,22 +22,20 @@
         max-width: 280px;
       }
       img {
+        animation: rotate 0.5s ease-in;
+        object-position: 0px -20px;
+        filter: brightness(120%);
         border-radius: 50%;
         border: 15px solid transparent;
-        object-position: 0px -20px;
-        animation: rotate 0.5s ease-in;
-        filter: brightness(120%);
         background: linear-gradient(
             to bottom right,
             var(--purple-400),
             transparent
           )
           border-box;
-        border-radius: 50%;
         box-shadow: var(--box-shadow);
         backdrop-filter: blur(5.1px);
         -webkit-backdrop-filter: blur(5.1px);
-        border: 15px solid transparent;
       }
     }
     .hero-content-text {
