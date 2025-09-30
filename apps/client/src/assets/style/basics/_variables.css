@@ -7,5 +7,7 @@
   --teal-500: #3b6978;
   --teal-800: #204051;
   --purple-400: #6d3ab5;
-  --accent: #3ab599;
+  --accent: light-dark(#2a8570, #3ab599);
+
+  --box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 }

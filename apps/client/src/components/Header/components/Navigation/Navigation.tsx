@@ -4,7 +4,7 @@ import NavContent from "./components/NavContent";
 import NavDrawer from "./components/NavDrawer";
 import "./navigation.style.css";
 
-const NARROW_SCREEN_WIDTH = 800;
+const NARROW_SCREEN_WIDTH = 1000;
 
 const Navigation = () => {
   const { width: windowWidth } = useWindowSize();
