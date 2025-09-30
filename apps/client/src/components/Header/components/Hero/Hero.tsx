@@ -26,7 +26,10 @@ const Hero = () => {
     <div className={"hero"}>
       <Flex className="hero-content">
         <div className="hero-img-container">
-          <img src={HeroImage} alt="" />
+          <img
+            src={HeroImage}
+            alt="A young woman with dark hair standing in a park and smiling."
+          />
         </div>
         <Flex className="hero-content-text" vertical>
           <Title level={1}>{getLocalizedText(heroText.title)}</Title>

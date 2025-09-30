@@ -24,10 +24,21 @@
       }
       img {
         border-radius: 50%;
-        border: 20px solid var(--accent);
+        border: 15px solid transparent;
         object-position: 0px -20px;
         animation: rotate 0.5s ease-in;
         filter: brightness(120%);
+        background: linear-gradient(
+            to bottom right,
+            var(--purple-400),
+            transparent
+          )
+          border-box;
+        border-radius: 50%;
+        box-shadow: var(--box-shadow);
+        backdrop-filter: blur(5.1px);
+        -webkit-backdrop-filter: blur(5.1px);
+        border: 15px solid transparent;
       }
     }
     .hero-content-text {
