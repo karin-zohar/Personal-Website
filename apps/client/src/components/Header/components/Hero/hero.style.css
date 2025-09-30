@@ -1,12 +1,15 @@
 .hero {
+  height: 100%;
   display: flex;
   justify-content: center;
+  flex-shrink: 1;
 
   .hero-content {
     align-items: center;
     flex-direction: column;
     text-align: center;
     margin-inline: 40px;
+    gap: 16px;
     @media (min-width: 1000px) {
       margin-inline: 80px;
       gap: 24px;
@@ -15,14 +18,16 @@
     }
 
     .hero-img-container {
-      display: flex;
+      max-width: 200px;
+      @media (min-width: 1000px) {
+        max-width: 280px;
+      }
       img {
-        mask: url("../../../../assets/svg/blob2.svg");
-        max-height: 280px;
+        border-radius: 50%;
+        border: 20px solid var(--accent);
+        object-position: 0px -20px;
+        animation: rotate 0.5s ease-in;
         filter: brightness(120%);
-        @media (min-width: 600px) {
-          max-height: 400px;
-        }
       }
     }
     .hero-content-text {
@@ -40,5 +45,14 @@
         font-size: 24px;
       }
     }
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(85deg);
+  }
+  to {
+    transform: rotate(0deg) translateX(0);
   }
 }
