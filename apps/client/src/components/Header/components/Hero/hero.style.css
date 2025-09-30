@@ -9,10 +9,10 @@
     flex-direction: column;
     text-align: center;
     margin-inline: 40px;
-    gap: 16px;
+    gap: 24px;
     @media (min-width: 1000px) {
+      gap: 36px;
       margin-inline: 80px;
-      gap: 24px;
       flex-direction: row-reverse;
       text-align: start;
     }
