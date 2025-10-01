@@ -1,6 +1,7 @@
 import React, { FC } from "react";
 import { Menu, MenuProps } from "antd";
 import useStore from "@/store/store";
+import { SectionKey } from "@/store/slices/navigationSlice";
 
 type NavMenuProps = {
   layout: "horizontal" | "vertical";
@@ -9,11 +10,11 @@ type NavMenuProps = {
 type MenuItem = Required<MenuProps>["items"][number];
 
 const NavMenu: FC<NavMenuProps> = ({ layout }) => {
-  const { getLocalizedText } = useStore();
+  const { getLocalizedText, scrollTo } = useStore();
 
   const navItems = [
     {
-      key: "about-me",
+      key: "about",
       label: {
         english: "About Me",
         hebrew: "קצת עלי",
@@ -47,8 +48,18 @@ const NavMenu: FC<NavMenuProps> = ({ layout }) => {
     label: getLocalizedText(item.label),
   }));
 
+  const handleItemClick: MenuProps["onClick"] = ({ key }) => {
+    console.log("key: ", key);
+    scrollTo(key as SectionKey);
+  };
+
   return (
-    <Menu items={localizedNavItems} mode={layout} className={"nav-menu"} />
+    <Menu
+      items={localizedNavItems}
+      mode={layout}
+      className={"nav-menu"}
+      onClick={handleItemClick}
+    />
   );
 };
 

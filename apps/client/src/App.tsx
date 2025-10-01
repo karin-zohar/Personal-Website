@@ -1,78 +1,17 @@
+import GenSection from "@/libs/ui/components/GenSection/GenSection";
 import MainLayout from "./components/MainLayout/MainLayout";
+import useStore from "./store/store";
 
 function App() {
+  const { sectionKeys, sectionRefs } = useStore();
+
   return (
     <MainLayout>
-      <div style={{ opacity: 0.5 }}>
-        <div
-          style={{ width: "100%", height: "50px", backgroundColor: "white" }}
-        ></div>
-        <br />
-        <div
-          style={{ width: "100%", height: "50px", backgroundColor: "white" }}
-        ></div>
-        <br />
-        <div
-          style={{ width: "100%", height: "50px", backgroundColor: "white" }}
-        ></div>
-        <br />
-        <div
-          style={{ width: "100%", height: "50px", backgroundColor: "white" }}
-        ></div>
-        <br />
-        <div
-          style={{ width: "100%", height: "50px", backgroundColor: "white" }}
-        ></div>
-        <br />
-        <div
-          style={{ width: "100%", height: "50px", backgroundColor: "white" }}
-        ></div>
-        <br />
-        <div
-          style={{ width: "100%", height: "50px", backgroundColor: "white" }}
-        ></div>
-        <br />
-        <div
-          style={{ width: "100%", height: "50px", backgroundColor: "white" }}
-        ></div>
-        <br />
-        <div
-          style={{ width: "100%", height: "50px", backgroundColor: "white" }}
-        ></div>
-        <br />
-        <div
-          style={{ width: "100%", height: "50px", backgroundColor: "white" }}
-        ></div>
-        <br />
-        <div
-          style={{ width: "100%", height: "50px", backgroundColor: "white" }}
-        ></div>
-        <br />
-        <div
-          style={{ width: "100%", height: "50px", backgroundColor: "white" }}
-        ></div>
-        <br />
-        <div
-          style={{ width: "100%", height: "50px", backgroundColor: "white" }}
-        ></div>
-        <br />
-        <div
-          style={{ width: "100%", height: "50px", backgroundColor: "white" }}
-        ></div>
-        <br />
-        <div
-          style={{ width: "100%", height: "50px", backgroundColor: "white" }}
-        ></div>
-        <br />
-        <div
-          style={{ width: "100%", height: "50px", backgroundColor: "white" }}
-        ></div>
-        <br />
-        <div
-          style={{ width: "100%", height: "50px", backgroundColor: "white" }}
-        ></div>
-        <br />
-      </div>
+      {sectionKeys.map((key) => (
+        <GenSection id={key} ref={sectionRefs[key]}>
+          {key}
+        </GenSection>
+      ))}
     </MainLayout>
   );
 }
