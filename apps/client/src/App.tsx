@@ -8,7 +8,12 @@ function App() {
   return (
     <MainLayout>
       {sectionKeys.map((key) => (
-        <GenSection id={key} key={key} ref={sectionRefs[key]}>
+        <GenSection
+          id={key}
+          key={key}
+          ref={sectionRefs[key]}
+          className={`section-${key}`}
+        >
           <h2>{key}</h2>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat

@@ -3,5 +3,5 @@
   animation: slide-in 0.1s;
   animation-timeline: view(block 50% 10%);
   padding-block: 20px;
-  min-height: calc(100vh - 200px);
+  height: fit-content;
 }
