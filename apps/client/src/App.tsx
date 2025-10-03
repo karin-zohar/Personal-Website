@@ -9,7 +9,19 @@ function App() {
     <MainLayout>
       {sectionKeys.map((key) => (
         <GenSection id={key} key={key} ref={sectionRefs[key]}>
-          {key}
+          <h2>{key}</h2>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat
+            perferendis tenetur eum quos harum nesciunt eaque officia inventore
+            assumenda expedita? Veniam, officia. Ut odit nostrum voluptatibus
+            deserunt eum, ullam in?
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat
+            perferendis tenetur eum quos harum nesciunt eaque officia inventore
+            assumenda expedita? Veniam, officia. Ut odit nostrum voluptatibus
+            deserunt eum, ullam in?
+          </p>
         </GenSection>
       ))}
     </MainLayout>

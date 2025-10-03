@@ -11,14 +11,7 @@ type SectionProps = {
 const GenSection = forwardRef<HTMLDivElement, SectionProps>(
   ({ id, children, className }, ref) => {
     return (
-      <div
-        className={clsx("gen-section", className)}
-        ref={ref}
-        id={id}
-        style={{
-          border: "2px solid red",
-        }}
-      >
+      <div className={clsx("gen-section", className)} ref={ref} id={id}>
         {children}
       </div>
     );
