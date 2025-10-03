@@ -8,7 +8,7 @@ function App() {
   return (
     <MainLayout>
       {sectionKeys.map((key) => (
-        <GenSection id={key} ref={sectionRefs[key]}>
+        <GenSection id={key} key={key} ref={sectionRefs[key]}>
           {key}
         </GenSection>
       ))}
