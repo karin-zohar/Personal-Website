@@ -6,9 +6,10 @@ import Preferences from "./Preferences/Preferences";
 
 type NavContentProps = {
   layout: "horizontal" | "vertical";
+  closeDrawer?: () => void;
 };
 
-const NavContent: FC<NavContentProps> = ({ layout }) => {
+const NavContent: FC<NavContentProps> = ({ layout, closeDrawer }) => {
   return (
     <Flex
       gap={10}
@@ -17,7 +18,7 @@ const NavContent: FC<NavContentProps> = ({ layout }) => {
       })}
       vertical={layout === "vertical"}
     >
-      <NavMenu layout={layout} />
+      <NavMenu layout={layout} closeDrawer={closeDrawer} />
       <Preferences />
     </Flex>
   );

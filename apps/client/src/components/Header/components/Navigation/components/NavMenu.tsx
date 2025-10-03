@@ -6,11 +6,12 @@ import useScrollSpy from "@/libs/ui/hooks/useScrollSpy";
 
 type NavMenuProps = {
   layout: "horizontal" | "vertical";
+  closeDrawer?: () => void;
 };
 
 type MenuItem = Required<MenuProps>["items"][number];
 
-const NavMenu: FC<NavMenuProps> = ({ layout }) => {
+const NavMenu: FC<NavMenuProps> = ({ layout, closeDrawer }) => {
   const { getLocalizedText, scrollTo, sectionRefs } = useStore();
   const activeKey = useScrollSpy(sectionRefs);
   const navItems = [
@@ -51,6 +52,7 @@ const NavMenu: FC<NavMenuProps> = ({ layout }) => {
 
   const handleItemClick: MenuProps["onClick"] = ({ key }) => {
     scrollTo(key as SectionKey);
+    closeDrawer?.();
   };
 
   return (

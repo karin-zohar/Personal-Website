@@ -27,7 +27,7 @@ const NavDrawer: FC<NavDrawerProps> = ({ open, onOpen, onClose }) => {
         onClose={onClose}
         closeIcon={<CloseIcon />}
       >
-        <NavContent layout={"vertical"} />
+        <NavContent layout={"vertical"} closeDrawer={onClose} />
       </Drawer>
     </>
   );
