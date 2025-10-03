@@ -1,17 +1,23 @@
 import React, { forwardRef, ReactNode } from "react";
+import "./gen-section.style.css";
+import clsx from "clsx";
 
 type SectionProps = {
   id: string;
   children: ReactNode;
+  className?: string;
 };
 
 const GenSection = forwardRef<HTMLDivElement, SectionProps>(
-  ({ id, children }, ref) => {
+  ({ id, children, className }, ref) => {
     return (
       <div
+        className={clsx("gen-section", className)}
         ref={ref}
         id={id}
-        style={{ border: "2px solid red", height: 500, marginBlock: 20 }}
+        style={{
+          border: "2px solid red",
+        }}
       >
         {children}
       </div>

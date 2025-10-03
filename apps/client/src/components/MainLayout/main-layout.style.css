@@ -3,5 +3,9 @@
 
   main {
     padding-block: 10px;
+    scroll-snap-type: y mandatory;
+    > * {
+      margin-block: 50px;
+    }
   }
 }
