@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import { Menu, MenuProps } from "antd";
 import useStore from "@/store/store";
-import { SectionKey } from "@/store/slices/navigationSlice";
+import { SectionKey } from "@/store/slices/SectionSlice";
 import useScrollSpy from "@/libs/ui/hooks/useScrollSpy";
 
 type NavMenuProps = {

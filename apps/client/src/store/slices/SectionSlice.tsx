@@ -6,13 +6,13 @@ const sectionKeys = ["about", "projects", "chatbot", "contact"] as const;
 export type SectionKey = (typeof sectionKeys)[number];
 type SectionRefs = Record<SectionKey, RefObject<HTMLDivElement | null>>;
 
-export type NavigationSlice = {
+export type SectionSlice = {
   sectionKeys: typeof sectionKeys;
   sectionRefs: SectionRefs;
   scrollTo: (key: SectionKey) => void;
 };
 
-export const navigationSlice: StateCreator<NavigationSlice> = () => {
+export const sectionSlice: StateCreator<SectionSlice> = () => {
   const sectionRefs = sectionKeys.reduce<SectionRefs>((acc, key) => {
     acc[key] = createRef<HTMLDivElement>();
     return acc;
