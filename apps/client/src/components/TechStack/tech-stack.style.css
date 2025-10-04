@@ -15,13 +15,16 @@
     animation: scroll 40s linear infinite;
     align-items: center;
     padding-inline: 4rem;
-    > * {
-      &:last-child {
-        background-color: hotpink;
-      }
+    &:hover {
+      animation-play-state: paused;
+    }
 
-      &:first-child {
-        background-color: lime;
+    .tech-stack-item {
+      cursor: default;
+      width: 4rem;
+      &:hover {
+        font-size: 1.2em;
+        transition: 0.2s;
       }
     }
   }
