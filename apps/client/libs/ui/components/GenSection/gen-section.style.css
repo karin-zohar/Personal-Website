@@ -1,7 +1,5 @@
 .gen-section {
   scroll-snap-align: start;
-  animation: slide-in 0.1s;
-  animation-timeline: view(block 50% 10%);
   padding-block: 20px;
   height: fit-content;
 }

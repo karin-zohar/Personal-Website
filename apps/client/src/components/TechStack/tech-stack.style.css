@@ -13,9 +13,8 @@
   .tech-stack-items-container {
     width: fit-content;
     height: 100%;
-    animation: scroll 40s linear infinite;
+    animation: scroll 42s linear infinite;
     align-items: center;
-    padding-inline: 4rem;
     &:hover {
       animation-play-state: paused;
     }
