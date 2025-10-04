@@ -55,12 +55,3 @@
     }
   }
 }
-
-@keyframes rotate {
-  from {
-    transform: rotate(85deg);
-  }
-  to {
-    transform: rotate(0deg) translateX(0);
-  }
-}

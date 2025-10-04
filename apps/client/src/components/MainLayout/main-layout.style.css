@@ -1,7 +1,11 @@
 .main-layout {
   min-height: 100vh;
-
+  overflow-x: clip;
   main {
     padding-block: 10px;
+    scroll-snap-type: y mandatory;
+    > * {
+      margin-block-end: 46px;
+    }
   }
 }

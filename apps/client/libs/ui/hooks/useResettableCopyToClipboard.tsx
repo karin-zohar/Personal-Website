@@ -5,7 +5,7 @@ const useResettableCopyToClipboard = () => {
   const [copyState, copyToClipboard] = useCopyToClipboard();
 
   const resetCopyState = useCallback(() => {
-    copyToClipboard("");
+    copyToClipboard(" ");
   }, [copyToClipboard]);
 
   return [copyState, copyToClipboard, resetCopyState] as const;

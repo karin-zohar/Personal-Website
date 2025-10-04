@@ -1,3 +1,6 @@
 .gutter {
-  padding-inline: 80px;
+  padding-inline: 66px;
+  @media (min-width: 400) {
+    padding-inline: 80px;
+  }
 }

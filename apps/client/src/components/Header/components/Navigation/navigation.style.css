@@ -31,23 +31,29 @@
   }
 }
 
-.open-nav-drawer-button.ant-btn.ant-btn-text {
+.open-nav-drawer-button-container {
   position: fixed;
-  font-size: 40px;
-  align-self: center;
-  color: inherit;
-  inset-inline-end: 12px;
+  height: 80px;
+  width: 100%;
+  padding-inline: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: end;
 
-  &:hover {
-    background: none;
-    color: var(--teal-500);
-  }
-  &.drawer-open {
-    color: var(--teal-500);
-    opacity: 0;
-    pointer-events: none;
-    transform: rotate(-180deg) scale(0.4);
-    transition: 0.3s;
+  .open-nav-drawer-button.ant-btn.ant-btn-text {
+    font-size: 40px;
+    color: inherit;
+    &:hover {
+      background: none;
+      color: var(--teal-500);
+    }
+    &.drawer-open {
+      color: var(--teal-500);
+      opacity: 0;
+      pointer-events: none;
+      transform: rotate(-180deg) scale(0.4);
+      transition: 0.3s;
+    }
   }
 }
 

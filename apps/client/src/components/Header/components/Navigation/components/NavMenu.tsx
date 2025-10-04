@@ -1,19 +1,22 @@
 import React, { FC } from "react";
 import { Menu, MenuProps } from "antd";
 import useStore from "@/store/store";
+import { SectionKey } from "@/store/slices/navigationSlice";
+import useScrollSpy from "@/libs/ui/hooks/useScrollSpy";
 
 type NavMenuProps = {
   layout: "horizontal" | "vertical";
+  closeDrawer?: () => void;
 };
 
 type MenuItem = Required<MenuProps>["items"][number];
 
-const NavMenu: FC<NavMenuProps> = ({ layout }) => {
-  const { getLocalizedText } = useStore();
-
+const NavMenu: FC<NavMenuProps> = ({ layout, closeDrawer }) => {
+  const { getLocalizedText, scrollTo, sectionRefs } = useStore();
+  const activeKey = useScrollSpy(sectionRefs);
   const navItems = [
     {
-      key: "about-me",
+      key: "about",
       label: {
         english: "About Me",
         hebrew: "קצת עלי",
@@ -47,8 +50,19 @@ const NavMenu: FC<NavMenuProps> = ({ layout }) => {
     label: getLocalizedText(item.label),
   }));
 
+  const handleItemClick: MenuProps["onClick"] = ({ key }) => {
+    scrollTo(key as SectionKey);
+    closeDrawer?.();
+  };
+
   return (
-    <Menu items={localizedNavItems} mode={layout} className={"nav-menu"} />
+    <Menu
+      items={localizedNavItems}
+      mode={layout}
+      className={"nav-menu"}
+      onClick={handleItemClick}
+      selectedKeys={[activeKey]}
+    />
   );
 };
 
