@@ -3,6 +3,7 @@
   width: 100%;
   height: 100px;
   overflow: hidden;
+  position: relative;
   mask-image: linear-gradient(
     to left,
     transparent 0%,
@@ -13,8 +14,9 @@
   .tech-stack-items-container {
     width: fit-content;
     height: 100%;
-    animation: scroll 42s linear infinite;
+    animation: scroll 24s linear infinite;
     align-items: center;
+    padding-inline-end: 4rem;
     &:hover {
       animation-play-state: paused;
     }
