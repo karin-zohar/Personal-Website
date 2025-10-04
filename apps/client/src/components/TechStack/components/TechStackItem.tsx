@@ -5,7 +5,11 @@ type TechStackItemProps = {
 };
 
 const TechStackItem: FC<TechStackItemProps> = ({ name }) => {
-  return <div>{name}</div>;
+  return (
+    <div className="tech-stack-item">
+      <div className="tech-stack-item-inner">{name}</div>
+    </div>
+  );
 };
 
 export default TechStackItem;

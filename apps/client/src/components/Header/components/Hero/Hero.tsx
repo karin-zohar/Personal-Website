@@ -2,8 +2,8 @@ import React from "react";
 import useStore from "@/store/store";
 import { Flex, Typography } from "antd";
 import SocialLinks from "@/components/SocialLinks/SocialLinks";
-import "./hero.style.css";
 import { default as HeroImage } from "@/assets/img/hero-karin.jpg";
+import "./hero.style.css";
 
 const Hero = () => {
   const { getLocalizedText } = useStore();

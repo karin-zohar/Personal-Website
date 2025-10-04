@@ -1,12 +1,57 @@
-import React, { FC } from "react";
+import React from "react";
 import "./tech-stack.style.css";
+import TechStackItem from "./components/TechStackItem";
+import { Flex } from "antd";
 
-type TechStackProps = {
-  // props here
-};
-
-const TechStack: FC<TechStackProps> = ({}) => {
-  return <div className="techStack">TechStack component</div>;
+const TechStack = () => {
+  return (
+    <div className="tech-stack">
+      <Flex className="tech-stack-items-container" gap={"6rem"}>
+        <TechStackItem name={"react1"} />
+        <TechStackItem name={"react1"} />
+        <TechStackItem name={"react1"} />
+        <TechStackItem name={"react1"} />
+        <TechStackItem name={"react1"} />
+        <TechStackItem name={"react1"} />
+        <TechStackItem name={"react1"} />
+        <TechStackItem name={"react1"} />
+        <TechStackItem name={"react1"} />
+        <TechStackItem name={"react1"} />
+        <TechStackItem name={"react1"} />
+        <TechStackItem name={"react1"} />
+        <TechStackItem name={"react1"} />
+        <TechStackItem name={"react1"} />
+        <TechStackItem name={"react1"} />
+        <TechStackItem name={"react1"} />
+        <TechStackItem name={"react1"} />
+        <TechStackItem name={"react1"} />
+        <TechStackItem name={"react1"} />
+        <TechStackItem name={"react1"} />
+        <TechStackItem name={"react1"} />
+        <TechStackItem name={"react1"} />
+        <TechStackItem name={"react1"} />
+        <TechStackItem name={"react1"} />
+        <TechStackItem name={"react1"} />
+        <TechStackItem name={"react1"} />
+        <TechStackItem name={"react1"} />
+        <TechStackItem name={"react1"} />
+        <TechStackItem name={"react1"} />
+        <TechStackItem name={"react1"} />
+        <TechStackItem name={"react1"} />
+        <TechStackItem name={"react1"} />
+        <TechStackItem name={"react1"} />
+        <TechStackItem name={"react1"} />
+        <TechStackItem name={"react1"} />
+        <TechStackItem name={"react1"} />
+        <TechStackItem name={"react1"} />
+        <TechStackItem name={"react1"} />
+        <TechStackItem name={"react1"} />
+        <TechStackItem name={"react1"} />
+        <TechStackItem name={"react1"} />
+        <TechStackItem name={"react1"} />
+      </Flex>
+    </div>
+  );
 };
 
 export default TechStack;
