@@ -1,4 +1,5 @@
-import { createRef, RefObject } from "react";
+import { AboutMe } from "@/components/Main/components/Main.components.index";
+import { createRef, ReactNode, RefObject } from "react";
 import { StateCreator } from "zustand";
 
 const sectionKeys = ["about", "projects", "chatbot", "contact"] as const;
@@ -10,6 +11,7 @@ export type SectionSlice = {
   sectionKeys: typeof sectionKeys;
   sectionRefs: SectionRefs;
   scrollTo: (key: SectionKey) => void;
+  contentByKey: Record<SectionKey, ReactNode>;
 };
 
 export const sectionSlice: StateCreator<SectionSlice> = () => {
@@ -23,9 +25,17 @@ export const sectionSlice: StateCreator<SectionSlice> = () => {
     sectionRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
+  const contentByKey = {
+    about: <AboutMe />,
+    projects: <span>projects</span>,
+    chatbot: <span>chatbot</span>,
+    contact: <span>contact</span>,
+  };
+
   return {
     sectionKeys,
     sectionRefs,
     scrollTo,
+    contentByKey,
   };
 };

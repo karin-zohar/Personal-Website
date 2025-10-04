@@ -3,7 +3,7 @@ import MainLayout from "./components/MainLayout/MainLayout";
 import useStore from "./store/store";
 
 function App() {
-  const { sectionKeys, sectionRefs } = useStore();
+  const { sectionKeys, sectionRefs, contentByKey } = useStore();
 
   return (
     <MainLayout>
@@ -14,7 +14,7 @@ function App() {
           ref={sectionRefs[key]}
           className={`section-${key}`}
         >
-          <h2>{key}</h2>
+          {contentByKey[key]}
         </GenSection>
       ))}
     </MainLayout>
