@@ -18,12 +18,14 @@ export const navigationSlice: StateCreator<NavigationSlice> = () => {
     return acc;
   }, {} as SectionRefs);
 
+  const scrollTo = (key: SectionKey) => {
+    const sectionRef = sectionRefs[key];
+    sectionRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return {
     sectionKeys,
     sectionRefs,
-    scrollTo: (key: SectionKey) => {
-      const sectionRef = sectionRefs[key];
-      sectionRef.current?.scrollIntoView({ behavior: "smooth" });
-    },
+    scrollTo,
   };
 };

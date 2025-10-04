@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import React, { FC } from "react";
 import { Menu, MenuProps } from "antd";
 import useStore from "@/store/store";
 import { SectionKey } from "@/store/slices/navigationSlice";
@@ -62,7 +62,6 @@ const NavMenu: FC<NavMenuProps> = ({ layout, closeDrawer }) => {
       className={"nav-menu"}
       onClick={handleItemClick}
       selectedKeys={[activeKey]}
-      defaultSelectedKeys={["about"]}
     />
   );
 };
