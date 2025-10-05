@@ -8,8 +8,9 @@
       cursor: pointer;
       border-radius: 10px;
       width: 175px;
-      height: 250px;
+      height: 200px;
       box-shadow: var(--box-shadow);
+      color: var(--cream-100);
       outline: 1px solid var(--purple-300);
       background: linear-gradient(
         to bottom right,
@@ -40,8 +41,6 @@
         font-weight: 700;
         font-size: 1.5rem;
         letter-spacing: 0.03em;
-        -webkit-backface-visibility: hidden; /* Safari */
-        backface-visibility: hidden;
       }
     }
   }
