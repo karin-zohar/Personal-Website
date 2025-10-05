@@ -1,4 +1,4 @@
-import TechStack from "@/components/TechStack/TechStack";
+import TechStack from "./components/TechStack/TechStack";
 
 const AboutMe = () => {
   return (
