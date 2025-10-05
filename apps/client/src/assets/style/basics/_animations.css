@@ -1,5 +1,6 @@
 @keyframes rotate {
   from {
+    opacity: 0;
     transform: rotate(85deg);
   }
   to {
