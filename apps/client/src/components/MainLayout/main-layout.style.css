@@ -6,6 +6,10 @@
     scroll-snap-type: y mandatory;
     > * {
       margin-block-end: 46px;
+      &:not(:first-child) {
+        animation: slide-in 0.1s;
+        animation-timeline: view(block 50% 10%);
+      }
     }
   }
 }

@@ -4,6 +4,7 @@ import { colorPalette as colors } from "./colorPalette";
 const baseTheme: ThemeConfig = {
   token: {
     fontFamily: '"Outfit", "Assistant", Arial, sans-serif',
+    fontSize: 18,
   },
 };
 
