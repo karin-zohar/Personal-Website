@@ -33,19 +33,19 @@ export const techStackItems = [
     icon: GithubIcon,
   },
   {
-    name: "HTML5",
-    icon: HTMLIcon,
-  },
-  {
     name: "JavaScript",
     icon: JSIcon,
+  },
+  {
+    name: "HTML5",
+    icon: HTMLIcon,
   },
   {
     name: "CSS3",
     icon: CSSIcon,
   },
   {
-    name: "TS",
+    name: "TypeScript",
     icon: TSIcon,
   },
   {

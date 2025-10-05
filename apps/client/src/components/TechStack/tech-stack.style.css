@@ -14,9 +14,9 @@
   .tech-stack-items-container {
     width: fit-content;
     height: 100%;
-    animation: scroll 24s linear infinite;
     align-items: center;
     padding-inline-end: 4rem;
+    animation: scroll 24s linear infinite;
     &:hover {
       animation-play-state: paused;
     }
@@ -47,4 +47,8 @@
       }
     }
   }
+}
+
+.rtl .tech-stack .tech-stack-items-container {
+  animation-name: scroll-rtl;
 }
