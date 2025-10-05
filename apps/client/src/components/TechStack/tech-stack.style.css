@@ -3,7 +3,6 @@
   width: 100%;
   height: 100px;
   overflow: hidden;
-  position: relative;
   mask-image: linear-gradient(
     to left,
     transparent 0%,
@@ -24,26 +23,21 @@
     .tech-stack-item {
       cursor: default;
       width: 6rem;
-      height: 100%;
-      border-radius: 10px;
+      height: 80%;
+      flex-direction: column;
+      align-items: center;
+      gap: 1em;
+      overflow: hidden;
+
       &:hover {
         color: var(--accent);
         font-weight: 700;
         transition: 0.2s;
       }
-      .tech-stack-item-inner {
-        height: 80%;
-        padding: auto;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 1em;
 
-        svg {
-          height: 36px;
-          aspect-ratio: 1;
-          overflow: hidden;
-        }
+      svg {
+        height: 36px;
+        aspect-ratio: 1;
       }
     }
   }

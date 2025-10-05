@@ -8,12 +8,10 @@ type TechStackItemProps = {
 
 const TechStackItem: FC<TechStackItemProps> = ({ name, icon: Icon }) => {
   return (
-    <div className="tech-stack-item">
-      <Flex className="tech-stack-item-inner">
-        {Icon && <Icon />}
-        <span className="tech-stack-item-name">{name}</span>
-      </Flex>
-    </div>
+    <Flex className="tech-stack-item">
+      {Icon && <Icon />}
+      <span className="tech-stack-item-name">{name}</span>
+    </Flex>
   );
 };
 
