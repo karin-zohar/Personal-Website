@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import useStore from "@/store/store";
 import { Flex, Typography } from "antd";
 import "./soft-skills.style.css";
+import clsx from "clsx";
 
 const SoftSkills = () => {
   const { Text } = Typography;
@@ -14,11 +15,12 @@ const SoftSkills = () => {
       "היי, אני קארין! אני מפתחת פרונט-אנד עם רקע בפול-סטאק. אני אוהבת ללמוד דברים חדשים, לפתור בעיות מעניינות ולהביא רעיונות לחיים. בנוסף ליכולות הטכנולוגיות שלי שתמיד מתפתחות, אני מביאה לשולחן: ",
   };
 
-  const softSkills = [
+  const [softSkills, setSoftSkills] = useState([
     {
       key: "creativity",
       title: { english: "Creativity", hebrew: "יצירתיות" },
-      subtitle: { english: "", hebrew: "יצירתיות" },
+      subtitle: { english: "blah blah blah", hebrew: "בלה בלה בלה" },
+      isFlipped: false,
     },
     {
       key: "curiosity",
@@ -28,15 +30,25 @@ const SoftSkills = () => {
           "There is always something new to learn and discover. Always learning, always growing. ",
         hebrew: "תמיד יש משהו חדש ללמוד ולגלות. תמיד לומדת, תמיד מתפתחת.",
       },
+      isFlipped: false,
     },
     {
       key: "proactivity",
       title: { english: "Proactivity", hebrew: "יוזמה" },
-      subtitle: { english: "", hebrew: "יצירתיות" },
+      subtitle: { english: "blah blah blah", hebrew: "בלה בלה בלה" },
+      isFlipped: false,
     },
-  ];
+  ]);
 
   const localizedIntroText = getLocalizedText(introText);
+
+  const flipCard = (key: string) => {
+    setSoftSkills((prev) =>
+      prev.map((card) =>
+        card.key === key ? { ...card, isFlipped: !card.isFlipped } : card
+      )
+    );
+  };
 
   return (
     <div className="soft-skills">
@@ -44,8 +56,14 @@ const SoftSkills = () => {
       <Flex className="cards-container">
         {softSkills.map((item) => {
           return (
-            <Flex className="card">
+            <Flex
+              className={clsx("card", { flipped: item.isFlipped })}
+              onClick={() => flipCard(item.key)}
+            >
               <span className="card-front">{getLocalizedText(item.title)}</span>
+              <span className="card-back">
+                {getLocalizedText(item.subtitle)}
+              </span>
             </Flex>
           );
         })}

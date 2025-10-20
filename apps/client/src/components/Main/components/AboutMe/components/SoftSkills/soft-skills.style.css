@@ -9,6 +9,7 @@
       border-radius: 10px;
       width: 175px;
       height: 200px;
+      align-items: center;
       box-shadow: var(--box-shadow);
       color: var(--cream-100);
       outline: 1px solid var(--purple-300);
@@ -19,7 +20,7 @@
       );
       transition: all 0.6s ease;
 
-      &:hover {
+      &:not(.flipped):hover {
         background: linear-gradient(
           to bottom right,
           var(--accent) 0%,
@@ -28,19 +29,36 @@
         transform: translateY(-1rem) rotateX(20deg);
       }
 
-      &:first-child:hover {
+      &:not(.flipped):first-child:hover {
         transform: translateY(-1rem) rotateX(20deg) rotateY(-20deg);
       }
-      &:last-child:hover {
+      &:not(.flipped):last-child:hover {
         transform: translateY(-1rem) rotateX(20deg) rotateY(20deg);
       }
-      justify-content: center;
-      align-items: center;
 
+      span {
+        text-align: center;
+        width: 100%;
+      }
       .card-front {
         font-weight: 700;
         font-size: 1.5rem;
         letter-spacing: 0.03em;
+        display: block;
+      }
+      .card-back {
+        display: none;
+        transform: rotateY(180deg);
+      }
+
+      &.flipped {
+        transform: rotateY(180deg);
+        .card-front {
+          display: none;
+        }
+        .card-back {
+          display: block;
+        }
       }
     }
   }
