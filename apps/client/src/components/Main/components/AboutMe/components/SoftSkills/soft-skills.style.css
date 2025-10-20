@@ -1,4 +1,8 @@
 .soft-skills {
+  .intro {
+    font-size: 20px;
+    text-align: start;
+  }
   .cards-container {
     margin-block: 2rem;
     justify-content: center;
@@ -9,6 +13,7 @@
       border-radius: 10px;
       width: 175px;
       height: 200px;
+      padding: 10px;
       align-items: center;
       box-shadow: var(--box-shadow);
       color: var(--cream-100);
