@@ -2,6 +2,7 @@
   .intro {
     font-size: 20px;
     text-align: start;
+    white-space: pre-line;
   }
   .cards-container {
     margin-block: 2rem;
@@ -44,25 +45,31 @@
       span {
         text-align: center;
         width: 100%;
+        animation: fade-in 1.2s;
       }
       .card-front {
         font-weight: 700;
         font-size: 1.5rem;
         letter-spacing: 0.03em;
         display: block;
+        scale: 1;
       }
       .card-back {
         display: none;
+        scale: 0;
         transform: rotateY(180deg);
       }
 
       &.flipped {
         transform: rotateY(180deg);
+        transition: transform 0.8s;
         .card-front {
           display: none;
+          scale: 0;
         }
         .card-back {
           display: block;
+          scale: 1;
         }
       }
     }

@@ -10,9 +10,9 @@ const SoftSkills = () => {
 
   const introText = {
     english:
-      "Hello, I'm Karin! I'm a Front End Developer with a Full Stack background. I love learning new things, solving interesting problems and making ideas come to life. In addition to my ever-growing stack of technological skills, I also bring:",
+      "Hello, I'm Karin! \n I'm a Front End Developer with a Full Stack background. \n I love learning new things, solving interesting problems and making ideas come to life. \n In addition to my ever-growing stack of technological skills, I also bring:",
     hebrew:
-      "היי, אני קארין! אני מפתחת פרונט-אנד עם רקע בפול-סטאק. אני אוהבת ללמוד דברים חדשים, לפתור בעיות מעניינות ולהביא רעיונות לחיים. בנוסף ליכולות הטכנולוגיות שלי שתמיד מתפתחות, אני מביאה איתי: ",
+      "היי, אני קארין!\n  אני מפתחת פרונט-אנד עם רקע בפול-סטאק. \n אני אוהבת ללמוד דברים חדשים, לפתור בעיות מעניינות ולהביא רעיונות לחיים.  \n בנוסף ליכולות הטכנולוגיות שלי שתמיד מתפתחות, אני מביאה איתי: ",
   };
 
   const [softSkills, setSoftSkills] = useState([
@@ -45,8 +45,6 @@ const SoftSkills = () => {
     },
   ]);
 
-  const localizedIntroText = getLocalizedText(introText);
-
   const flipCard = (key: string) => {
     setSoftSkills((prev) =>
       prev.map((card) =>
@@ -57,7 +55,7 @@ const SoftSkills = () => {
 
   return (
     <div className="soft-skills">
-      <Text className="intro">{localizedIntroText}</Text>
+      <Text className="intro">{getLocalizedText(introText)}</Text>
       <Flex className="cards-container">
         {softSkills.map((item) => {
           return (
