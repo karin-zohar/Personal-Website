@@ -1,0 +1,80 @@
+.soft-skills {
+  .intro {
+    font-size: 20px;
+    text-align: start;
+    white-space: pre-line;
+  }
+  .cards-container {
+    margin-block: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+    .card {
+      cursor: pointer;
+      border-radius: 10px;
+      width: 175px;
+      height: 200px;
+      box-shadow: var(--box-shadow);
+      color: var(--cream-100);
+      outline: 1px solid var(--purple-300);
+      background: linear-gradient(
+        to bottom right,
+        var(--accent) 0%,
+        var(--purple-300) 100%
+      );
+
+      transform-style: preserve-3d;
+      transition: transform 0.8s;
+      padding: 1rem;
+      align-items: center;
+      &:hover {
+        background: linear-gradient(
+          to bottom right,
+          var(--accent) 0%,
+          var(--purple-300) 60%
+        );
+        &:not(.flipped) {
+          transform: translateY(-1rem) rotateX(20deg);
+
+          &:first-child {
+            transform: translateY(-1rem) rotateX(20deg) rotateY(-20deg);
+          }
+          &:last-child {
+            transform: translateY(-1rem) rotateX(20deg) rotateY(20deg);
+          }
+        }
+      }
+
+      span {
+        width: 100%;
+        text-align: center;
+        backface-visibility: hidden;
+        transform-style: preserve-3d;
+      }
+      .card-front {
+        animation: fade-in 1.2s;
+        font-weight: 700;
+        font-size: 1.5rem;
+        letter-spacing: 0.03em;
+        visibility: visible;
+      }
+      .card-back {
+        width: 0;
+        visibility: hidden;
+        transform: rotateY(180deg);
+      }
+
+      &.flipped {
+        transform: rotateY(180deg);
+        .card-front {
+          width: 0;
+          visibility: hidden;
+        }
+        .card-back {
+          visibility: visible;
+          width: 100%;
+        }
+      }
+    }
+  }
+}

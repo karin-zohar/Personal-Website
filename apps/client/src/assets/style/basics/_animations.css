@@ -1,5 +1,6 @@
 @keyframes rotate {
   from {
+    opacity: 0;
     transform: rotate(85deg);
   }
   to {
@@ -20,6 +21,15 @@
   }
   to {
     transform: translateX(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
 
