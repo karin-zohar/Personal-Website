@@ -14,8 +14,6 @@
       border-radius: 10px;
       width: 175px;
       height: 200px;
-      padding: 10px;
-      align-items: center;
       box-shadow: var(--box-shadow);
       color: var(--cream-100);
       outline: 1px solid var(--purple-300);
@@ -24,52 +22,57 @@
         var(--accent) 0%,
         var(--purple-300) 100%
       );
-      transition: all 0.6s ease;
 
-      &:not(.flipped):hover {
+      transform-style: preserve-3d;
+      transition: transform 0.8s;
+      padding: 1rem;
+      align-items: center;
+      &:hover {
         background: linear-gradient(
           to bottom right,
           var(--accent) 0%,
           var(--purple-300) 60%
         );
-        transform: translateY(-1rem) rotateX(20deg);
-      }
+        &:not(.flipped) {
+          transform: translateY(-1rem) rotateX(20deg);
 
-      &:not(.flipped):first-child:hover {
-        transform: translateY(-1rem) rotateX(20deg) rotateY(-20deg);
-      }
-      &:not(.flipped):last-child:hover {
-        transform: translateY(-1rem) rotateX(20deg) rotateY(20deg);
+          &:first-child {
+            transform: translateY(-1rem) rotateX(20deg) rotateY(-20deg);
+          }
+          &:last-child {
+            transform: translateY(-1rem) rotateX(20deg) rotateY(20deg);
+          }
+        }
       }
 
       span {
-        text-align: center;
         width: 100%;
-        animation: fade-in 1.2s;
+        text-align: center;
+        backface-visibility: hidden;
+        transform-style: preserve-3d;
       }
       .card-front {
+        animation: fade-in 1.2s;
         font-weight: 700;
         font-size: 1.5rem;
         letter-spacing: 0.03em;
-        display: block;
-        scale: 1;
+        visibility: visible;
       }
       .card-back {
-        display: none;
-        scale: 0;
+        width: 0;
+        visibility: hidden;
         transform: rotateY(180deg);
       }
 
       &.flipped {
         transform: rotateY(180deg);
-        transition: transform 0.8s;
         .card-front {
-          display: none;
-          scale: 0;
+          width: 0;
+          visibility: hidden;
         }
         .card-back {
-          display: block;
-          scale: 1;
+          visibility: visible;
+          width: 100%;
         }
       }
     }

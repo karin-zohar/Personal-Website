@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import useStore from "@/store/store";
 import { Flex, Typography } from "antd";
-import "./soft-skills.style.css";
 import clsx from "clsx";
+import "./soft-skills.style.css";
 
 const SoftSkills = () => {
   const { Text } = Typography;
@@ -10,9 +10,9 @@ const SoftSkills = () => {
 
   const introText = {
     english:
-      "Hello, I'm Karin! \n I'm a Front End Developer with a Full Stack background. \n I love learning new things, solving interesting problems and making ideas come to life. \n In addition to my ever-growing stack of technological skills, I also bring:",
+      "Hello! I'm Karin, a Front End Developer with a Full Stack background. \n I love learning about new technologies, solving interesting problems and bringing ideas to life. \n In addition to my ever-growing stack of technological skills, I also bring:",
     hebrew:
-      "היי, אני קארין!\n  אני מפתחת פרונט-אנד עם רקע בפול-סטאק. \n אני אוהבת ללמוד דברים חדשים, לפתור בעיות מעניינות ולהביא רעיונות לחיים.  \n בנוסף ליכולות הטכנולוגיות שלי שתמיד מתפתחות, אני מביאה איתי: ",
+      "היי! אני קארין, מפתחת פרונט-אנד עם רקע בפול-סטאק. \n אני אוהבת ללמוד על טכנולוגיות חדשות, לפתור בעיות מעניינות ולהביא רעיונות לחיים.  \n בנוסף ליכולות הטכנולוגיות שלי שתמיד מתפתחות, אני מביאה איתי: ",
   };
 
   const [softSkills, setSoftSkills] = useState([
