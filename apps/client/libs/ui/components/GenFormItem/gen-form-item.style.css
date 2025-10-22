@@ -1,0 +1,22 @@
+.ant-form-item {
+  .ant-input {
+    height: 40px;
+    border: none;
+  }
+  textarea.ant-input {
+    height: 120px;
+    resize: none;
+  }
+
+  .ant-form-item-label {
+    label.ant-form-item-required::before {
+      display: none;
+    }
+    label.ant-form-item-required::after {
+      content: "*";
+      position: relative;
+      visibility: visible;
+      padding-inline: 0.5em;
+    }
+  }
+}
