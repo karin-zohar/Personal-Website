@@ -1,7 +1,8 @@
 .ant-form-item {
   .ant-input {
     height: 40px;
-    border: none;
+    border: 2px solid var(--teal-500);
+    background-color: transparent;
   }
   textarea.ant-input {
     height: 120px;

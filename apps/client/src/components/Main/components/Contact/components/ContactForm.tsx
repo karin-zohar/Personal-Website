@@ -41,7 +41,7 @@ const ContactForm = () => {
     },
   ];
   return (
-    <Form form={form}>
+    <Form form={form} className="contact-form">
       {formFields.map((field) => (
         <GenFormItem
           key={field.key}
@@ -56,7 +56,9 @@ const ContactForm = () => {
           )}
         </GenFormItem>
       ))}
-      <Button>{getLocalizedText({ english: "Send", hebrew: "שליחה" })}</Button>
+      <Button className="submit-button" block>
+        {getLocalizedText({ english: "Send", hebrew: "שליחה" })}
+      </Button>
     </Form>
   );
 };
