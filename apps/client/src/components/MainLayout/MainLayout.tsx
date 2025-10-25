@@ -18,8 +18,6 @@ const MainLayout: FC<MainLayoutProps> = ({ children }) => {
       <div className={clsx("main-layout", "theme", theme, direction)}>
         <Header />
         <main className="gutter">{children}</main>
-        {/* temporary footer */}
-        <div style={{ height: 250 }}></div>
       </div>
     </ConfigProvider>
   );
