@@ -3,6 +3,10 @@
     height: 40px;
     border: 2px solid var(--teal-500);
     background-color: transparent;
+
+    &.ant-input-status-error {
+      background-color: transparent !important;
+    }
   }
   textarea.ant-input {
     height: 120px;
