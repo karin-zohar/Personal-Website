@@ -60,6 +60,7 @@ const SoftSkills = () => {
         {softSkills.map((item) => {
           return (
             <Flex
+              key={item.key}
               className={clsx("card", { flipped: item.isFlipped })}
               onClick={() => flipCard(item.key)}
             >

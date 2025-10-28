@@ -1,0 +1,46 @@
+.contact {
+  margin-block: 20px;
+  h3.ant-typography {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  .contact-form {
+    max-width: 1200px;
+    .submit-button {
+      height: 40px;
+      &,
+      &:hover {
+        background-image: linear-gradient(
+          to right,
+          var(--teal-500) 0%,
+          var(--purple-300) 50%,
+          var(--teal-500) 60%
+        );
+        background-size: 250% auto;
+        color: var(--cream-100);
+        transition: 0.5s ease-in-out;
+      }
+      background-position: right;
+      &:hover {
+        background-position: left;
+      }
+
+      &:disabled {
+        visibility: hidden;
+        pointer-events: none;
+      }
+    }
+
+    @media (min-width: 700px) {
+      margin-inline: auto;
+      display: grid;
+      gap: 0 1rem;
+      grid-template-columns: 1fr 1fr;
+
+      .ant-form-item:has(textarea),
+      .ant-form-item:has(.submit-button) {
+        grid-column: span 2;
+      }
+    }
+  }
+}

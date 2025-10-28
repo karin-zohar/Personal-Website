@@ -1,0 +1,31 @@
+.ant-form-item {
+  margin-block-end: 26px;
+  .ant-input {
+    height: 40px;
+    border: 2px solid var(--teal-500);
+    background-color: transparent;
+
+    &.ant-input-status-error,
+    &.ant-input-status-error:focus,
+    &.ant-input-status-error:hover {
+      background-color: transparent;
+      border-width: 2px;
+    }
+  }
+  textarea.ant-input {
+    height: 120px;
+    resize: none;
+  }
+
+  .ant-form-item-label {
+    label.ant-form-item-required::before {
+      display: none;
+    }
+    label.ant-form-item-required::after {
+      content: "*";
+      position: relative;
+      visibility: visible;
+      padding-inline: 0.2em;
+    }
+  }
+}

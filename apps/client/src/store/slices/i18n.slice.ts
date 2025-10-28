@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 import { StateCreator } from "zustand";
 
 type Language = "english" | "hebrew";
-type Dictionary = Record<Language, ReactNode>;
+export type Dictionary = Record<Language, ReactNode>;
 
 export type I18nSlice = {
   language: Language;
