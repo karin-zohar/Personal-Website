@@ -1,4 +1,5 @@
 .ant-form-item {
+  margin-block-end: 26px;
   .ant-input {
     height: 40px;
     border: 2px solid var(--teal-500);

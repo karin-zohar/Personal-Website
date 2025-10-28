@@ -56,7 +56,7 @@ const ContactForm = () => {
       required: false,
       rules: [
         {
-          pattern: /^[0-9+\-()\s]*$/,
+          type: "number",
           message: getLocalizedText({
             english: "Please enter a valid phone number",
             hebrew: "נא להזין מספר טלפון תקין",
