@@ -2,79 +2,79 @@ import React, { useState } from "react";
 import { Button, Form, Input } from "antd";
 import useStore from "@/store/store";
 import GenFormItem from "@/libs/ui/components/GenFormItem/GenFormItem";
-import { Rule } from "antd/es/form";
+import { LocalizedFormItem } from "@/libs/ui/components/GenFormItem/GenFormItem.types";
 
 const ContactForm = () => {
   const { getLocalizedText } = useStore();
   const [form] = Form.useForm();
   const [isValidated, setIsValidated] = useState(false);
 
-  const formFields = [
+  const formFields: LocalizedFormItem[] = [
     {
-      key: "name",
+      id: "name",
       label: { english: "Name", hebrew: "שם" },
       required: true,
       rules: [
         {
           required: true,
-          message: getLocalizedText({
+          message: {
             english: "Please enter your name",
             hebrew: "נא להזין שם",
-          }),
+          },
         },
       ],
     },
     {
-      key: "email",
+      id: "email",
       label: { english: "Email", hebrew: 'דוא"ל' },
       required: true,
       rules: [
         {
           required: true,
-          message: getLocalizedText({
+          message: {
             english: "Please enter your email",
             hebrew: 'נא להזין כתובת דוא"ל',
-          }),
+          },
         },
         {
           type: "email",
-          message: getLocalizedText({
+          message: {
             english: "Please enter a valid email address",
             hebrew: 'נא להזין כתובת דוא"ל תקינה',
-          }),
+          },
         },
       ],
     },
     {
-      key: "company-name",
+      id: "company-name",
       label: { english: "Company Name", hebrew: "שם החברה" },
       required: false,
     },
     {
-      key: "phone",
+      id: "phone",
       label: { english: "Phone number", hebrew: "מספר טלפון" },
       required: false,
       rules: [
         {
-          type: "number",
-          message: getLocalizedText({
+          pattern: /^\+?[0-9\s\-()]{7,15}$/,
+          message: {
             english: "Please enter a valid phone number",
             hebrew: "נא להזין מספר טלפון תקין",
-          }),
+          },
         },
       ],
     },
     {
-      key: "message",
+      id: "message",
       label: { english: "Message", hebrew: "הודעה" },
       required: true,
       rules: [
         {
           required: true,
-          message: getLocalizedText({
+          message: {
             english: "Please enter a message",
             hebrew: "נא להזין הודעה",
-          }),
+          },
         },
       ],
       inputType: "text-area",
@@ -104,17 +104,17 @@ const ContactForm = () => {
     >
       {formFields.map((field) => (
         <GenFormItem
-          key={field.key}
-          name={field.key}
-          label={getLocalizedText(field.label)}
+          key={field.id}
+          name={field.id}
+          label={field.label}
           required={field.required}
-          rules={(field?.rules as Rule[]) || undefined}
+          rules={field.rules}
           validateTrigger="onBlur"
         >
           {field.inputType === "text-area" ? (
             <Input.TextArea rows={4} />
           ) : (
-            <Input />
+            <Input autoComplete="false" />
           )}
         </GenFormItem>
       ))}

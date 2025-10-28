@@ -17,7 +17,6 @@
           var(--teal-500) 60%
         );
         background-size: 250% auto;
-        border: 3px solid var(--teal-500);
         color: var(--cream-100);
         transition: 0.5s ease-in-out;
       }

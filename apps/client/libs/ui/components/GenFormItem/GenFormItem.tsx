@@ -1,14 +1,30 @@
 import React, { FC } from "react";
+import { Form } from "antd";
+import { LocalizedFormItem } from "./GenFormItem.types";
 import useStore from "@/store/store";
-import { Form, FormItemProps } from "antd";
+import { Rule } from "antd/es/form";
 import "./gen-form-item.style.css";
-const GenFormItem: FC<FormItemProps> = ({ children, ...restProps }) => {
-  const { language } = useStore();
+
+const GenFormItem: FC<LocalizedFormItem> = ({
+  children,
+  label,
+  rules,
+  ...restProps
+}) => {
+  const { getLocalizedText } = useStore();
   return (
     <Form.Item
       {...restProps}
-      labelAlign={language === "hebrew" ? "right" : "left"}
       colon={false}
+      label={label && getLocalizedText(label)}
+      rules={
+        rules
+          ? (rules.map((rule) => ({
+              ...rule,
+              message: rule.message && getLocalizedText(rule.message),
+            })) as Rule[])
+          : undefined
+      }
     >
       {children}
     </Form.Item>

@@ -5,8 +5,11 @@
     border: 2px solid var(--teal-500);
     background-color: transparent;
 
-    &.ant-input-status-error {
-      background-color: transparent !important;
+    &.ant-input-status-error,
+    &.ant-input-status-error:focus,
+    &.ant-input-status-error:hover {
+      background-color: transparent;
+      border-width: 2px;
     }
   }
   textarea.ant-input {
@@ -22,7 +25,7 @@
       content: "*";
       position: relative;
       visibility: visible;
-      padding-inline: 0.5em;
+      padding-inline: 0.2em;
     }
   }
 }
