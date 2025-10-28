@@ -22,20 +22,20 @@ const NavMenu: FC<NavMenuProps> = ({ layout, closeDrawer }) => {
         hebrew: "קצת עלי",
       },
     },
-    {
-      key: "projects",
-      label: {
-        english: "Projects",
-        hebrew: "פרוייקטים",
-      },
-    },
-    {
-      key: "chatbot",
-      label: {
-        english: "Chatbot",
-        hebrew: "צ'אטבוט",
-      },
-    },
+    // {
+    //   key: "projects",
+    //   label: {
+    //     english: "Projects",
+    //     hebrew: "פרוייקטים",
+    //   },
+    // },
+    // {
+    //   key: "chatbot",
+    //   label: {
+    //     english: "Chatbot",
+    //     hebrew: "צ'אטבוט",
+    //   },
+    // },
     {
       key: "contact",
       label: {
