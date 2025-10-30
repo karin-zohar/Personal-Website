@@ -1,13 +1,17 @@
-import React, { useState } from "react";
+import React, { FC, useState } from "react";
 import { Button, Form, Input } from "antd";
 import useStore from "@/store/store";
 import GenFormItem from "@/libs/ui/components/GenFormItem/GenFormItem";
 import { LocalizedFormItem } from "@/libs/ui/components/GenFormItem/GenFormItem.types";
 
-const ContactForm = () => {
+type ContactFormProps = {
+  setIsMessageSent: (isSent: boolean) => void;
+};
+const ContactForm: FC<ContactFormProps> = ({ setIsMessageSent }) => {
   const { getLocalizedText } = useStore();
   const [form] = Form.useForm();
   const [isValidated, setIsValidated] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const formFields: LocalizedFormItem[] = [
     {
@@ -91,6 +95,7 @@ const ContactForm = () => {
   };
 
   const handleFinish = async (values: any) => {
+    setIsLoading(true);
     try {
       const res = await fetch("http://localhost:3000/api/contact", {
         method: "POST",
@@ -102,13 +107,7 @@ const ContactForm = () => {
         console.log("Message sent successfully");
         form.resetFields();
         setIsValidated(false);
-        // optionally show a success message via antd
-        console.log(
-          getLocalizedText({
-            english: "Message sent!",
-            hebrew: "ההודעה נשלחה!",
-          })
-        );
+        setIsMessageSent(true);
       } else {
         console.log(
           getLocalizedText({
@@ -125,6 +124,8 @@ const ContactForm = () => {
           hebrew: "שגיאה בשליחת ההודעה",
         })
       );
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -161,6 +162,7 @@ const ContactForm = () => {
             className="submit-button"
             block
             disabled={!isValidated}
+            loading={isLoading}
           >
             {getLocalizedText({ english: "Send", hebrew: "שליחה" })}
           </Button>
