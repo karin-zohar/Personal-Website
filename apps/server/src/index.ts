@@ -11,20 +11,29 @@ app.use(express.json());
 
 const allowedOrigins = [
   "http://localhost:5173", // local dev
+  "http://localhost:3000",
   process.env.CLIENT_URL || "", // deployed frontend
 ];
 
 app.use(
   cors({
     origin: (origin, callback) => {
-      if (!origin) return callback(null, true); // allow non-browser tools
-      if (
-        allowedOrigins.includes(origin) ||
-        /\.vercel\.app$/.test(new URL(origin).hostname)
-      ) {
-        callback(null, true);
-      } else {
-        callback(new Error(`CORS blocked for origin: ${origin}`));
+      if (!origin) return callback(null, true); // Allow server-to-server or curl requests
+
+      try {
+        const hostname = new URL(origin).hostname;
+
+        if (
+          allowedOrigins.includes(origin) ||
+          hostname.endsWith(".vercel.app")
+        ) {
+          callback(null, true);
+        } else {
+          console.warn("❌ Blocked by CORS:", origin);
+          callback(new Error("Not allowed by CORS"));
+        }
+      } catch (err) {
+        callback(new Error("Invalid origin"));
       }
     },
     methods: ["GET", "POST"],
