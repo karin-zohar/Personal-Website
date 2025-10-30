@@ -4,7 +4,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
+    "dev": "npm run build && npm run start",
     "build": "tsc -p tsconfig.json",
     "start": "node dist/index.js",
     "test-openai": "ts-node --esm src/testOpenAI.ts"
@@ -14,14 +14,19 @@
   "license": "ISC",
   "description": "",
   "devDependencies": {
+    "@types/cors": "^2.8.19",
     "@types/express": "^5.0.3",
-    "@types/node": "^24.5.0",
+    "@types/node": "^24.9.2",
+    "@types/nodemailer": "^7.0.3",
     "ts-node": "^10.9.2",
     "ts-node-dev": "^2.0.0",
-    "typescript": "^5.9.2"
+    "typescript": "^5.9.3"
   },
   "dependencies": {
-    "dotenv": "^17.2.2",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "nodemailer": "^7.0.10",
     "openai": "^5.20.3"
   }
 }

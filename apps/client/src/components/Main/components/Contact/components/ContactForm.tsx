@@ -46,7 +46,7 @@ const ContactForm = () => {
       ],
     },
     {
-      id: "company-name",
+      id: "company",
       label: { english: "Company Name", hebrew: "שם החברה" },
       required: false,
     },
@@ -90,8 +90,42 @@ const ContactForm = () => {
     }
   };
 
-  const handleFinish = (values: any) => {
-    console.log("Form submitted:", values);
+  const handleFinish = async (values: any) => {
+    try {
+      const res = await fetch("http://localhost:3000/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(values),
+      });
+
+      if (res.ok) {
+        console.log("Message sent successfully");
+        form.resetFields();
+        setIsValidated(false);
+        // optionally show a success message via antd
+        console.log(
+          getLocalizedText({
+            english: "Message sent!",
+            hebrew: "ההודעה נשלחה!",
+          })
+        );
+      } else {
+        console.log(
+          getLocalizedText({
+            english: "Failed to send message",
+            hebrew: "שליחת ההודעה נכשלה",
+          })
+        );
+      }
+    } catch (err) {
+      console.error(err);
+      console.error(
+        getLocalizedText({
+          english: "Error sending message",
+          hebrew: "שגיאה בשליחת ההודעה",
+        })
+      );
+    }
   };
 
   return (
