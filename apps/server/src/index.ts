@@ -8,6 +8,7 @@ dotenv.config();
 
 const app = express();
 app.use(express.json());
+app.options("*", cors());
 
 const allowedOrigins = [
   "http://localhost:5173", // local dev
@@ -18,9 +19,12 @@ const allowedOrigins = [
 app.use(
   cors({
     origin: (origin, callback) => {
-      if (!origin) return callback(null, true); // Allow server-to-server or curl requests
+      if (!origin) {
+        return callback(null, true);
+      } // Allow server-to-server or curl requests
 
       try {
+        console.log("CORS request from:", origin);
         const hostname = new URL(origin).hostname;
 
         if (
