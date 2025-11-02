@@ -8,32 +8,18 @@ export default async function handler(
   // Get the origin from the request
   const origin = request.headers.origin;
 
-  // Allow all Vercel preview deployments and production
-  const allowedOrigins = [
-    "http://localhost:5173",
-    "http://localhost:3000",
-    "https://personal-website-client.vercel.app", // production
-    /-karins-projects-a8926f87\.vercel\.app$/, // all your preview deployments
-  ];
-
-  // Check if the request origin is allowed
-  const isAllowed = allowedOrigins.some((pattern) => {
-    if (typeof pattern === "string") {
-      return origin === pattern;
-    } else if (pattern instanceof RegExp) {
-      return pattern.test(origin || "");
-    }
-    return false;
-  });
-
-  // Set CORS headers only for allowed origins
-  if (origin && isAllowed) {
+  // Allow ALL Vercel preview domains
+  if (origin && origin.endsWith(".vercel.app")) {
     response.setHeader("Access-Control-Allow-Origin", origin);
   }
 
   response.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
-  response.setHeader("Access-Control-Allow-Headers", "Content-Type");
+  response.setHeader(
+    "Access-Control-Allow-Headers",
+    "Content-Type, Authorization, X-Requested-With"
+  );
   response.setHeader("Access-Control-Max-Age", "86400");
+  response.setHeader("Access-Control-Allow-Credentials", "true");
 
   // Handle OPTIONS request
   if (request.method === "OPTIONS") {
@@ -42,6 +28,8 @@ export default async function handler(
 
   // Handle POST request
   if (request.method === "POST") {
+    console.log("POST request received:", request.body);
+
     const { name, email, message, phone, company } = request.body;
 
     if (!email || !message) {
@@ -57,6 +45,5 @@ export default async function handler(
     }
   }
 
-  // Handle other methods
   return response.status(405).json({ error: "Method not allowed" });
 }
