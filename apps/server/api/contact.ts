@@ -7,26 +7,47 @@ dotenv.config();
 
 const app = express();
 
-// Enable CORS for all routes
+// More permissive CORS for Vercel preview deployments
 app.use(
   cors({
-    origin: [
-      "http://localhost:5173",
-      "http://localhost:3000",
-      "https://personal-website-client.vercel.app",
-      /\.vercel\.app$/,
-    ],
-    methods: ["GET", "POST", "OPTIONS"],
-    allowedHeaders: ["Content-Type"],
+    origin: function (origin, callback) {
+      // Allow all Vercel preview deployments and production
+      const allowedOrigins = [
+        "http://localhost:5173",
+        "http://localhost:3000",
+        /\.vercel\.app$/,
+        /\.vercel\.app:\d+$/, // Include ports if any
+      ];
+
+      // Allow requests with no origin (like mobile apps or curl requests)
+      if (!origin) return callback(null, true);
+
+      if (
+        allowedOrigins.some((pattern) => {
+          if (typeof pattern === "string") {
+            return origin === pattern;
+          } else if (pattern instanceof RegExp) {
+            return pattern.test(origin);
+          }
+          return false;
+        })
+      ) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization", "X-Requested-With"],
   })
 );
 
-// Handle OPTIONS preflight explicitly
+// Handle preflight requests
 app.options("*", cors());
 
 app.use(express.json());
 
-// Handle POST requests
 app.post("/", async (req, res) => {
   console.log("Contact endpoint hit");
   const { name, email, message, phone, company } = req.body;
@@ -44,8 +65,4 @@ app.post("/", async (req, res) => {
   }
 });
 
-// Also handle OPTIONS specifically for this endpoint
-app.options("/", cors());
-
-// Export the app
-module.exports = app;
+export default app;
