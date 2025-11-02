@@ -5,22 +5,23 @@ export default async function handler(
   request: VercelRequest,
   response: VercelResponse
 ) {
-  // CORS headers
+  // Set CORS headers FIRST - before any other logic
   const origin = request.headers.origin;
   if (origin && origin.endsWith(".vercel.app")) {
     response.setHeader("Access-Control-Allow-Origin", origin);
   }
   response.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
   response.setHeader("Access-Control-Allow-Headers", "Content-Type");
+  response.setHeader("Access-Control-Allow-Credentials", "true");
 
-  // Handle OPTIONS
+  // If this is a preflight request, respond immediately
   if (request.method === "OPTIONS") {
     return response.status(200).end();
   }
 
-  // Handle POST
+  // For POST requests, Vercel might be blocking before reaching here
   if (request.method === "POST") {
-    console.log("POST request body:", request.body);
+    console.log("POST request reached the handler!");
 
     const { name, email, message, phone, company } = request.body;
 
@@ -37,6 +38,5 @@ export default async function handler(
     }
   }
 
-  // Handle other methods
   return response.status(405).json({ error: "Method not allowed" });
 }
