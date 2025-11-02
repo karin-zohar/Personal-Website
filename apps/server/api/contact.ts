@@ -1,5 +1,4 @@
-import express from "express";
-import cors from "cors";
+import express, { Request, Response, NextFunction } from "express";
 import dotenv from "dotenv";
 import { sendContactEmail } from "../src/utils/email.js";
 
@@ -7,62 +6,116 @@ dotenv.config();
 
 const app = express();
 
-// More permissive CORS for Vercel preview deployments
-app.use(
-  cors({
-    origin: function (origin, callback) {
-      // Allow all Vercel preview deployments and production
-      const allowedOrigins = [
-        "http://localhost:5173",
-        "http://localhost:3000",
-        /\.vercel\.app$/,
-        /\.vercel\.app:\d+$/, // Include ports if any
-      ];
+// Manual CORS middleware to handle Vercel preview deployments
+app.use((req: Request, res: Response, next: NextFunction) => {
+  const origin = req.headers.origin;
 
-      // Allow requests with no origin (like mobile apps or curl requests)
-      if (!origin) return callback(null, true);
+  // Allow all Vercel preview domains and local development
+  const allowedOrigins: (string | RegExp)[] = [
+    "http://localhost:5173",
+    "http://localhost:3000",
+    /\.vercel\.app$/,
+    /\.vercel\.app:\d+$/,
+    /-karins-projects-a8926f87\.vercel\.app$/, // Your specific preview domain pattern
+  ];
 
-      if (
-        allowedOrigins.some((pattern) => {
-          if (typeof pattern === "string") {
-            return origin === pattern;
-          } else if (pattern instanceof RegExp) {
-            return pattern.test(origin);
-          }
-          return false;
-        })
-      ) {
-        callback(null, true);
-      } else {
-        callback(new Error("Not allowed by CORS"));
+  // Check if origin is allowed
+  if (origin) {
+    const isAllowed = allowedOrigins.some((pattern) => {
+      if (typeof pattern === "string") {
+        return origin === pattern;
+      } else if (pattern instanceof RegExp) {
+        return pattern.test(origin);
       }
-    },
-    credentials: true,
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization", "X-Requested-With"],
-  })
-);
+      return false;
+    });
 
-// Handle preflight requests
-app.options("*", cors());
+    if (isAllowed) {
+      res.setHeader("Access-Control-Allow-Origin", origin);
+    }
+  } else {
+    // Allow requests without origin (server-to-server, etc.)
+    res.setHeader("Access-Control-Allow-Origin", "*");
+  }
+
+  // Set CORS headers
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET, POST, PUT, DELETE, OPTIONS"
+  );
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "Content-Type, Authorization, X-Requested-With, Accept, Origin"
+  );
+  res.setHeader("Access-Control-Allow-Credentials", "true");
+  res.setHeader("Access-Control-Max-Age", "86400"); // 24 hours
+
+  // Handle preflight requests immediately
+  if (req.method === "OPTIONS") {
+    console.log("OPTIONS preflight handled successfully");
+    return res.status(200).end();
+  }
+
+  next();
+});
 
 app.use(express.json());
 
-app.post("/", async (req, res) => {
-  console.log("Contact endpoint hit");
-  const { name, email, message, phone, company } = req.body;
+// Interface for contact request body
+interface ContactRequestBody {
+  name?: string;
+  email: string;
+  message: string;
+  phone?: string;
+  company?: string;
+}
 
-  if (!email || !message) {
-    return res.status(400).json({ error: "Missing required fields" });
-  }
+// Contact endpoint
+app.post(
+  "/",
+  async (req: Request<{}, {}, ContactRequestBody>, res: Response) => {
+    console.log("Contact endpoint hit with body:", req.body);
 
-  try {
-    await sendContactEmail({ name, email, message, phone, company });
-    res.json({ success: true });
-  } catch (err) {
-    console.error("Error sending email:", err);
-    res.status(500).json({ error: "Failed to send email" });
+    const { name, email, message, phone, company } = req.body;
+
+    if (!email || !message) {
+      return res.status(400).json({ error: "Missing required fields" });
+    }
+
+    try {
+      await sendContactEmail({ name, email, message, phone, company });
+      console.log("Email sent successfully");
+      res.json({ success: true });
+    } catch (err) {
+      console.error("Error sending email:", err);
+      res.status(500).json({ error: "Failed to send email" });
+    }
   }
+);
+
+// Add a GET endpoint for testing
+app.get("/", (req: Request, res: Response) => {
+  res.json({
+    message: "Contact API is working",
+    timestamp: new Date().toISOString(),
+    environment: process.env.NODE_ENV || "development",
+  });
+});
+
+// Custom error interface
+interface CustomError extends Error {
+  status?: number;
+}
+
+// Global error handler
+app.use((err: CustomError, req: Request, res: Response, next: NextFunction) => {
+  console.error("Unhandled error:", err);
+  res.status(err.status || 500).json({ error: "Internal server error" });
+});
+
+// 404 handler for this specific endpoint
+app.use((req: Request, res: Response) => {
+  res.status(404).json({ error: "Endpoint not found" });
 });
 
 export default app;
