@@ -7,7 +7,7 @@ import dotenv from "dotenv";
 import OpenAI from "openai";
 import cors from "cors";
 import serverless from "serverless-http";
-import { sendContactEmail } from "../src/utils/email"; // note the .js extension for ESM
+import { sendContactEmail } from "../src/utils/email.js"; // note the .js extension for ESM
 
 dotenv.config();
 
