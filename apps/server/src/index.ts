@@ -7,7 +7,6 @@ import { sendContactEmail } from "./utils/email.js"; // note the .js extension f
 dotenv.config();
 
 const app = express();
-app.use(express.json());
 
 const allowedOrigins = [
   "http://localhost:5173", // local dev
@@ -42,6 +41,9 @@ app.use(
     methods: ["GET", "POST"],
   })
 );
+
+app.use(express.json());
+app.options("*", cors());
 
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
