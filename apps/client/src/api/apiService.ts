@@ -12,6 +12,7 @@ export async function apiRequest<TResponse = unknown>(
     method,
     headers: {
       "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "*",
     },
   };
 
