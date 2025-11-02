@@ -2,6 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import OpenAI from "openai";
 import cors from "cors";
+import serverless from "serverless-http";
 import { sendContactEmail } from "./utils/email.js"; // note the .js extension for ESM
 
 dotenv.config();
@@ -17,37 +18,18 @@ const allowedOrigins = [
 app.use(
   cors({
     origin: (origin, callback) => {
-      if (!origin) {
-        return callback(null, true);
-      } // Allow server-to-server or curl requests
-
-      try {
-        console.log("CORS request from:", origin);
-        const hostname = new URL(origin).hostname;
-
-        if (
-          allowedOrigins.includes(origin) ||
-          hostname.endsWith(".vercel.app")
-        ) {
-          callback(null, true);
-        } else {
-          console.warn("❌ Blocked by CORS:", origin);
-          callback(new Error("Not allowed by CORS"));
-        }
-      } catch (err) {
-        callback(new Error("Invalid origin"));
+      if (!origin) return callback(null, true);
+      const hostname = new URL(origin).hostname;
+      if (allowedOrigins.includes(origin) || hostname.endsWith(".vercel.app")) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
       }
     },
-    methods: ["GET", "POST"],
+    methods: ["GET", "POST", "OPTIONS"],
   })
 );
 
-app.options("*", (req, res) => {
-  res.header("Access-Control-Allow-Origin", req.headers.origin);
-  res.header("Access-Control-Allow-Methods", "GET,POST,OPTIONS");
-  res.header("Access-Control-Allow-Headers", "Content-Type");
-  res.sendStatus(200);
-});
 app.use(express.json());
 
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
@@ -88,7 +70,8 @@ app.post("/api/contact", async (req, res) => {
   }
 });
 
-export default app;
+// export default app;
+export default serverless(app);
 
 if (process.env.NODE_ENV !== "production") {
   const port = process.env.PORT ?? 4000;
