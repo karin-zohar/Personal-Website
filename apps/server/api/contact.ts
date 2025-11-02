@@ -12,6 +12,7 @@ app.use((req, res, next) => {
   );
   res.header("Access-Control-Allow-Headers", "Content-Type");
   res.header("Access-Control-Allow-Methods", "POST, OPTIONS");
+  res.header("Access-Control-Allow-Origin", "POST, OPTIONS");
 
   if (req.method === "OPTIONS") {
     return res.status(200).end();
