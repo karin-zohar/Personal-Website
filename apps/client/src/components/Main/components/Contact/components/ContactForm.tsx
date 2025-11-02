@@ -3,7 +3,6 @@ import { Button, Form, Input } from "antd";
 import useStore from "@/store/store";
 import GenFormItem from "@/libs/ui/components/GenFormItem/GenFormItem";
 import { LocalizedFormItem } from "@/libs/ui/components/GenFormItem/GenFormItem.types";
-
 import { apiRequest } from "../../../../../api/apiService";
 
 type ContactFormProps = {
@@ -11,7 +10,7 @@ type ContactFormProps = {
 };
 
 interface ContactResponse {
-  ok: boolean;
+  success: boolean;
 }
 
 const ContactForm: FC<ContactFormProps> = ({ setIsMessageSent }) => {
@@ -110,7 +109,9 @@ const ContactForm: FC<ContactFormProps> = ({ setIsMessageSent }) => {
         values
       );
 
-      if (res.ok) {
+      console.log("res: ", res);
+
+      if (res.success) {
         console.log("Message sent successfully");
         form.resetFields();
         setIsValidated(false);

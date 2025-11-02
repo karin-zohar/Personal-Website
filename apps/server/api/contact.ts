@@ -50,7 +50,6 @@ export default async function handler(
 
     try {
       await sendContactEmail({ name, email, message, phone, company });
-      // CORS headers are already set above - they'll be included in this response
       return response.json({ success: true });
     } catch (err) {
       console.error("Error sending email:", err);
