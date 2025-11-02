@@ -1,4 +1,5 @@
-import express, { Request, Response, NextFunction } from "express";
+import express from "express";
+import type { Request, Response, NextFunction } from "express";
 import dotenv from "dotenv";
 import { sendContactEmail } from "../src/utils/email.js";
 
@@ -16,7 +17,7 @@ app.use((req: Request, res: Response, next: NextFunction) => {
     "http://localhost:3000",
     /\.vercel\.app$/,
     /\.vercel\.app:\d+$/,
-    /-karins-projects-a8926f87\.vercel\.app$/, // Your specific preview domain pattern
+    /-karins-projects-a8926f87\.vercel\.app$/,
   ];
 
   // Check if origin is allowed
@@ -34,11 +35,9 @@ app.use((req: Request, res: Response, next: NextFunction) => {
       res.setHeader("Access-Control-Allow-Origin", origin);
     }
   } else {
-    // Allow requests without origin (server-to-server, etc.)
     res.setHeader("Access-Control-Allow-Origin", "*");
   }
 
-  // Set CORS headers
   res.setHeader(
     "Access-Control-Allow-Methods",
     "GET, POST, PUT, DELETE, OPTIONS"
@@ -48,9 +47,8 @@ app.use((req: Request, res: Response, next: NextFunction) => {
     "Content-Type, Authorization, X-Requested-With, Accept, Origin"
   );
   res.setHeader("Access-Control-Allow-Credentials", "true");
-  res.setHeader("Access-Control-Max-Age", "86400"); // 24 hours
+  res.setHeader("Access-Control-Max-Age", "86400");
 
-  // Handle preflight requests immediately
   if (req.method === "OPTIONS") {
     console.log("OPTIONS preflight handled successfully");
     return res.status(200).end();
@@ -83,7 +81,16 @@ app.post(
     }
 
     try {
-      await sendContactEmail({ name, email, message, phone, company });
+      // Handle optional properties by passing only what exists
+      const emailData = {
+        name: name || undefined,
+        email,
+        message,
+        phone: phone || undefined,
+        company: company || undefined,
+      };
+
+      await sendContactEmail(emailData);
       console.log("Email sent successfully");
       res.json({ success: true });
     } catch (err) {
@@ -102,15 +109,10 @@ app.get("/", (req: Request, res: Response) => {
   });
 });
 
-// Custom error interface
-interface CustomError extends Error {
-  status?: number;
-}
-
 // Global error handler
-app.use((err: CustomError, req: Request, res: Response, next: NextFunction) => {
+app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
   console.error("Unhandled error:", err);
-  res.status(err.status || 500).json({ error: "Internal server error" });
+  res.status(500).json({ error: "Internal server error" });
 });
 
 // 404 handler for this specific endpoint
