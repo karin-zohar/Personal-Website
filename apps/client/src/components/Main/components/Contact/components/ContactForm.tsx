@@ -4,7 +4,7 @@ import useStore from "@/store/store";
 import GenFormItem from "@/libs/ui/components/GenFormItem/GenFormItem";
 import { LocalizedFormItem } from "@/libs/ui/components/GenFormItem/GenFormItem.types";
 
-import { apiRequest, BASE_URL } from "../../../../../api/apiService";
+import { apiRequest } from "../../../../../api/apiService";
 
 type ContactFormProps = {
   setIsMessageSent: (isSent: boolean) => void;
