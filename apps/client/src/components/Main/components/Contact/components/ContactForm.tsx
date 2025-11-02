@@ -4,9 +4,16 @@ import useStore from "@/store/store";
 import GenFormItem from "@/libs/ui/components/GenFormItem/GenFormItem";
 import { LocalizedFormItem } from "@/libs/ui/components/GenFormItem/GenFormItem.types";
 
+import { apiRequest, BASE_URL } from "../../../../../api/apiService";
+
 type ContactFormProps = {
   setIsMessageSent: (isSent: boolean) => void;
 };
+
+interface ContactResponse {
+  ok: boolean;
+}
+
 const ContactForm: FC<ContactFormProps> = ({ setIsMessageSent }) => {
   const { getLocalizedText } = useStore();
   const [form] = Form.useForm();
@@ -97,11 +104,11 @@ const ContactForm: FC<ContactFormProps> = ({ setIsMessageSent }) => {
   const handleFinish = async (values: any) => {
     setIsLoading(true);
     try {
-      const res = await fetch("http://localhost:3000/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(values),
-      });
+      const res = await apiRequest<ContactResponse>(
+        "POST",
+        "/api/contact",
+        values
+      );
 
       if (res.ok) {
         console.log("Message sent successfully");
