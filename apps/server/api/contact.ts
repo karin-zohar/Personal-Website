@@ -1,42 +1,40 @@
-import express from "express";
+import { VercelRequest, VercelResponse } from "@vercel/node";
 import { sendContactEmail } from "../src/utils/email.js";
 
-const app = express();
-
-// SUPER simple CORS - handle OPTIONS first
-app.use((req, res, next) => {
-  // Allow your specific frontend origin
-  res.header(
+export default async function handler(
+  request: VercelRequest,
+  response: VercelResponse
+) {
+  // Set CORS headers
+  response.setHeader(
     "Access-Control-Allow-Origin",
-    "https://personal-website-client-1fse5g8vi-karins-projects-a8926f87.vercel.app"
+    "https://personal-website-client-5mx1b8x3u-karins-projects-a8926f87.vercel.app"
   );
-  res.header("Access-Control-Allow-Headers", "Content-Type");
-  res.header("Access-Control-Allow-Methods", "POST, OPTIONS");
-  res.header("Access-Control-Allow-Origin", "POST, OPTIONS");
+  response.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
+  response.setHeader("Access-Control-Allow-Headers", "Content-Type");
 
-  if (req.method === "OPTIONS") {
-    return res.status(200).end();
-  }
-  next();
-});
-
-app.use(express.json());
-
-app.post("/", async (req, res) => {
-  // Your existing contact logic here
-  const { name, email, message, phone, company } = req.body;
-
-  if (!email || !message) {
-    return res.status(400).json({ error: "Missing required fields" });
+  // Handle OPTIONS request
+  if (request.method === "OPTIONS") {
+    return response.status(200).end();
   }
 
-  try {
-    await sendContactEmail({ name, email, message, phone, company });
-    res.json({ success: true });
-  } catch (err) {
-    console.error("Error sending email:", err);
-    res.status(500).json({ error: "Failed to send email" });
-  }
-});
+  // Handle POST request
+  if (request.method === "POST") {
+    const { name, email, message, phone, company } = request.body;
 
-export default app;
+    if (!email || !message) {
+      return response.status(400).json({ error: "Missing required fields" });
+    }
+
+    try {
+      await sendContactEmail({ name, email, message, phone, company });
+      return response.json({ success: true });
+    } catch (err) {
+      console.error("Error sending email:", err);
+      return response.status(500).json({ error: "Failed to send email" });
+    }
+  }
+
+  // Handle other methods
+  return response.status(405).json({ error: "Method not allowed" });
+}
