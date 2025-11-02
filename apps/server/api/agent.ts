@@ -7,21 +7,20 @@ dotenv.config();
 
 const app = express();
 
-const allowedOrigins = [
-  "http://localhost:5173",
-  "http://localhost:3000",
-  process.env.CLIENT_URL || "",
-  /\.vercel\.app$/,
-];
-
 app.use(
   cors({
-    origin: allowedOrigins,
-    methods: ["POST", "OPTIONS"],
+    origin: [
+      "http://localhost:5173",
+      "http://localhost:3000",
+      "https://personal-website-client.vercel.app",
+      /\.vercel\.app$/,
+    ],
+    methods: ["GET", "POST", "OPTIONS"],
     allowedHeaders: ["Content-Type"],
   })
 );
 
+app.options("*", cors());
 app.use(express.json());
 
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
@@ -44,4 +43,6 @@ app.post("/", async (req, res) => {
   }
 });
 
-export default app;
+app.options("/", cors());
+
+module.exports = app;
