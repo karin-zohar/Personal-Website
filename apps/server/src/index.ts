@@ -8,7 +8,6 @@ dotenv.config();
 
 const app = express();
 app.use(express.json());
-app.options("*", cors());
 
 const allowedOrigins = [
   "http://localhost:5173", // local dev
