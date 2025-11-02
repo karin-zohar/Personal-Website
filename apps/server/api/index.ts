@@ -17,6 +17,7 @@ const allowedOrigins = [
   "http://localhost:5173", // local dev
   "http://localhost:3000",
   process.env.CLIENT_URL || "", // deployed frontend
+  /\.vercel\.app$/, // Regex for all vercel preview URLs
 ];
 
 app.use(
