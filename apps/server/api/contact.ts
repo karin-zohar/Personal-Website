@@ -5,30 +5,22 @@ export default async function handler(
   request: VercelRequest,
   response: VercelResponse
 ) {
-  // Get the origin from the request
+  // CORS headers
   const origin = request.headers.origin;
-
-  // Allow ALL Vercel preview domains
   if (origin && origin.endsWith(".vercel.app")) {
     response.setHeader("Access-Control-Allow-Origin", origin);
   }
-
   response.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
-  response.setHeader(
-    "Access-Control-Allow-Headers",
-    "Content-Type, Authorization, X-Requested-With"
-  );
-  response.setHeader("Access-Control-Max-Age", "86400");
-  response.setHeader("Access-Control-Allow-Credentials", "true");
+  response.setHeader("Access-Control-Allow-Headers", "Content-Type");
 
-  // Handle OPTIONS request
+  // Handle OPTIONS
   if (request.method === "OPTIONS") {
     return response.status(200).end();
   }
 
-  // Handle POST request
+  // Handle POST
   if (request.method === "POST") {
-    console.log("POST request received:", request.body);
+    console.log("POST request body:", request.body);
 
     const { name, email, message, phone, company } = request.body;
 
@@ -45,5 +37,6 @@ export default async function handler(
     }
   }
 
+  // Handle other methods
   return response.status(405).json({ error: "Method not allowed" });
 }
