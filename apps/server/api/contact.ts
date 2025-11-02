@@ -5,24 +5,43 @@ export default async function handler(
   request: VercelRequest,
   response: VercelResponse
 ) {
-  // Set CORS headers FIRST - before any other logic
+  // Get the origin from the request
   const origin = request.headers.origin;
-  if (origin && origin.endsWith(".vercel.app")) {
+
+  // Define allowed origins
+  const allowedOrigins = [
+    "https://www.karin-zohar.com",
+    "https://karin-zohar.com",
+    "http://localhost:5173",
+    "http://localhost:3000",
+    /\.vercel\.app$/,
+  ];
+
+  // Check if origin is allowed
+  const isAllowed = allowedOrigins.some((pattern) => {
+    if (typeof pattern === "string") {
+      return origin === pattern;
+    } else if (pattern instanceof RegExp) {
+      return pattern.test(origin || "");
+    }
+    return false;
+  });
+
+  // ALWAYS set CORS headers, even for successful responses
+  if (origin && isAllowed) {
     response.setHeader("Access-Control-Allow-Origin", origin);
   }
   response.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
   response.setHeader("Access-Control-Allow-Headers", "Content-Type");
   response.setHeader("Access-Control-Allow-Credentials", "true");
 
-  // If this is a preflight request, respond immediately
+  // Handle OPTIONS preflight
   if (request.method === "OPTIONS") {
     return response.status(200).end();
   }
 
-  // For POST requests, Vercel might be blocking before reaching here
+  // Handle POST request
   if (request.method === "POST") {
-    console.log("POST request reached the handler!");
-
     const { name, email, message, phone, company } = request.body;
 
     if (!email || !message) {
@@ -31,9 +50,11 @@ export default async function handler(
 
     try {
       await sendContactEmail({ name, email, message, phone, company });
+      // CORS headers are already set above - they'll be included in this response
       return response.json({ success: true });
     } catch (err) {
       console.error("Error sending email:", err);
+      // CORS headers are already set above - they'll be included in this response
       return response.status(500).json({ error: "Failed to send email" });
     }
   }
