@@ -9,11 +9,11 @@ const transporter = nodemailer.createTransport({
 });
 
 export interface ContactFormData {
-  name?: string;
+  name?: string | undefined;
   email: string;
   message: string;
-  phone?: string;
-  company?: string;
+  phone?: string | undefined;
+  company?: string | undefined;
 }
 
 export const sendContactEmail = async (data: ContactFormData) => {

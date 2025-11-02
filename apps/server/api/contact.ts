@@ -11,7 +11,6 @@ const app = express();
 app.use((req: Request, res: Response, next: NextFunction) => {
   const origin = req.headers.origin;
 
-  // Allow all Vercel preview domains and local development
   const allowedOrigins: (string | RegExp)[] = [
     "http://localhost:5173",
     "http://localhost:3000",
@@ -20,20 +19,14 @@ app.use((req: Request, res: Response, next: NextFunction) => {
     /-karins-projects-a8926f87\.vercel\.app$/,
   ];
 
-  // Check if origin is allowed
   if (origin) {
     const isAllowed = allowedOrigins.some((pattern) => {
-      if (typeof pattern === "string") {
-        return origin === pattern;
-      } else if (pattern instanceof RegExp) {
-        return pattern.test(origin);
-      }
+      if (typeof pattern === "string") return origin === pattern;
+      if (pattern instanceof RegExp) return pattern.test(origin);
       return false;
     });
 
-    if (isAllowed) {
-      res.setHeader("Access-Control-Allow-Origin", origin);
-    }
+    if (isAllowed) res.setHeader("Access-Control-Allow-Origin", origin);
   } else {
     res.setHeader("Access-Control-Allow-Origin", "*");
   }
@@ -59,7 +52,6 @@ app.use((req: Request, res: Response, next: NextFunction) => {
 
 app.use(express.json());
 
-// Interface for contact request body
 interface ContactRequestBody {
   name?: string;
   email: string;
@@ -68,7 +60,7 @@ interface ContactRequestBody {
   company?: string;
 }
 
-// Contact endpoint
+// Contact endpoint with strict type handling
 app.post(
   "/",
   async (req: Request<{}, {}, ContactRequestBody>, res: Response) => {
@@ -81,16 +73,20 @@ app.post(
     }
 
     try {
-      // Handle optional properties by passing only what exists
-      const emailData = {
-        name: name || undefined,
+      // Create a new object with only defined values
+      const emailData: Record<string, string> = {
         email,
         message,
-        phone: phone || undefined,
-        company: company || undefined,
       };
 
-      await sendContactEmail(emailData);
+      // Only add optional fields if they exist and are not empty
+      if (name && name.trim()) emailData.name = name;
+      if (phone && phone.trim()) emailData.phone = phone;
+      if (company && company.trim()) emailData.company = company;
+
+      // Use type assertion if sendContactEmail expects ContactFormData
+      await sendContactEmail(emailData as any);
+
       console.log("Email sent successfully");
       res.json({ success: true });
     } catch (err) {
@@ -113,11 +109,6 @@ app.get("/", (req: Request, res: Response) => {
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
   console.error("Unhandled error:", err);
   res.status(500).json({ error: "Internal server error" });
-});
-
-// 404 handler for this specific endpoint
-app.use((req: Request, res: Response) => {
-  res.status(404).json({ error: "Endpoint not found" });
 });
 
 export default app;
