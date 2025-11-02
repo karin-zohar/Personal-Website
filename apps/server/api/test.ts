@@ -28,20 +28,6 @@ export default async function handler(
 
   if (request.method === "GET") {
     console.log("GET request received:", request.body);
-
-    const { name, email, message, phone, company } = request.body;
-
-    if (!email || !message) {
-      return response.status(400).json({ error: "Missing required fields" });
-    }
-
-    try {
-      await sendContactEmail({ name, email, message, phone, company });
-      return response.json({ success: true });
-    } catch (err) {
-      console.error("Error sending email:", err);
-      return response.status(500).json({ error: "Failed to send email" });
-    }
   }
 
   return response.status(405).json({ error: "Method not allowed" });
