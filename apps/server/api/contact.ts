@@ -5,13 +5,35 @@ export default async function handler(
   request: VercelRequest,
   response: VercelResponse
 ) {
-  // Set CORS headers
-  response.setHeader(
-    "Access-Control-Allow-Origin",
-    "https://personal-website-client-5mx1b8x3u-karins-projects-a8926f87.vercel.app"
-  );
+  // Get the origin from the request
+  const origin = request.headers.origin;
+
+  // Allow all Vercel preview deployments and production
+  const allowedOrigins = [
+    "http://localhost:5173",
+    "http://localhost:3000",
+    "https://personal-website-client.vercel.app", // production
+    /-karins-projects-a8926f87\.vercel\.app$/, // all your preview deployments
+  ];
+
+  // Check if the request origin is allowed
+  const isAllowed = allowedOrigins.some((pattern) => {
+    if (typeof pattern === "string") {
+      return origin === pattern;
+    } else if (pattern instanceof RegExp) {
+      return pattern.test(origin || "");
+    }
+    return false;
+  });
+
+  // Set CORS headers only for allowed origins
+  if (origin && isAllowed) {
+    response.setHeader("Access-Control-Allow-Origin", origin);
+  }
+
   response.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
   response.setHeader("Access-Control-Allow-Headers", "Content-Type");
+  response.setHeader("Access-Control-Max-Age", "86400");
 
   // Handle OPTIONS request
   if (request.method === "OPTIONS") {
