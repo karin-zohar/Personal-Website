@@ -109,8 +109,6 @@ const ContactForm: FC<ContactFormProps> = ({ setIsMessageSent }) => {
         values
       );
 
-      console.log("res: ", res);
-
       if (res.success) {
         console.log("Message sent successfully");
         form.resetFields();
