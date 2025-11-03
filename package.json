@@ -2,6 +2,7 @@
   "name": "personal-website",
   "private": true,
   "version": "1.0.0",
+  "type": "module",
   "main": "index.js",
   "workspaces": [
     "apps/*",
@@ -19,5 +20,7 @@
   "author": "",
   "license": "ISC",
   "description": "",
-  "dependencies": {}
+  "dependencies": {
+    "@vercel/node": "^5.5.3"
+  }
 }

@@ -1,13 +1,23 @@
-import React, { useState } from "react";
+import React, { FC, useState } from "react";
 import { Button, Form, Input } from "antd";
 import useStore from "@/store/store";
 import GenFormItem from "@/libs/ui/components/GenFormItem/GenFormItem";
 import { LocalizedFormItem } from "@/libs/ui/components/GenFormItem/GenFormItem.types";
+import { apiRequest } from "../../../../../api/apiService";
 
-const ContactForm = () => {
+type ContactFormProps = {
+  setIsMessageSent: (isSent: boolean) => void;
+};
+
+interface ContactResponse {
+  success: boolean;
+}
+
+const ContactForm: FC<ContactFormProps> = ({ setIsMessageSent }) => {
   const { getLocalizedText } = useStore();
   const [form] = Form.useForm();
   const [isValidated, setIsValidated] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const formFields: LocalizedFormItem[] = [
     {
@@ -46,7 +56,7 @@ const ContactForm = () => {
       ],
     },
     {
-      id: "company-name",
+      id: "company",
       label: { english: "Company Name", hebrew: "שם החברה" },
       required: false,
     },
@@ -90,8 +100,31 @@ const ContactForm = () => {
     }
   };
 
-  const handleFinish = (values: any) => {
-    console.log("Form submitted:", values);
+  const handleFinish = async (values: any) => {
+    setIsLoading(true);
+    try {
+      const res = await apiRequest<ContactResponse>(
+        "POST",
+        "/api/contact",
+        values
+      );
+
+      if (res.success) {
+        form.resetFields();
+        setIsValidated(false);
+        setIsMessageSent(true);
+      }
+    } catch (err) {
+      console.error(err);
+      console.error(
+        getLocalizedText({
+          english: "Error sending message",
+          hebrew: "שגיאה בשליחת ההודעה",
+        })
+      );
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -127,6 +160,7 @@ const ContactForm = () => {
             className="submit-button"
             block
             disabled={!isValidated}
+            loading={isLoading}
           >
             {getLocalizedText({ english: "Send", hebrew: "שליחה" })}
           </Button>
