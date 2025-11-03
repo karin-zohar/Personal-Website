@@ -8,8 +8,6 @@ export async function apiRequest<TResponse = unknown>(
   path: string,
   body?: unknown
 ): Promise<TResponse> {
-  const url = `${BASE_URL}${path}`;
-  console.log("###Making request to:", url, "with method:", method);
   const options: RequestInit = {
     method,
     headers: {
@@ -19,12 +17,9 @@ export async function apiRequest<TResponse = unknown>(
 
   if (body && ["POST", "PUT", "PATCH"].includes(method)) {
     options.body = JSON.stringify(body);
-    console.log("Request body:", body);
   }
 
   const response = await fetch(`${BASE_URL}${path}`, options);
-  console.log("response: ", response);
-  console.log("response.ok: ", response.ok);
 
   if (!response.ok) {
     const text = await response.text();

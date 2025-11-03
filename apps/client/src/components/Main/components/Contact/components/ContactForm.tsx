@@ -110,17 +110,9 @@ const ContactForm: FC<ContactFormProps> = ({ setIsMessageSent }) => {
       );
 
       if (res.success) {
-        console.log("Message sent successfully");
         form.resetFields();
         setIsValidated(false);
         setIsMessageSent(true);
-      } else {
-        console.log(
-          getLocalizedText({
-            english: "Failed to send message",
-            hebrew: "שליחת ההודעה נכשלה",
-          })
-        );
       }
     } catch (err) {
       console.error(err);
