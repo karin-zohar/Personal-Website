@@ -9,7 +9,7 @@ export async function apiRequest<TResponse = unknown>(
   body?: unknown
 ): Promise<TResponse> {
   const url = `${BASE_URL}${path}`;
-  console.log("###Making request to:", url, "with method:", method);
+  console.log("Making request to:", url, "with method:", method);
   const options: RequestInit = {
     method,
     headers: {
