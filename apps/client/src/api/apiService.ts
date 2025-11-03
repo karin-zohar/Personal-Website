@@ -23,7 +23,8 @@ export async function apiRequest<TResponse = unknown>(
   }
 
   const response = await fetch(`${BASE_URL}${path}`, options);
-  console.log("Response status:", response.status);
+  console.log("response: ", response);
+  console.log("response.ok: ", response.ok);
 
   if (!response.ok) {
     const text = await response.text();
