@@ -16,9 +16,9 @@ const Hero = () => {
     },
     bio: {
       english:
-        "I'm a curious, creative and detail oriented Front-End Developer with a passion for creating amazing user experiences with clean and maintainable code.",
+        "I'm a curious, creative and detail oriented Fullstack Developer with a passion for creating amazing user experiences with clean and maintainable code.",
       hebrew:
-        "אני מפתחת פרונטאנד סקרנית ויצירתית עם תשומת לב לפרטים ותשוקה ליצירת חוויות משתמש מדהימות עם קוד נקי וקל לתחזוקה.",
+        "אני מפתחת פולסטאק סקרנית ויצירתית עם תשומת לב לפרטים ותשוקה ליצירת חוויות משתמש מדהימות עם קוד נקי וקל לתחזוקה.",
     },
   };
 

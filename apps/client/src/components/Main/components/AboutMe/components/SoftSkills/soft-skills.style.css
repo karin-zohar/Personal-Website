@@ -1,7 +1,7 @@
 .soft-skills {
+  text-align: center;
   .intro {
     font-size: 20px;
-    text-align: start;
     white-space: pre-line;
   }
   .cards-container {
