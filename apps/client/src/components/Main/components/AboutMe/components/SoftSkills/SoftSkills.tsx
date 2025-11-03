@@ -10,9 +10,9 @@ const SoftSkills = () => {
 
   const introText = {
     english:
-      "Hello! I'm Karin, a Front End Developer with a Full Stack background. \n I love learning about new technologies, solving interesting problems and bringing ideas to life. \n In addition to my ever-growing stack of technological skills, I also bring:",
+      "Hello! I'm Karin, a Fullstack Developer (front-end oriented). \n I love learning about new technologies, solving interesting problems and bringing ideas to life. \n In addition to my ever-growing stack of technological skills, I also bring:",
     hebrew:
-      "היי! אני קארין, מפתחת פרונט-אנד עם רקע בפול-סטאק. \n אני אוהבת ללמוד על טכנולוגיות חדשות, לפתור בעיות מעניינות ולהביא רעיונות לחיים.  \n בנוסף ליכולות הטכנולוגיות שלי שתמיד מתפתחות, אני מביאה איתי: ",
+      "היי! אני קארין, מפתחת פולסטאק מוכוונת צד לקוח. \n אני אוהבת ללמוד על טכנולוגיות חדשות, לפתור בעיות מעניינות ולהביא רעיונות לחיים.  \n בנוסף ליכולות הטכנולוגיות שלי שתמיד מתפתחות, אני מביאה איתי: ",
   };
 
   const [softSkills, setSoftSkills] = useState([
