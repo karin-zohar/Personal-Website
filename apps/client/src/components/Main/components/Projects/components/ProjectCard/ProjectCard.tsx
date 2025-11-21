@@ -18,7 +18,7 @@ const ProjectCard: FC<ProjectCardProps> = ({ key, imgUrl, title, tags }) => {
       <span className="title">{getLocalizedText(title)}</span>
       <div className="tags-container">
         {tags.map((tag) => (
-          <Tag>{`#${tag}`}</Tag>
+          <Tag className="project-tag">{`#${tag}`}</Tag>
         ))}
       </div>
       <div className="project-image-container">
