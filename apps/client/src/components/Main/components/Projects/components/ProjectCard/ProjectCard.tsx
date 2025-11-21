@@ -3,13 +3,7 @@ import useStore from "@/store/store";
 import { Tag } from "antd";
 import React, { FC } from "react";
 import "./project-card.style.css";
-
-type ProjectCardProps = {
-  key: string;
-  imgUrl: string;
-  title: Dictionary;
-  tags: string[];
-};
+import { ProjectCardProps } from "../../Projects.types";
 
 const ProjectCard: FC<ProjectCardProps> = ({ key, imgUrl, title, tags }) => {
   const { getLocalizedText } = useStore();

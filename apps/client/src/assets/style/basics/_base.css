@@ -62,4 +62,9 @@ body {
     width: 100%;
     object-fit: cover;
   }
+
+  li,
+  ul {
+    list-style: none;
+  }
 }
