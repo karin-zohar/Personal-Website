@@ -1,16 +1,19 @@
 .project-card {
+  > * {
+    z-index: 1;
+  }
   cursor: pointer;
   height: 200px;
+  transition: height 0.4s;
   border-radius: 10px;
   overflow: hidden;
-  transition: 0.4s;
   text-decoration: none;
-  &:hover {
-    height: 300px;
-  }
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: 1fr 40px;
+  &:hover {
+    height: 300px;
+  }
 
   .project-image-container {
     z-index: 0;
@@ -24,16 +27,15 @@
   }
 
   .title {
-    z-index: 1;
-    grid-column: 2;
     grid-row: 1;
+    grid-column: 2;
     align-self: center;
+    text-align: center;
     color: var(--white-100);
     font-size: 36px;
     letter-spacing: 0.4rem;
   }
   .tags-container {
-    z-index: 1;
     grid-column: 1/4;
     grid-row: 2;
     align-self: center;

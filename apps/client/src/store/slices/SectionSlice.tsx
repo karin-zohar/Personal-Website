@@ -1,8 +1,8 @@
 import {
   AboutMe,
   Contact,
+  Projects,
 } from "@/components/Main/components/Main.components.index";
-import Projects from "@/components/Main/components/Projects/Projects";
 import { createRef, ReactNode, RefObject } from "react";
 import { StateCreator } from "zustand";
 

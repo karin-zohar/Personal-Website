@@ -4,6 +4,7 @@ import { ProjectCardProps } from "./Projects.types";
 import "./projects.style.css";
 
 const Projects = () => {
+  // Place holder data
   const projects: ProjectCardProps[] = [
     {
       key: "test",
@@ -30,8 +31,8 @@ const Projects = () => {
           <li key={key}>
             <ProjectCard
               key={key}
-              projectUrl={projectUrl}
               title={title}
+              projectUrl={projectUrl}
               imgUrl={imgUrl}
               tags={tags}
             />

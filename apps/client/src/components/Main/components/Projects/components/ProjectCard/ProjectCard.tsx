@@ -6,9 +6,9 @@ import "./project-card.style.css";
 
 const ProjectCard: FC<ProjectCardProps> = ({
   key,
+  title,
   projectUrl,
   imgUrl,
-  title,
   tags,
 }) => {
   const { getLocalizedText } = useStore();
