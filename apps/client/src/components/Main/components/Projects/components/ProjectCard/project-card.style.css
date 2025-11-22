@@ -4,6 +4,7 @@
   border-radius: 10px;
   overflow: hidden;
   transition: 0.4s;
+  text-decoration: none;
   &:hover {
     height: 300px;
   }

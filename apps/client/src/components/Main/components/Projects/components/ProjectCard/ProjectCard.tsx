@@ -1,14 +1,19 @@
-import { Dictionary } from "@/store/slices/i18n.slice";
-import useStore from "@/store/store";
-import { Tag } from "antd";
 import React, { FC } from "react";
-import "./project-card.style.css";
+import useStore from "@/store/store";
 import { ProjectCardProps } from "../../Projects.types";
+import { Tag } from "antd";
+import "./project-card.style.css";
 
-const ProjectCard: FC<ProjectCardProps> = ({ key, imgUrl, title, tags }) => {
+const ProjectCard: FC<ProjectCardProps> = ({
+  key,
+  projectUrl,
+  imgUrl,
+  title,
+  tags,
+}) => {
   const { getLocalizedText } = useStore();
   return (
-    <div className="project-card" key={key}>
+    <a className="project-card" key={key} href={projectUrl} target={"_blank"}>
       <span className="title">{getLocalizedText(title)}</span>
       <div className="tags-container">
         {tags.map((tag) => (
@@ -18,7 +23,7 @@ const ProjectCard: FC<ProjectCardProps> = ({ key, imgUrl, title, tags }) => {
       <div className="project-image-container">
         <img src={imgUrl} />
       </div>
-    </div>
+    </a>
   );
 };
 
