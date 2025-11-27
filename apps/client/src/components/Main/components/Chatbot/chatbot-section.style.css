@@ -1,13 +1,18 @@
 .chatbot-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   .header {
     text-align: center;
   }
 
   .chat-input-form {
+    min-width: 70%;
     margin-block: 1rem;
     padding: 10px;
     display: flex;
     gap: 1rem;
+    align-items: center;
     height: 60px;
     border: 2px solid var(--teal-500);
     border-radius: 28px;
@@ -28,7 +33,17 @@
       }
     }
     .send-prompt-button {
-      height: 100%;
+      border: none;
+      background-color: var(--teal-500);
+      color: var(--cream-100);
+
+      &:disabled {
+        background-color: var(--teal-200);
+      }
+      &:not(:disabled):hover {
+        background: var(--teal-800);
+        color: var(--cream-100);
+      }
     }
   }
 }

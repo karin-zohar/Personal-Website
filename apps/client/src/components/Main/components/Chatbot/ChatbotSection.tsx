@@ -15,8 +15,8 @@ const ChatbotSection = () => {
     hebrew: "רוצה לגלות עוד?",
   };
   const subtitle: Dictionary = {
-    english: "My AI assistant is here to answer your questions!",
-    hebrew: "עוזר הAI שלי כאן כדי לענות על כל שאלה!",
+    english: "My AI assistant is here to answer your questions! ✨",
+    hebrew: "עוזר הAI שלי כאן כדי לענות על כל שאלה!  ✨",
   };
 
   const inputPlaceholder: Dictionary = {
