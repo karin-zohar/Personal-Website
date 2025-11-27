@@ -6,7 +6,7 @@ import "./chatbot-section.style.css";
 import ChatInput from "./components/ChatInput";
 
 const ChatbotSection = () => {
-  const [isChatting, setIsChatting] = useState<boolean>(false);
+  const [message, setMessage] = useState<string | undefined>(undefined);
 
   const { getLocalizedText } = useStore();
   const { Title } = Typography;
@@ -25,8 +25,11 @@ const ChatbotSection = () => {
   };
   return (
     <div className="chatbot-section">
-      {isChatting ? (
-        <span>chatting...</span>
+      {message ? (
+        <>
+          <span>chatting...</span>
+          <span>{message}</span>
+        </>
       ) : (
         <>
           <div className="header">
@@ -34,6 +37,7 @@ const ChatbotSection = () => {
             <span>{getLocalizedText(subtitle)}</span>
           </div>
           <ChatInput
+            setMessage={(message: string) => setMessage(message)}
             placeholder={getLocalizedText(inputPlaceholder) as string}
           />
         </>
