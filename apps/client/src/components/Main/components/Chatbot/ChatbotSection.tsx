@@ -4,9 +4,11 @@ import useStore from "@/store/store";
 import { Typography } from "antd";
 import "./chatbot-section.style.css";
 import ChatInput from "./components/ChatInput";
+import ActiveChat from "./components/ActiveChat";
+import { PromptAndReply } from "./Chatbot.types";
 
 const ChatbotSection = () => {
-  const [message, setMessage] = useState<string | undefined>(undefined);
+  const [messages, setMessages] = useState<PromptAndReply[]>([]);
 
   const { getLocalizedText } = useStore();
   const { Title } = Typography;
@@ -23,12 +25,32 @@ const ChatbotSection = () => {
     english: "Why should I hire Karin?",
     hebrew: "למה כדאי לי להעסיק את קארין?",
   };
+
+  const updatePrompt = (newPrompt: string) => {
+    setMessages((prev) => [...prev, { prompt: newPrompt }]);
+  };
+
+  const updateReply = (reply: string) => {
+    setMessages((prev) => {
+      if (prev.length === 0) {
+        return prev;
+      }
+
+      const updated = [...prev];
+      // Update the last item
+      updated[updated.length - 1] = {
+        ...updated[updated.length - 1],
+        reply,
+      };
+      return updated;
+    });
+  };
+
   return (
     <div className="chatbot-section">
-      {message ? (
+      {messages.length > 0 ? (
         <>
-          <span>chatting...</span>
-          <span>{message}</span>
+          <ActiveChat messages={messages} />
         </>
       ) : (
         <>
@@ -37,7 +59,7 @@ const ChatbotSection = () => {
             <span>{getLocalizedText(subtitle)}</span>
           </div>
           <ChatInput
-            setMessage={(message: string) => setMessage(message)}
+            setMessage={(message: string) => updatePrompt(message)}
             placeholder={getLocalizedText(inputPlaceholder) as string}
           />
         </>
