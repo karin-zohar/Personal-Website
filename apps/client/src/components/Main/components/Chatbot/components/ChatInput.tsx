@@ -5,17 +5,18 @@ import { useForm } from "antd/es/form/Form";
 import React, { FC } from "react";
 
 type ChatInputProps = {
-  setMessage: (message: string) => void;
+  setPrompt: (prompt: string) => void;
   placeholder?: string;
 };
 
-const ChatInput: FC<ChatInputProps> = ({ setMessage, placeholder }) => {
+const ChatInput: FC<ChatInputProps> = ({ setPrompt, placeholder }) => {
   const [form] = useForm();
   const message = Form.useWatch("message", form);
 
   const handleFinish = () => {
     console.log("message: ", message);
-    setMessage(message);
+    setPrompt(message);
+    form.resetFields();
   };
   return (
     <Form form={form} className="chat-input-form" onFinish={handleFinish}>

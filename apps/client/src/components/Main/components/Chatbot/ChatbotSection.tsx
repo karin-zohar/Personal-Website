@@ -48,22 +48,20 @@ const ChatbotSection = () => {
 
   return (
     <div className="chatbot-section">
-      {messages.length > 0 ? (
+      <div className="header">
+        <Title level={3}>{getLocalizedText(title)}</Title>
+        <span>{getLocalizedText(subtitle)}</span>
+      </div>
+      {messages.length > 0 && (
         <>
           <ActiveChat messages={messages} />
         </>
-      ) : (
-        <>
-          <div className="header">
-            <Title level={3}>{getLocalizedText(title)}</Title>
-            <span>{getLocalizedText(subtitle)}</span>
-          </div>
-          <ChatInput
-            setMessage={(message: string) => updatePrompt(message)}
-            placeholder={getLocalizedText(inputPlaceholder) as string}
-          />
-        </>
       )}
+
+      <ChatInput
+        setPrompt={(prompt: string) => updatePrompt(prompt)}
+        placeholder={getLocalizedText(inputPlaceholder) as string}
+      />
     </div>
   );
 };
