@@ -46,4 +46,31 @@
       }
     }
   }
+
+  .active-chat {
+    width: 100%;
+    padding-inline: 20px;
+    & > *:nth-child(odd) {
+      align-self: flex-end;
+    }
+    & > *:nth-child(even) {
+      align-self: flex-start;
+    }
+    .chat-message {
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      border: 2px solid var(--teal-200);
+      height: 36px;
+      width: fit-content;
+      padding-inline: 10px;
+    }
+  }
+  .prompt {
+    background-color: var(--teal-200);
+    color: var(--teal-800);
+  }
+  .chat-reply {
+    background-color: lightyellow;
+  }
 }

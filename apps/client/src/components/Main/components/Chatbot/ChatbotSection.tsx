@@ -52,11 +52,7 @@ const ChatbotSection = () => {
         <Title level={3}>{getLocalizedText(title)}</Title>
         <span>{getLocalizedText(subtitle)}</span>
       </div>
-      {messages.length > 0 && (
-        <>
-          <ActiveChat messages={messages} />
-        </>
-      )}
+      {messages.length > 0 && <ActiveChat messages={messages} />}
 
       <ChatInput
         setPrompt={(prompt: string) => updatePrompt(prompt)}

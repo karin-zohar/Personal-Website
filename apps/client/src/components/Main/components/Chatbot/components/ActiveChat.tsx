@@ -1,5 +1,6 @@
 import React, { FC } from "react";
 import { PromptAndReply } from "../Chatbot.types";
+import { Flex } from "antd";
 
 type ActiveChatProps = {
   messages: PromptAndReply[];
@@ -7,16 +8,24 @@ type ActiveChatProps = {
 
 const ActiveChat: FC<ActiveChatProps> = ({ messages }) => {
   return (
-    <div>
+    <Flex vertical className="active-chat">
       {messages.map(({ prompt, reply }) => {
         return (
           <>
-            <span>{prompt}</span>
-            {reply ? <span>{reply}</span> : <span>...</span>}
+            <div className="chat-message prompt">
+              <span>{prompt}</span>
+            </div>
+            {reply ? (
+              <div className="chat-message chat-reply">
+                <span>{reply}</span>
+              </div>
+            ) : (
+              <span>...</span> //loader
+            )}
           </>
         );
       })}
-    </div>
+    </Flex>
   );
 };
 
