@@ -1,8 +1,8 @@
+import React, { FC } from "react";
 import GenFormItem from "@/libs/ui/components/GenFormItem/GenFormItem";
 import { ArrowUpIcon } from "@/libs/ui/icons";
 import { Button, Form, Input } from "antd";
 import { useForm } from "antd/es/form/Form";
-import React, { FC } from "react";
 
 type ChatInputProps = {
   setPrompt: (prompt: string) => void;
@@ -21,7 +21,7 @@ const ChatInput: FC<ChatInputProps> = ({ setPrompt, placeholder }) => {
   return (
     <Form form={form} className="chat-input-form" onFinish={handleFinish}>
       <GenFormItem className="chat-input" name={"message"}>
-        <Input.TextArea placeholder={placeholder} rows={1} />
+        <Input placeholder={placeholder} />
       </GenFormItem>
       <Button
         htmlType="submit"

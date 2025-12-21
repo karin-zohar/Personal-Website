@@ -23,7 +23,7 @@
         height: 100%;
       }
 
-      textarea.ant-input.ant-input-outlined {
+      .ant-input.ant-input-outlined {
         border: none;
         &:focus,
         &:focus-visible,
@@ -71,6 +71,6 @@
     color: var(--teal-800);
   }
   .chat-reply {
-    background-color: lightyellow;
+    border: var(--teal-500);
   }
 }
