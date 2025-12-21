@@ -6,10 +6,15 @@ import { useForm } from "antd/es/form/Form";
 
 type ChatInputProps = {
   setPrompt: (prompt: string) => void;
+  updateReply: (prompt: string) => void;
   placeholder?: string;
 };
 
-const ChatInput: FC<ChatInputProps> = ({ setPrompt, placeholder }) => {
+const ChatInput: FC<ChatInputProps> = ({
+  setPrompt,
+  updateReply,
+  placeholder,
+}) => {
   const [form] = useForm();
   const message = Form.useWatch("message", form);
 
@@ -17,7 +22,9 @@ const ChatInput: FC<ChatInputProps> = ({ setPrompt, placeholder }) => {
     console.log("message: ", message);
     setPrompt(message);
     form.resetFields();
+    updateReply(message);
   };
+
   return (
     <Form form={form} className="chat-input-form" onFinish={handleFinish}>
       <GenFormItem className="chat-input" name={"message"}>

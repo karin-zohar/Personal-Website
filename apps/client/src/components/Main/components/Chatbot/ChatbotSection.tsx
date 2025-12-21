@@ -6,6 +6,12 @@ import "./chatbot-section.style.css";
 import ChatInput from "./components/ChatInput";
 import ActiveChat from "./components/ActiveChat";
 import { PromptAndReply } from "./Chatbot.types";
+import { apiRequest } from "@/api/apiService";
+
+interface ChatResponse {
+  success: boolean;
+  reply: string;
+}
 
 const ChatbotSection = () => {
   const [messages, setMessages] = useState<PromptAndReply[]>([]);
@@ -30,18 +36,34 @@ const ChatbotSection = () => {
     setMessages((prev) => [...prev, { prompt: newPrompt }]);
   };
 
-  const updateReply = (reply: string) => {
+  const getReply = async (prompt: string): Promise<string> => {
+    // const response = await apiRequest<ChatResponse>(
+    //   "POST",
+    //   "api/chat",
+    //   {prompt}
+    // )
+
+    //temp
+    const response = Promise.resolve({ reply: `reply for ${prompt}` });
+
+    const data = await response;
+    return data.reply;
+  };
+
+  const updateReply = async (prompt: string) => {
+    const reply = await getReply(prompt);
+
     setMessages((prev) => {
       if (prev.length === 0) {
         return prev;
       }
 
       const updated = [...prev];
-      // Update the last item
       updated[updated.length - 1] = {
         ...updated[updated.length - 1],
         reply,
       };
+
       return updated;
     });
   };
@@ -56,6 +78,7 @@ const ChatbotSection = () => {
 
       <ChatInput
         setPrompt={(prompt: string) => updatePrompt(prompt)}
+        updateReply={(prompt: string) => updateReply(prompt)}
         placeholder={getLocalizedText(inputPlaceholder) as string}
       />
     </div>
