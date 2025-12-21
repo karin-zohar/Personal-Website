@@ -37,14 +37,12 @@ const ChatbotSection = () => {
   };
 
   const getReply = async (prompt: string): Promise<string> => {
-    // const response = await apiRequest<ChatResponse>(
-    //   "POST",
-    //   "api/chat",
-    //   {prompt}
-    // )
+    const response = await apiRequest<ChatResponse>("POST", "api/chat", {
+      prompt,
+    });
 
     //temp
-    const response = Promise.resolve({ reply: `reply for ${prompt}` });
+    // const response = Promise.resolve({ reply: `reply for ${prompt}` });
 
     const data = await response;
     return data.reply;
