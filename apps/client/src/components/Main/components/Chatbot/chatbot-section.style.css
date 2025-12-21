@@ -48,7 +48,8 @@
   }
 
   .active-chat {
-    width: 100%;
+    max-width: 70%;
+    margin-top: 20px;
     padding-inline: 20px;
     & > *:nth-child(odd) {
       align-self: flex-end;
@@ -58,10 +59,12 @@
     }
     .chat-message {
       border-radius: 10px;
+      margin-block: 10px;
       display: flex;
       align-items: center;
       border: 2px solid var(--teal-200);
-      height: 36px;
+      height: fit-content;
+      min-height: 36px;
       width: fit-content;
       padding-inline: 10px;
     }
