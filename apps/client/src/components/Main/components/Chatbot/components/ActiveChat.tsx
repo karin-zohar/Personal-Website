@@ -1,6 +1,7 @@
 import React, { FC } from "react";
 import { PromptAndReply } from "../Chatbot.types";
-import { Flex } from "antd";
+import { Flex, Spin } from "antd";
+import { BeatLoader } from "react-spinners";
 
 type ActiveChatProps = {
   messages: PromptAndReply[];
@@ -20,7 +21,7 @@ const ActiveChat: FC<ActiveChatProps> = ({ messages }) => {
                 <span>{reply}</span>
               </div>
             ) : (
-              <span>...</span> //loader
+              <BeatLoader color={"var(--teal-500)"} />
             )}
           </>
         );

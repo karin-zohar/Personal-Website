@@ -41,9 +41,6 @@ const ChatbotSection = () => {
       prompt,
     });
 
-    //temp
-    // const response = Promise.resolve({ reply: `reply for ${prompt}` });
-
     const data = await response;
     return data.reply;
   };

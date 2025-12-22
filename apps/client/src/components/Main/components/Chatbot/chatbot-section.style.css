@@ -1,4 +1,7 @@
 .chatbot-section {
+  @media (min-width: 700px) {
+    padding-inline: 10%;
+  }
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -7,7 +10,7 @@
   }
 
   .chat-input-form {
-    min-width: 70%;
+    width: 100%;
     margin-block: 1rem;
     padding: 10px;
     display: flex;
@@ -48,9 +51,11 @@
   }
 
   .active-chat {
-    max-width: 70%;
+    max-height: 300px;
+    overflow-x: auto;
+    width: 100%;
     margin-top: 20px;
-    padding-inline: 20px;
+    padding-inline: 10px;
     & > *:nth-child(odd) {
       align-self: flex-end;
     }
@@ -60,13 +65,10 @@
     .chat-message {
       border-radius: 10px;
       margin-block: 10px;
-      display: flex;
-      align-items: center;
       border: 2px solid var(--teal-200);
+      padding: 6px 10px;
       height: fit-content;
-      min-height: 36px;
       width: fit-content;
-      padding-inline: 10px;
     }
   }
   .prompt {
