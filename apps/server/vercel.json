@@ -1,5 +1,17 @@
 {
   "version": 2,
+  "builds": [
+    {
+      "src": "dist/dev.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "dist/dev.js"
+    }
+  ],
   "functions": {
     "api/**/*.ts": {
       "memory": 1024,
