@@ -6,7 +6,7 @@ export const allowedOrigins = [
   "https://karin-zohar.com",
   "http://localhost:5173",
   "http://localhost:3000",
-  /\.vercel\.app$/,
+  /^https:\/\/.*\.vercel\.app$/,
 ];
 
 export function isOriginAllowed(origin: string | undefined): boolean {
@@ -49,8 +49,15 @@ export function corsMiddleware(
 export function setVercelCorsHeaders(req: VercelRequest, res: VercelResponse) {
   const origin = req.headers.origin;
 
+  // Debug log (remove after testing)
+  console.log("Origin received:", origin);
+  console.log("Is allowed:", isOriginAllowed(origin));
+
   if (origin && isOriginAllowed(origin)) {
     res.setHeader("Access-Control-Allow-Origin", origin);
+  } else {
+    // Fallback for debugging - remove after fixing
+    console.warn("Origin not allowed:", origin);
   }
 
   res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
