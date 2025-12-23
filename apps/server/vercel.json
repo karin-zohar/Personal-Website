@@ -1,11 +1,5 @@
 {
   "version": 2,
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "dist/dev.js"
-    }
-  ],
   "functions": {
     "api/**/*.ts": {
       "memory": 1024,
