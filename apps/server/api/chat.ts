@@ -4,7 +4,6 @@ import { handleChat } from "../src/routes/chat.ts";
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   setVercelCorsHeaders(req, res);
-  console.log("req.method: ", req.method);
 
   if (req.method === "OPTIONS") {
     return res.status(200).end();
