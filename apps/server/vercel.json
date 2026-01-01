@@ -15,8 +15,7 @@
   ],
   "functions": {
     "api/**/*.ts": {
-      "maxDuration": 10,
-      "methods": ["OPTIONS", "GET", "POST", "PUT", "DELETE"]
+      "maxDuration": 10
     }
   },
   "rewrites": [
