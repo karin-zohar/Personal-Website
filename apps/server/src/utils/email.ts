@@ -17,6 +17,7 @@ export interface ContactFormData {
 }
 
 export const sendContactEmail = async (data: ContactFormData) => {
+  console.log("user: ,", process.env.EMAIL_USER);
   const mailBody = `
 Name: ${data.name || "N/A"}
 Email: ${data.email}
