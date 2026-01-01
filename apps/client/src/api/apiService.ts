@@ -28,7 +28,6 @@ export async function apiRequest<TResponse = unknown>(
   try {
     return (await response.json()) as TResponse;
   } catch (error) {
-    // 204 No Content etc.
     console.error("API request failed:", error);
     return {} as TResponse;
   }

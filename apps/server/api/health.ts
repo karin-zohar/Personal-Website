@@ -1,11 +1,3 @@
-// export default function handler(req, res) {
-//   res.json({
-//     status: "healthy",
-//     message: "API route is working!",
-//     timestamp: new Date().toISOString(),
-//   });
-// }
-
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 import { setVercelCorsHeaders } from "../src/middleware/cors.js";
 import { handleHealth } from "../src/routes/health.js";

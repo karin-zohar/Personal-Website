@@ -14,9 +14,6 @@ export interface ChatRequest {
 
 export const chatWithAI = async (data: ChatRequest): Promise<string> => {
   try {
-    /**
-     * 5. Call OpenAI Chat Completions API
-     */
     const response = await openai.chat.completions.create({
       model: "gpt-4o-mini",
       messages: [{ role: "user", content: data.prompt }],

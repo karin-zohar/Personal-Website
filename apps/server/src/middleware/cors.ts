@@ -56,7 +56,7 @@ export function setVercelCorsHeaders(req: VercelRequest, res: VercelResponse) {
   if (origin && isOriginAllowed(origin)) {
     res.setHeader("Access-Control-Allow-Origin", origin);
   } else {
-    // Fallback for debugging - remove after fixing
+    // Fallback for debugging - remove after fixingg
     console.warn("Origin not allowed:", origin);
   }
 
