@@ -1,3 +1,4 @@
+console.log("chat.ts loaded");
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 import { setVercelCorsHeaders } from "../src/middleware/cors.ts";
 import { handleChat } from "../src/routes/chat.ts";
