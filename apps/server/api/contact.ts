@@ -1,5 +1,5 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
-import { setVercelCorsHeaders } from "../src/middleware/cors";
+import { setVercelCorsHeaders } from "../src/middleware/cors.js";
 import { handleContact } from "../src/routes/contact.ts";
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
