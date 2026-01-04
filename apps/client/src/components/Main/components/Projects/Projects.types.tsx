@@ -1,7 +1,7 @@
 import { Dictionary } from "@/store/slices/i18n.slice";
 
 export type ProjectCardProps = {
-  key: string;
+  projectKey: string;
   title: Dictionary;
   projectUrl: string;
   imgUrl: string;

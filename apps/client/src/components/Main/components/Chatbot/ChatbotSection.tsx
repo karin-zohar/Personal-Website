@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { Dictionary } from "@/store/slices/i18n.slice";
 import useStore from "@/store/store";
-import { Typography } from "antd";
-import "./chatbot-section.style.css";
 import ChatInput from "./components/ChatInput";
 import ActiveChat from "./components/ActiveChat";
 import { PromptAndReply } from "./Chatbot.types";
 import { apiRequest } from "@/api/apiService";
+import { Typography } from "antd";
+import "./chatbot-section.style.css";
 
 interface ChatResponse {
   success: boolean;

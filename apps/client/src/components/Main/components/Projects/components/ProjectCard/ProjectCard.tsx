@@ -5,7 +5,7 @@ import { Tag } from "antd";
 import "./project-card.style.css";
 
 const ProjectCard: FC<ProjectCardProps> = ({
-  key,
+  projectKey,
   title,
   projectUrl,
   imgUrl,
@@ -13,11 +13,16 @@ const ProjectCard: FC<ProjectCardProps> = ({
 }) => {
   const { getLocalizedText } = useStore();
   return (
-    <a className="project-card" key={key} href={projectUrl} target={"_blank"}>
+    <a
+      className="project-card"
+      key={projectKey}
+      href={projectUrl}
+      target={"_blank"}
+    >
       <span className="title">{getLocalizedText(title)}</span>
       <div className="tags-container">
-        {tags.map((tag) => (
-          <Tag className="project-tag">{`#${tag}`}</Tag>
+        {tags.map((tag, idx) => (
+          <Tag key={idx} className="project-tag">{`#${tag}`}</Tag>
         ))}
       </div>
       <div className="project-image-container">

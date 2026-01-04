@@ -10,7 +10,9 @@ export const allowedOrigins = [
 ];
 
 export function isOriginAllowed(origin: string | undefined): boolean {
-  if (!origin) return false;
+  if (!origin) {
+    return false;
+  }
 
   return allowedOrigins.some((pattern) => {
     if (typeof pattern === "string") {
@@ -49,17 +51,9 @@ export function corsMiddleware(
 export function setVercelCorsHeaders(req: VercelRequest, res: VercelResponse) {
   const origin = req.headers.origin;
 
-  // Debug log (remove after testing)
-  console.log("Origin received:", origin);
-  console.log("Is allowed:", isOriginAllowed(origin));
-
   if (origin && isOriginAllowed(origin)) {
     res.setHeader("Access-Control-Allow-Origin", origin);
-  } else {
-    // Fallback for debugging - remove after fixingg
-    console.warn("Origin not allowed:", origin);
   }
-
   res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
   res.setHeader("Access-Control-Allow-Credentials", "true");
