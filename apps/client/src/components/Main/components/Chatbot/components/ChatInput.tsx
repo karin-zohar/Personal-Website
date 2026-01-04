@@ -19,7 +19,6 @@ const ChatInput: FC<ChatInputProps> = ({
   const message = Form.useWatch("message", form);
 
   const handleFinish = () => {
-    console.log("message: ", message);
     setPrompt(message);
     form.resetFields();
     updateReply(message);
