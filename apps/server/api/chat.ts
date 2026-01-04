@@ -1,6 +1,6 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 import { setVercelCorsHeaders } from "../src/middleware/cors.js";
-import { handleContact } from "../src/routes/contact.js";
+import { handleChat } from "../src/routes/chat.js";
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   setVercelCorsHeaders(req, res);
@@ -13,11 +13,11 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(405).json({ error: "Method not allowed" });
   }
 
-  const result = await handleContact(req.body);
+  const result = await handleChat(req.body);
 
   if (result.error) {
     return res
-      .status(result.error === "Missing required fields" ? 400 : 500)
+      .status(result.error === "prompt required" ? 400 : 500)
       .json(result);
   }
 

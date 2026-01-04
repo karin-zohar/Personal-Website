@@ -7,7 +7,7 @@ const Projects = () => {
   // Place holder data
   const projects: ProjectCardProps[] = [
     {
-      key: "test",
+      projectKey: "test",
       projectUrl: "https://www.google.com",
       title: { english: "test", hebrew: "טסט" },
       imgUrl:
@@ -15,7 +15,7 @@ const Projects = () => {
       tags: ["react", "node"],
     },
     {
-      key: "test2",
+      projectKey: "test2",
       projectUrl: "https://www.google.com",
       title: { english: "test", hebrew: "טסט" },
       imgUrl:
@@ -27,10 +27,10 @@ const Projects = () => {
   return (
     <div className="projects-section">
       <ul className="project-cards-list">
-        {projects.map(({ key, title, projectUrl, imgUrl, tags }) => (
-          <li key={key}>
+        {projects.map(({ projectKey, title, projectUrl, imgUrl, tags }) => (
+          <li key={projectKey}>
             <ProjectCard
-              key={key}
+              projectKey={projectKey}
               title={title}
               projectUrl={projectUrl}
               imgUrl={imgUrl}

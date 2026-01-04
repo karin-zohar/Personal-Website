@@ -2,6 +2,7 @@ import {
   AboutMe,
   Contact,
   Projects,
+  Chatbot,
 } from "@/components/Main/components/Main.components.index";
 import { createRef, ReactNode, RefObject } from "react";
 import { StateCreator } from "zustand";
@@ -32,7 +33,7 @@ export const sectionSlice: StateCreator<SectionSlice> = () => {
   const contentByKey = {
     about: <AboutMe />,
     projects: <Projects />,
-    chatbot: <span>chatbot</span>,
+    chatbot: <Chatbot />,
     contact: <Contact />,
   };
 
