@@ -9,3 +9,4 @@ export { FaGithub as GithubIcon } from "react-icons/fa6";
 export { MdOutlineMail as EmailIcon } from "react-icons/md";
 export { MdArrowOutward as ArrowOutwardIcon } from "react-icons/md";
 export { IoCheckmarkOutline as CheckmarkIcon } from "react-icons/io5";
+export { FaArrowUpLong as ArrowUpIcon } from "react-icons/fa6";

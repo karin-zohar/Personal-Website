@@ -8,10 +8,11 @@
     "apps/*",
     "packages/*"
   ],
+  "packageManager": "npm@10.0.0",
   "scripts": {
     "dev:client": "npm run dev --workspace client",
     "dev:server": "npm run dev --workspace server",
-    "dev": "npm run dev:client & npm run dev:server",
+    "dev": "concurrently \"npm run dev:client\" \"npm run dev:server\"",
     "build:client": "npm run build --workspace client",
     "build:server": "npm run build --workspace server",
     "build": "npm run build:client && npm run build:server"
@@ -22,5 +23,9 @@
   "description": "",
   "dependencies": {
     "@vercel/node": "^5.5.3"
+  },
+  "devDependencies": {
+    "baseline-browser-mapping": "^2.9.11",
+    "concurrently": "^9.2.1"
   }
 }
