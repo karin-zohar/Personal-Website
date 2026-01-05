@@ -1,4 +1,8 @@
 import OpenAI from "openai";
+import {
+  SYSTEM_PERSONA_MESSAGES,
+  KARIN_PROFILE_CONTEXT,
+} from "../data/chat.data.js";
 
 interface ChatRequest {
   prompt: string;
@@ -11,15 +15,18 @@ export async function handleChat(
 ): Promise<{ reply?: string; error?: string }> {
   try {
     const { prompt } = body;
-
     if (!prompt) {
       return { error: "prompt required" };
     }
 
     const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
     const response = await openai.chat.completions.create({
-      model: "gpt-4o-mini",
-      messages: [{ role: "user", content: prompt }],
+      model: "gpt-4o",
+      messages: [
+        { role: "system", content: KARIN_PROFILE_CONTEXT },
+        { role: "system", content: SYSTEM_PERSONA_MESSAGES },
+        { role: "user", content: prompt },
+      ],
       max_tokens: MAX_TOKENS,
     });
 
