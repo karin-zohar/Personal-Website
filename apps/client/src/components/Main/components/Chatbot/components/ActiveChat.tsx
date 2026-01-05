@@ -2,6 +2,7 @@ import React, { FC, Fragment } from "react";
 import { PromptAndReply } from "../Chatbot.types";
 import { Flex } from "antd";
 import { BeatLoader } from "react-spinners";
+import GenMarkdownRenderer from "@/libs/ui/components/GenMarkdownRenderer";
 
 type ActiveChatProps = {
   messages: PromptAndReply[];
@@ -18,7 +19,7 @@ const ActiveChat: FC<ActiveChatProps> = ({ messages }) => {
             </div>
             {reply ? (
               <div className="chat-message chat-reply">
-                <span>{reply}</span>
+                <GenMarkdownRenderer markdown={reply} />
               </div>
             ) : (
               <BeatLoader color={"var(--teal-500)"} />
