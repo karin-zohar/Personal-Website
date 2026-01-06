@@ -30,6 +30,32 @@ const getHistoryForApi = (messages: PromptAndReply[]): MessageForAPI[] => {
   });
 };
 
+const isKarinRelated = (input: string) => {
+  const keywords = [
+    "karin",
+    "her",
+    "she",
+    "experience",
+    "skills",
+    "background",
+    "projects",
+    "frontend",
+    "fullstack",
+    "react",
+    "work",
+    "cv",
+    "resume",
+    "קארין",
+    "היא",
+    "ניסיון",
+    "פרוייקטים",
+    "פרויקטים",
+    "עבודה",
+  ];
+
+  return keywords.some((k) => input.toLowerCase().includes(k));
+};
+
 export async function handleChat(
   body: ChatRequest
 ): Promise<{ reply?: string; error?: string }> {
@@ -37,6 +63,13 @@ export async function handleChat(
     const { prompt, history } = body;
     if (!prompt) {
       return { error: "prompt required" };
+    }
+
+    if (!isKarinRelated(prompt)) {
+      return {
+        reply:
+          "I can only answer questions about Karin and her professional background. Feel free to ask about her skills, experience, or projects.",
+      };
     }
 
     const historyForApi =
