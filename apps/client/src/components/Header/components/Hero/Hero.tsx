@@ -2,7 +2,7 @@ import React from "react";
 import useStore from "@/store/store";
 import { Flex, Typography } from "antd";
 import SocialLinks from "@/components/SocialLinks/SocialLinks";
-import { default as HeroImage } from "@/assets/img/hero-karin.jpg";
+import { default as HeroImage } from "@/assets/img/hero-karin.webp";
 import "./hero.style.css";
 
 const Hero = () => {
