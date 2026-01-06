@@ -53,6 +53,8 @@
   .active-chat {
     max-height: 300px;
     overflow-x: auto;
+    scrollbar-width: none;
+
     width: 100%;
     margin-top: 20px;
     padding-inline: 10px;
