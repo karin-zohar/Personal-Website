@@ -2,7 +2,8 @@
   color-scheme: light dark;
   --white-100: #ffff;
   --cream-100: #e7dfd5;
-  --gray-100: #c9d3db4d;
+  --gray-100: hsla(207, 4%, 41%, 0.302);
+  --gray-500: #81929c;
   --teal-100: #a5d5d9;
   --teal-200: #84a9ac;
   --teal-500: #3b6978;
