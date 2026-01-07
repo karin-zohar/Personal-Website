@@ -10,14 +10,7 @@
 
 @keyframes slide-in {
   from {
-    mask-image: linear-gradient(
-      to bottom,
-      transparent 0%,
-      black 50%,
-      transparent 100%
-    );
-
-    transform: translateX(200px);
+    transform: translateX(100px);
   }
   to {
     transform: translateX(0);

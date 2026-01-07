@@ -7,7 +7,11 @@
   .contact-form {
     max-width: 1200px;
     .submit-button {
+      margin-top: 10px;
       height: 40px;
+      background: var(--teal-500);
+      box-shadow: none;
+      border: 1px solid transparent;
       &,
       &:hover {
         background-image: linear-gradient(
@@ -26,8 +30,11 @@
       }
 
       &:disabled {
-        visibility: hidden;
         pointer-events: none;
+        background-image: none;
+        outline: none;
+        background-color: var(--gray-500);
+        border: 1px solid var(--gray-500);
       }
     }
 

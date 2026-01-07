@@ -51,12 +51,30 @@
   }
 
   .active-chat {
-    max-height: 300px;
+    max-height: 400px;
+    margin-top: 20px;
     overflow-x: auto;
-    scrollbar-width: none;
+
+    @supports (-moz-appearance: none) {
+      & {
+        scrollbar-width: thin;
+        scrollbar-color: var(--teal-200) transparent;
+      }
+    }
+
+    &::-webkit-scrollbar {
+      background-color: transparent;
+      cursor: pointer;
+      width: 10px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: var(--teal-200);
+      border-radius: 5px;
+      cursor: pointer;
+    }
 
     width: 100%;
-    margin-top: 20px;
     padding-inline: 10px;
     & > *:nth-child(odd) {
       align-self: flex-end;

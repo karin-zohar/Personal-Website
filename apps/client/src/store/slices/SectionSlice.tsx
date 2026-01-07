@@ -7,7 +7,8 @@ import {
 import { createRef, ReactNode, RefObject } from "react";
 import { StateCreator } from "zustand";
 
-const sectionKeys = ["about", "projects", "chatbot", "contact"] as const;
+// const sectionKeys = ["about", "projects", "chatbot", "contact"] as const;
+const sectionKeys = ["about", "chatbot", "contact"] as const;
 
 export type SectionKey = (typeof sectionKeys)[number];
 type SectionRefs = Record<SectionKey, RefObject<HTMLDivElement | null>>;
