@@ -32,6 +32,15 @@ const ContactForm: FC<ContactFormProps> = ({ setIsMessageSent }) => {
             hebrew: "נא להזין שם",
           },
         },
+        {
+          type: "string",
+          // Name must contain only letters and spaces, and be at least 2 chars long.
+          pattern: /^[A-Za-z]{2,}(?: [A-Za-z]{2,})*$/,
+          message: {
+            english: "Please enter a valid name",
+            hebrew: "נא להזין שם תקין",
+          },
+        },
       ],
     },
     {
