@@ -8,13 +8,24 @@ export interface ContactRequest {
   company?: string;
 }
 
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const nameRegex = /^[A-Za-z]{2,}(?: [A-Za-z]{2,})*$/;
+
 export async function handleContact(
   body: ContactRequest
 ): Promise<{ success?: boolean; error?: string }> {
   const { name, email, message, phone, company } = body;
 
-  if (!email || !message) {
+  if (!email || !message || !name) {
     return { error: "Missing required fields" };
+  }
+
+  if (!emailRegex.test(email)) {
+    return { error: `Invalid email provided: ${email}` };
+  }
+
+  if (!nameRegex.test(name)) {
+    return { error: `Invalid name provided: ${name}` };
   }
 
   try {
