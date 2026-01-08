@@ -7,7 +7,7 @@ Welcome to my personal website, where you will find information about me, my lat
 
 
 
-![Alt text](https://i.ibb.co/BK4kvfSP/personal-website-mockup.png)
+![Alt text](https://i.ibb.co/7Jd4Yx8F/personal-website-mockup.webp)
 
 
 
