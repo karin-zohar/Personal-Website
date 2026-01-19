@@ -140,10 +140,12 @@ Tooling & Infrastructure:
 - Git, Docker
 - TanStack Query
 - Versioned environments and deployments
+- Render, Vercel, Vercel serverless functions
 
 AI & Modern Workflows:
 - OpenAI API integration
 - AI-assisted development workflows
+- Cursor
 
 STRENGTHS & WORK STYLE
 - Front-end ownership with strong attention to detail

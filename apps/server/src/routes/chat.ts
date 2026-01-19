@@ -75,7 +75,7 @@ export async function handleChat(
     const historyForApi =
       history && history.length > 0 ? getHistoryForApi(history) : [];
     const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
-
+    
     const response = await openai.chat.completions.create({
       model: "gpt-4o",
       messages: [
@@ -86,6 +86,13 @@ export async function handleChat(
       ],
       max_tokens: MAX_TOKENS,
     });
+
+    // Usage tracking
+    const usage = response.usage;
+    if (usage && 'prompt_tokens_details' in usage) {
+      console.log(`Cached tokens: ${usage.prompt_tokens_details?.cached_tokens || 0}`);
+      console.log(`Total prompt tokens: ${usage.prompt_tokens}`);
+    }
 
     const reply = response.choices?.[0]?.message?.content ?? "";
     return { reply };
