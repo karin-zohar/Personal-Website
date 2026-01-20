@@ -1,8 +1,8 @@
 import "dotenv/config";
 import {
   SYSTEM_PERSONA_MESSAGES,
-  KARIN_PROFILE_CONTEXT,
   GUARDRAILS,
+  RAG_INSTRUCTTIONS,
 } from "../../data/chat.data.js";
 import { openai } from "../../lib/openai.js";
 import { setupRag } from "./rag/setupRag.js";
@@ -75,7 +75,6 @@ export async function handleChat(
       };
     }
 
-    // Setup vector store
     const vectorStore = await setupRag();
 
     // Wait for files to be processed
@@ -85,14 +84,10 @@ export async function handleChat(
 
     const historyForApi =
       history && history.length > 0 ? getHistoryForApi(history) : [];
-
-    // Combine guardrails and persona into instructions
-    // CRITICAL: Explicitly tell the model to use file_search
-    const systemInstructions = `${GUARDRAILS}
-
-${SYSTEM_PERSONA_MESSAGES}
-
-IMPORTANT: You have access to files containing information about Karin through the file_search tool. When answering questions about Karin, you MUST use the file_search tool to retrieve accurate information from her CV and professional documents. Always base your answers on the information found in these files.`;
+    const systemInstructions = `${GUARDRAILS} 
+    ${SYSTEM_PERSONA_MESSAGES} 
+    ${RAG_INSTRUCTTIONS} 
+    `;
 
     const response = await openai.responses.create({
       model: "gpt-4o",
