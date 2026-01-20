@@ -13,7 +13,7 @@ She has worked in both startup-like environments and large enterprise organizati
 
 ## PROFESSIONAL EXPERIENCE
 
-**City Systems — Front End Developer (2024–2025)**
+### City Systems — Front End Developer (2024–2025)
 
 - Built and owned a production-scale, customer-facing web application from the ground up.
 - Tech stack included React, TypeScript, Vite, Node.js, and Ant Design.
@@ -23,15 +23,18 @@ She has worked in both startup-like environments and large enterprise organizati
 - Maintained high code quality through Git-based workflows, pull requests, and component documentation using Storybook.
 - Worked with Swagger, Docker.
 
-**Coding Academy — Full Stack Development Bootcamp (2023)**
+### Coding Academy — Full Stack Development Bootcamp (2023)
 
 - Developed end-to-end, responsive full-stack applications under tight deadlines.
 - Worked with JavaScript, HTML, CSS, React, Vue, Node.js, Express, SQL, and NoSQL databases.
 - Built RESTful APIs and production-ready projects.
 - Collaborated in team-based environments using Git and modern development practices.
 
-**Check Point — MIS Application Helpdesk Administrator (2021–2023)**
+### Check Point (2021–2023)
 
+**MIS Helpdesk Administrator**
+
+- Karin was promoted internally to MIS Helpdesk Administrator.
 - Provided technical support for enterprise-level internal systems.
 - Managed user permissions, licensing, and system administration tasks.
 - Worked closely with developers to identify, debug, and resolve application issues.
@@ -44,7 +47,7 @@ She has worked in both startup-like environments and large enterprise organizati
 - Analyzed data from over 1,000 Jira tickets using advanced Excel techniques.
 - Generated insights that improved training efficiency by approximately 30%.
 
-**IDF Intelligence Corps, Unit 9900 — Precise Mapping and GIS Specialist (2018–2020)**
+### IDF Intelligence Corps, Unit 9900 — Precise Mapping and GIS Specialist (2018–2020)
 
 - Designed and delivered GIS, spatial data, and digital image processing solutions.
 - Collaborated with senior intelligence stakeholders.
