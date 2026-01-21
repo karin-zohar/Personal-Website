@@ -19,10 +19,8 @@
   ],
   "functions": {
     "api/**/*.ts": {
-      "maxDuration": 10
-    },
-    "data/**": {
-      "includeFiles": ["**/*.md", "**/*.pdf", "**/*.txt", "**/*.ts"]
+      "maxDuration": 10,
+      "includeFiles": "src/data/rag/**/*"
     }
   }
 }
