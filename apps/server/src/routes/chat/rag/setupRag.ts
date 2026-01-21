@@ -4,7 +4,6 @@ import { openai } from "../../../lib/openai.js";
 import { RAG } from "../../../config/rag.js";
 import { RAG_DATA_PATH } from "../../../data/rag/index.js";
 
-path.resolve("../../../data/rag", "karin-profile.md");
 type VectorStore = Awaited<ReturnType<typeof openai.vectorStores.create>>;
 
 const DATA_DIR = RAG_DATA_PATH;
