@@ -19,8 +19,10 @@
   ],
   "functions": {
     "api/**/*.ts": {
-      "maxDuration": 10,
-      "includeFiles": "src/data/**"
+      "maxDuration": 10
+    },
+    "src/**": {
+      "includeFiles": "src/data/rag/**"
     }
   }
 }
