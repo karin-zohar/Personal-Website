@@ -19,23 +19,21 @@ export const setupRag = async () => {
   }
 
   const files = fs.readdirSync(DATA_DIR);
-  const fileStreams = files
-    .filter((filename) => {
-      const filePath = path.join(DATA_DIR, filename);
-      return (
-        fs.statSync(filePath).isFile() &&
-        ALLOWED_EXT.includes(path.extname(filename))
-      );
-    })
-    .map((filename) => {
-      const filePath = path.join(DATA_DIR, filename);
-      return fs.createReadStream(filePath);
-    });
+
+  const fileStreams = files.flatMap((filename) => {
+    const filePath = path.join(DATA_DIR, filename);
+
+    // Skip folders and include only files with allowed extensions.
+    const isValidFile =
+      fs.statSync(filePath).isFile() &&
+      ALLOWED_EXT.includes(path.extname(filename));
+
+    return isValidFile ? [fs.createReadStream(filePath)] : [];
+  });
 
   await openai.vectorStores.fileBatches.uploadAndPoll(vectorStoreId, {
     files: fileStreams,
   });
-
   console.log("✅ All files uploaded and processed");
 
   // Retrieve final state

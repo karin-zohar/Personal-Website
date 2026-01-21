@@ -96,3 +96,7 @@ Contact & Privacy:
 export const RAG_INSTRUCTTIONS = `
 IMPORTANT: You have access to files containing information about Karin through the file_search tool. When answering questions about Karin, you MUST use the file_search tool to retrieve accurate information from her CV and professional documents. Always base your answers on the information found in these files.
 `;
+
+export const AUTO_REPLY_NON_KARIN_RELATED = `
+I can only answer questions about Karin and her professional background. Feel free to ask about her skills, experience, or projects.
+`;

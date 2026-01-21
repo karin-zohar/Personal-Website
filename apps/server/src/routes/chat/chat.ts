@@ -3,6 +3,7 @@ import {
   SYSTEM_PERSONA_MESSAGES,
   GUARDRAILS,
   RAG_INSTRUCTTIONS,
+  AUTO_REPLY_NON_KARIN_RELATED,
 } from "../../data/chat.data.js";
 import { openai } from "../../lib/openai.js";
 import { setupRag } from "./rag/setupRag.js";
@@ -70,14 +71,12 @@ export async function handleChat(
 
     if (!isKarinRelated(prompt)) {
       return {
-        reply:
-          "I can only answer questions about Karin and her professional background. Feel free to ask about her skills, experience, or projects.",
+        reply: AUTO_REPLY_NON_KARIN_RELATED,
       };
     }
 
     const vectorStore = await setupRag();
 
-    // Wait for files to be processed
     if (vectorStore.file_counts.in_progress > 0) {
       console.warn("Warning: Vector store still processing files");
     }
@@ -104,7 +103,6 @@ export async function handleChat(
       max_output_tokens: MAX_TOKENS,
     });
 
-    // Log for debugging
     if (response.usage) {
       console.log(`Tokens used: ${response.usage.total_tokens}`);
     }
