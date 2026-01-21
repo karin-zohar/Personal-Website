@@ -2,9 +2,11 @@ import fs from "fs";
 import path from "path";
 import { openai } from "../../../lib/openai.js";
 import { RAG } from "../../../config/rag.js";
+import { RAG_DATA_PATH } from "../../../data/rag/index.js";
 
 type VectorStore = Awaited<ReturnType<typeof openai.vectorStores.create>>;
-const DATA_DIR = path.join(process.cwd(), "src", "data", "rag");
+
+const DATA_DIR = RAG_DATA_PATH;
 const ALLOWED_EXT = [".txt", ".md", ".pdf"];
 
 export const setupRag = async () => {
