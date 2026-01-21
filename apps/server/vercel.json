@@ -20,6 +20,9 @@
   "functions": {
     "api/**/*.ts": {
       "maxDuration": 10
+    },
+    "data/**": {
+      "includeFiles": ["**/*.md", "**/*.pdf", "**/*.txt", "**/*.ts"]
     }
   }
 }
