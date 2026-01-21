@@ -20,7 +20,7 @@
   "functions": {
     "api/**/*.ts": {
       "maxDuration": 10,
-      "includeFiles": "src/data/rag/**/*"
+      "includeFiles": "apps/server/src/data/rag/**"
     }
   }
 }
