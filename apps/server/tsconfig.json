@@ -21,9 +21,7 @@
     "noUncheckedSideEffectImports": true,
     "moduleDetection": "force",
     "allowImportingTsExtensions": false,
-    "noEmit": false,
+    "noEmit": false
   },
-  "include": [
-    "src"
-  ]
+  "include": ["src"]
 }
