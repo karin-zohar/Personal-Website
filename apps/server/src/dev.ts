@@ -1,7 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import { corsMiddleware } from "./middleware/cors.js";
-import { handleChat } from "./routes/chat.js";
+import { handleChat } from "./routes/chat/index.js";
 import { handleContact } from "./routes/contact.js";
 import { handleHealth } from "./routes/health.js";
 
